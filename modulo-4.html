@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Módulo 4 — Técnicas de creatividad y desbloqueo · Material de estudio</title>
+<meta name="description" content="Material de estudio interactivo del Módulo 4 de Oratoria: técnicas de creatividad y desbloqueo — la flor de loto, los seis sombreros para pensar y el pensamiento divergente de Guilford. Tarjetas, quiz y glosario. Oratoria y técnicas de expresión — Lic. en Periodismo.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='19' font-size='19'>🎤</text></svg>">
+<script>(function(){var t=null;try{t=localStorage.getItem("tema-oratoria")}catch(e){}document.documentElement.dataset.tema=t||(window.matchMedia&&matchMedia("(prefers-color-scheme: dark)").matches?"oscuro":"claro")})();</script>
+<style>
+  :root{
+    --papel:#f5efe4; --superficie:#fdfaf3; --tinta:#272119; --tinta-suave:#716553;
+    --acento:#a84b24; --acento-suave:#f1dccb; --borde:#ded1b8; --regla:#b9a888;
+    --ok:#3f7d4a; --ok-bg:#e9f2e6; --mal:#a93b2c; --mal-bg:#f7e4de; --marca:#efd9a7;
+    --sombra:0 1px 2px rgba(45,33,20,.06),0 6px 18px rgba(45,33,20,.07);
+    --serif:'Palatino Linotype',Palatino,'Book Antiqua',Georgia,serif;
+    --sans:'Segoe UI',system-ui,-apple-system,sans-serif;
+  }
+  html[data-tema="oscuro"]{
+    --papel:#171310; --superficie:#211b15; --tinta:#ece2cf; --tinta-suave:#a4957e;
+    --acento:#d9784a; --acento-suave:#3b2519; --borde:#3b3327; --regla:#57493a;
+    --ok:#7cb787; --ok-bg:#22301f; --mal:#dd8574; --mal-bg:#38211b; --marca:#6b5320;
+    --sombra:0 1px 2px rgba(0,0,0,.4),0 8px 22px rgba(0,0,0,.35);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:var(--papel);color:var(--tinta);font-family:var(--sans);
+    line-height:1.55;min-height:100vh;transition:background .25s ease,color .25s ease}
+  .icono{width:18px;height:18px;flex:none;fill:none;stroke:currentColor;
+    stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+  :focus-visible{outline:2px solid var(--acento);outline-offset:2px}
+
+  /* ---- Masthead (cartel de conferencia) ---- */
+  header{max-width:760px;margin:0 auto;padding:30px 16px 0;text-align:center;position:relative}
+  .regla{border:none;border-top:4px double var(--regla);margin:14px 0 0}
+  .eyebrow{font-family:var(--sans);font-size:.7rem;letter-spacing:.22em;
+    text-transform:uppercase;color:var(--acento);margin-top:16px}
+  header h1{font-family:var(--serif);font-weight:normal;color:var(--tinta);
+    font-size:clamp(1.9rem,5.5vw,2.6rem);line-height:1.15;margin:6px 0 2px}
+  .lema{font-family:var(--serif);font-style:italic;color:var(--tinta-suave);font-size:1.02rem}
+  .toggle-tema,.volver{position:absolute;top:24px;width:40px;height:40px;
+    display:inline-flex;align-items:center;justify-content:center;border-radius:50%;
+    border:1px solid var(--borde);background:var(--superficie);color:var(--tinta-suave);
+    cursor:pointer;transition:border-color .15s ease,color .15s ease}
+  .toggle-tema{right:16px}
+  .volver{left:16px}
+  .toggle-tema:hover,.volver:hover{border-color:var(--acento);color:var(--acento)}
+  .toggle-tema .icono,.volver .icono{width:19px;height:19px}
+  .toggle-tema .i-sol{display:none}
+  html[data-tema="oscuro"] .toggle-tema .i-sol{display:block}
+  html[data-tema="oscuro"] .toggle-tema .i-luna{display:none}
+
+  /* ---- Pestañas ---- */
+  nav{display:flex;justify-content:center;gap:8px;flex-wrap:wrap;
+    max-width:760px;margin:18px auto 0;padding:0 16px}
+  .tab{display:inline-flex;align-items:center;gap:8px;font-family:var(--sans);
+    font-size:.92rem;background:var(--superficie);color:var(--tinta-suave);
+    border:1px solid var(--borde);border-radius:999px;padding:9px 18px;cursor:pointer;
+    transition:border-color .15s ease,color .15s ease,background .15s ease}
+  .tab:hover{border-color:var(--acento);color:var(--acento)}
+  .tab.activa{background:var(--acento);border-color:var(--acento);color:var(--papel)}
+  main{max-width:760px;margin:0 auto;padding:26px 16px 60px}
+  .panel{display:none}
+  .panel.activo{display:block}
+  .boton{display:inline-flex;align-items:center;gap:7px;font-family:var(--sans);
+    font-size:.92rem;background:var(--superficie);border:1px solid var(--borde);
+    border-radius:9px;padding:9px 15px;cursor:pointer;color:var(--tinta);
+    transition:border-color .15s ease,transform .15s ease}
+  .boton:hover{border-color:var(--acento);transform:translateY(-1px)}
+  .boton-primario{background:var(--acento);border-color:var(--acento);color:var(--papel)}
+  .boton-primario:hover{border-color:var(--acento)}
+
+  /* ---- Tarjetas (ficha de imprenta) ---- */
+  #chips-temas{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:20px;justify-content:center}
+  .chip{font-family:var(--sans);font-size:.8rem;background:var(--superficie);
+    border:1px solid var(--borde);border-radius:999px;padding:5px 13px;cursor:pointer;
+    color:var(--tinta-suave);transition:border-color .15s ease,color .15s ease,background .15s ease}
+  .chip:hover{border-color:var(--acento);color:var(--acento)}
+  .chip.activa{background:var(--acento-suave);border-color:var(--acento);color:var(--acento)}
+  .escena{margin-bottom:18px}
+  #tarjeta{display:grid;width:100%;min-height:300px;cursor:pointer}
+  .cara{grid-area:1/1;position:relative;background:var(--superficie);
+    border:1px solid var(--borde);border-radius:14px;box-shadow:var(--sombra);
+    padding:36px 32px;display:flex;flex-direction:column;align-items:center;
+    justify-content:center;text-align:center;gap:12px;transition:opacity .25s ease}
+  .cara::after{content:"";position:absolute;inset:7px;border:1px solid var(--regla);
+    border-radius:9px;pointer-events:none;opacity:.55}
+  #tarjeta.girada #cara-frente{opacity:0}
+  #tarjeta:not(.girada) #cara-dorso{opacity:0}
+  .etiqueta{font-family:var(--sans);font-size:.66rem;letter-spacing:.2em;
+    text-transform:uppercase;color:var(--tinta-suave);display:inline-flex;
+    align-items:center;gap:10px}
+  .etiqueta::before,.etiqueta::after{content:"";width:22px;height:1px;
+    background:var(--regla);display:inline-block}
+  #tema-tarjeta{color:var(--acento)}
+  #tarjeta-frente{font-size:clamp(1.2rem,3vw,1.45rem);line-height:1.4}
+  #tarjeta-dorso{font-size:1.12rem;line-height:1.6;color:var(--tinta)}
+  .controles-tarjetas{display:flex;justify-content:center;align-items:center;gap:10px;flex-wrap:wrap}
+  #contador-tarjetas{font-style:italic;color:var(--tinta-suave);font-size:.95rem;
+    min-width:70px;text-align:center}
+  .ayuda{font-family:var(--sans);text-align:center;color:var(--tinta-suave);
+    font-size:.78rem;margin-top:16px}
+
+  /* ---- Quiz ---- */
+  .progreso{background:var(--borde);border-radius:999px;height:6px;margin-bottom:20px;overflow:hidden}
+  .progreso-relleno{background:var(--acento);height:100%;width:0;transition:width .3s ease}
+  .pregunta{background:var(--superficie);border:1px solid var(--borde);border-radius:14px;
+    box-shadow:var(--sombra);padding:28px}
+  .pregunta h2{font-family:var(--sans);font-size:1.22rem;font-weight:normal;
+    line-height:1.4;margin-bottom:18px}
+  .opcion{display:block;width:100%;text-align:left;font-family:var(--sans);
+    font-size:1rem;background:var(--papel);border:1px solid var(--borde);
+    border-radius:9px;padding:12px 15px;margin-bottom:9px;cursor:pointer;
+    color:var(--tinta);transition:border-color .15s ease,transform .15s ease}
+  .opcion:hover:not(:disabled){border-color:var(--acento);transform:translateX(3px)}
+  .opcion:disabled{cursor:default;opacity:.7}
+  .opcion.correcta{background:var(--ok-bg);border-color:var(--ok);color:var(--ok);opacity:1}
+  .opcion.incorrecta{background:var(--mal-bg);border-color:var(--mal);color:var(--mal);opacity:1}
+  .explicacion{font-family:var(--sans);font-size:.95rem;background:var(--acento-suave);
+    border-radius:9px;padding:13px 15px;margin-top:6px}
+  .quiz-pie{display:flex;justify-content:space-between;align-items:center;margin-top:16px}
+  .quiz-pie span{font-family:var(--sans);color:var(--tinta-suave);font-size:.88rem}
+  .resultado{text-align:center;padding:12px 0}
+  .resultado .puntaje{font-family:var(--serif);font-size:2.7rem;color:var(--acento);margin:10px 0}
+  .fallada{background:var(--papel);border:1px solid var(--borde);border-radius:10px;
+    padding:14px;margin:10px 0;text-align:left;font-size:.95rem}
+  .fallada .bien{color:var(--ok)}
+
+  /* ---- Glosario ---- */
+  #busqueda-glosario{width:100%;font-family:var(--sans);font-size:1rem;
+    background:var(--superficie);border:1px solid var(--borde);border-radius:11px;
+    padding:13px 17px;margin-bottom:18px;color:var(--tinta)}
+  #busqueda-glosario:focus{outline:2px solid var(--acento);outline-offset:1px;border-color:var(--acento)}
+  .entrada-glosario{background:var(--superficie);border:1px solid var(--borde);
+    border-radius:11px;padding:14px 17px;margin-bottom:10px;transition:border-color .15s ease}
+  .entrada-glosario:hover{border-color:var(--regla)}
+  .entrada-glosario b{display:block;margin-bottom:3px;font-family:var(--sans);font-size:1.06rem}
+  .entrada-glosario p{font-family:var(--sans);font-size:.98rem;color:var(--tinta-suave)}
+  mark{background:var(--marca);color:inherit;border-radius:3px;padding:0 2px}
+  .sin-resultados{text-align:center;color:var(--tinta-suave);font-family:var(--sans);padding:26px 0}
+
+  @media (max-width:480px){
+    .cara{padding:22px 18px}
+    #tarjeta-frente{font-size:1.18rem}
+    #tarjeta-dorso{font-size:1.05rem}
+    .toggle-tema{top:14px;right:12px}
+    .volver{top:14px;left:12px}
+  }
+  @media (prefers-reduced-motion:reduce){
+    *{transition:none!important;animation:none!important}
+  }
+
+</style>
+</head>
+<body>
+<!-- Íconos: Lucide (lucide.dev), licencia ISC, incrustados para funcionar offline -->
+<svg xmlns="http://www.w3.org/2000/svg" style="display:none">
+  <symbol id="i-mic" viewBox="0 0 24 24"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" x2="12" y1="19" y2="22"/></symbol>
+  <symbol id="i-capas" viewBox="0 0 24 24"><path d="M12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.83Z"/><path d="m22 17.65-9.17 4.16a2 2 0 0 1-1.66 0L2 17.65"/><path d="m22 12.65-9.17 4.16a2 2 0 0 1-1.66 0L2 12.65"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><path d="M21.801 10A10 10 0 1 1 17 3.335"/><path d="m9 11 3 3L22 4"/></symbol>
+  <symbol id="i-lupa" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></symbol>
+  <symbol id="i-mezclar" viewBox="0 0 24 24"><path d="M2 18h1.4c1.3 0 2.5-.6 3.3-1.7l6.1-8.6c.7-1.1 2-1.7 3.3-1.7H22"/><path d="m18 2 4 4-4 4"/><path d="M2 6h1.9c1.5 0 2.9.9 3.6 2.2"/><path d="M22 18h-5.9c-1.3 0-2.6-.7-3.3-1.8l-.5-.8"/><path d="m18 14 4 4-4 4"/></symbol>
+  <symbol id="i-izq" viewBox="0 0 24 24"><path d="m12 19-7-7 7-7"/><path d="M19 12H5"/></symbol>
+  <symbol id="i-der" viewBox="0 0 24 24"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></symbol>
+  <symbol id="i-rotar" viewBox="0 0 24 24"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></symbol>
+  <symbol id="i-luna" viewBox="0 0 24 24"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></symbol>
+  <symbol id="i-sol" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></symbol>
+</svg>
+<header>
+  <a class="volver" href="index.html" title="Volver al índice" aria-label="Volver al índice de módulos"><svg class="icono" aria-hidden="true"><use href="#i-izq"/></svg></a>
+  <button class="toggle-tema" id="toggle-tema" title="Cambiar tema" aria-label="Cambiar entre modo claro y oscuro">
+    <svg class="icono i-luna" aria-hidden="true"><use href="#i-luna"/></svg>
+    <svg class="icono i-sol" aria-hidden="true"><use href="#i-sol"/></svg>
+  </button>
+  <hr class="regla">
+  <p class="eyebrow">Oratoria y técnicas de expresión · Módulo IV</p>
+  <h1>Técnicas de creatividad y desbloqueo</h1>
+  <p class="lema">Material de estudio para el parcial · 2026</p>
+  <hr class="regla">
+</header>
+<nav>
+  <button class="tab activa" data-panel="panel-tarjetas"><svg class="icono" aria-hidden="true"><use href="#i-capas"/></svg><span>Tarjetas</span></button>
+  <button class="tab" data-panel="panel-quiz"><svg class="icono" aria-hidden="true"><use href="#i-check"/></svg><span>Quiz</span></button>
+  <button class="tab" data-panel="panel-glosario"><svg class="icono" aria-hidden="true"><use href="#i-lupa"/></svg><span>Glosario</span></button>
+</nav>
+<main>
+  <section id="panel-tarjetas" class="panel activo">
+    <div id="chips-temas"></div>
+    <div class="escena">
+      <div id="tarjeta">
+        <div class="cara" id="cara-frente"><span class="etiqueta" id="tema-tarjeta"></span>
+          <div id="tarjeta-frente"></div>
+          <span class="etiqueta">tocá para ver la respuesta</span></div>
+        <div class="cara" id="cara-dorso"><span class="etiqueta">respuesta</span>
+          <div id="tarjeta-dorso"></div></div>
+      </div>
+    </div>
+    <div class="controles-tarjetas">
+      <button class="boton" id="btn-anterior"><svg class="icono" aria-hidden="true"><use href="#i-izq"/></svg>Anterior</button>
+      <span id="contador-tarjetas"></span>
+      <button class="boton" id="btn-siguiente">Siguiente<svg class="icono" aria-hidden="true"><use href="#i-der"/></svg></button>
+      <button class="boton" id="btn-mezclar"><svg class="icono" aria-hidden="true"><use href="#i-mezclar"/></svg>Mezclar</button>
+    </div>
+    <p class="ayuda">Teclado: espacio gira la tarjeta · flechas ← → navegan</p>
+  </section>
+  <section id="panel-quiz" class="panel">
+    <div id="quiz-contenido"></div>
+  </section>
+  <section id="panel-glosario" class="panel">
+    <input id="busqueda-glosario" type="search"
+      placeholder="Buscar término o autor… (ej.: Guilford, sombrero, loto)">
+    <div id="lista-glosario"></div>
+  </section>
+</main>
+<script>
+// ============ DATOS DEL MÓDULO ============
+// Para generar el material de otro módulo, reemplazar SOLO estas constantes.
+const MODULO = { numero: 4, titulo: "Técnicas de creatividad y desbloqueo" };
+const TARJETAS = [
+ // --- Flor de loto ---
+ {tema:"Flor de loto", frente:"¿Qué es la técnica de la flor de loto?", dorso:"Una técnica de creatividad que proporciona un medio visual para registrar la relación entre un concepto central y las alternativas que de él se desprenden. Es una herramienta cognitiva-analítica que aporta un escenario visual simple."},
+ {tema:"Flor de loto", frente:"¿Quién creó la flor de loto (lotus blossom)?", dorso:"El japonés Yasuo Matsumura, presidente de Clover Management Research (Chiba City, Japón). La creó para establecer de forma gráfica las asociaciones mentales que llevan a ideas creativas."},
+ {tema:"Flor de loto", frente:"¿Por qué se llama “flor de loto”?", dorso:"Porque empieza con un tema central del que se van ampliando conceptos secundarios a modo de pétalos; ese tema central genera ideas que a su vez se convierten en nuevos temas centrales, semejando visualmente a la flor de loto de la naturaleza."},
+ {tema:"Flor de loto", frente:"¿Qué favorece la flor de loto?", dorso:"El desarrollo del pensamiento analítico, fomenta el pensamiento creativo y sirve como estructura para generar nuevas ideas. Pide al usuario focalizar el pensamiento en un número concreto de resultados clave a partir de una situación dada."},
+ {tema:"Flor de loto", frente:"¿Para qué sirve la flor de loto?", dorso:"Para ayudar a los participantes a identificar alternativas de forma ordenada y limitada; su estructura proporciona una manera de visualizar la gama de posibilidades a partir del tema central elegido."},
+ {tema:"Flor de loto", frente:"¿Cuándo se utiliza la flor de loto?", dorso:"En las etapas de Entender e Idear de la metodología Design Thinking, para establecer el foco de atención. Es una técnica organizada de brainstorming, por lo que tiene mayor injerencia en las etapas tempranas del proceso de diseño."},
+ {tema:"Flor de loto", frente:"¿Cómo se aplica la flor de loto?", dorso:"Con diagramas o matrices con forma de flor, con núcleo y pétalos, para relacionar visualmente las ideas propuestas con el tema central. La técnica es sencilla, aunque depende en gran parte del potencial creativo del equipo de trabajo."},
+ {tema:"Flor de loto", frente:"Flor de loto · paso 1: definir el concepto primario", dorso:"Comenzar con una hoja en la que se trazan nueve recuadros. En el centro de la matriz se escribe el tema inicial o el objetivo a desarrollar."},
+ {tema:"Flor de loto", frente:"Flor de loto · paso 2: ideas relacionadas", dorso:"En los ocho recuadros de alrededor (A a H) se colocan las ideas relacionadas con el tema central. Es importante limitarse al número de recuadros existentes (8), anotando únicamente los elementos clave."},
+ {tema:"Flor de loto", frente:"Flor de loto · paso 3: desarrollar los cuadrantes", dorso:"Usar las primeras 8 ideas (A a H) como nuevos temas centrales, vinculando a cada una un máximo de ocho nuevas ideas, igual que se desarrolló el tema central, hasta completar la mayor parte del esquema."},
+ {tema:"Flor de loto", frente:"Flor de loto · paso 4: evaluar las ideas", dorso:"Al terminar de plantear el contenido de cada recuadro, se somete a un proceso de evaluación y filtrado en el que se obtienen aquellas ideas que más se aproximen al objetivo planteado."},
+ // --- Los seis sombreros ---
+ {tema:"Los seis sombreros", frente:"¿Para qué sirve la técnica de los seis sombreros?", dorso:"Para aplicar en equipos de trabajo o en la planificación de proyectos grupales. Parte de que, al pensar, solemos hacerlo desde una perspectiva determinada; cada sombrero, al ponerlo, le indica al participante que debe cambiar de rol y situarse en una determinada manera de pensar."},
+ {tema:"Los seis sombreros", frente:"¿Cuál es el primer paso para aplicar la técnica?", dorso:"Definir el problema a resolver de la mejor manera posible y otorgar el sombrero azul a la persona que va a organizar la dinámica."},
+ {tema:"Los seis sombreros", frente:"Las dos variantes de la dinámica", dorso:"1) Repartir los otros 5 sombreros entre los presentes y pedir opinión a cada uno desde el color de su sombrero. 2) Otorgar el mismo sombrero a todos los participantes para que piensen a la vez desde el mismo punto de vista. La elección depende del criterio del sombrero azul, que puede alternarlas."},
+ {tema:"Los seis sombreros", frente:"¿Cuánto debe durar cada rol?", dorso:"Un tiempo reducido (1 o 2 minutos), para generar un efecto dinámico en la proyección de ideas y producir muchas opiniones en poco tiempo. Luego el sombrero azul tiene potestad para cambiar los roles, incluido el suyo propio."},
+ {tema:"Los seis sombreros", frente:"¿Cuándo finaliza la sesión?", dorso:"Cuando se termine el tiempo asignado o cuando las opiniones lleguen a un estado de saturación."},
+ // --- Los seis colores ---
+ {tema:"Los seis colores", frente:"Sombrero blanco", dorso:"Neutralidad. Nos pone en la perspectiva del pensamiento objetivo, donde no entran en juego las emociones ni las opiniones: solo los datos, hechos y cifras comprobables."},
+ {tema:"Los seis colores", frente:"Sombrero rojo", dorso:"Pasión. Permite expresar nuestros sentimientos, la parte irracional y más intuitiva. Es muy importante para introducir los valores y a las personas dentro de la toma de decisiones."},
+ {tema:"Los seis colores", frente:"Sombrero verde", dorso:"Vegetación: transmite crecimiento, generación y energía, por eso se asocia al pensamiento creativo. Se utiliza para generar ideas ante las problemáticas o necesidades planteadas; en su uso tienen cabida muchas técnicas creativas como el brainstorming o las analogías."},
+ {tema:"Los seis colores", frente:"Sombrero negro", dorso:"Oscuridad. Nos sitúa en un punto de vista crítico y de cautela; es quizás el que más solemos utilizar en el día a día, porque se trata de identificar peligros y posibles problemas (sobrevivir). Nos pone en alerta y evita lo ilegal, lo peligroso, lo contaminante, el gasto inútil, etc."},
+ {tema:"Los seis colores", frente:"Sombrero amarillo", dorso:"Se asocia con el sol y su luz: permite ver el lado optimista de las cosas y las ventajas de una idea. Es el contrapunto del negro y mucho más difícil de aplicar, porque evolutivamente no estamos dotados de un mecanismo optimista. No hay que caer en el “sí por el sí”. Es el sombrero de los soñadores o visionarios."},
+ {tema:"Los seis colores", frente:"Sombrero azul", dorso:"Transmite el control; su función es gestionar la dinámica, enfocando a los participantes lo mejor posible para obtener los mejores resultados. Es el conocido como “sombrero de sombreros”: uno de los integrantes tiene que tenerlo siempre presente."},
+ {tema:"Los seis colores", frente:"¿Cuál es el “sombrero de sombreros”?", dorso:"El sombrero azul, que gestiona y controla la dinámica. Se otorga a quien organiza la sesión, y tiene potestad para cambiar los roles de los demás e incluso el suyo propio."},
+ // --- Pensamiento divergente ---
+ {tema:"Pensamiento divergente", frente:"¿Qué es el pensamiento divergente?", dorso:"Un constructo de la Psicología Cognitiva, acuñado por Joy Paul Guilford a mediados del siglo pasado. Para Guilford, es el factor más destacable de la creatividad."},
+ {tema:"Pensamiento divergente", frente:"¿Quién fue Joy Paul Guilford?", dorso:"El autor que acuñó el pensamiento divergente; es considerado el padre del estudio científico de la creatividad. Es el autor de referencia sobre este constructo, del que presenta el modelo más comprensivo (Runco, 1999)."},
+ {tema:"Pensamiento divergente", frente:"Las 4 dimensiones del pensamiento divergente", dorso:"Fluencia (generar muchas ideas diferentes), flexibilidad (generar ideas de distintas categorías), originalidad (la novedad, lo distinto, fuera de lo común) y elaboración (definir detalles y características, enriqueciendo la idea)."},
+ {tema:"Pensamiento divergente", frente:"Fluencia vs. flexibilidad", dorso:"La fluencia es la capacidad de generar muchas ideas diferentes; la flexibilidad, la capacidad de generar ideas de distintas categorías."},
+ {tema:"Pensamiento divergente", frente:"Pensamiento convergente vs. divergente", dorso:"El convergente es el pensamiento lógico que tiende a una única respuesta o solución (suele aplicarse en la solución de problemas); el divergente busca soluciones más abiertas, diferentes e inusuales, dirigiéndose hacia la innovación. Guilford establece por primera vez esta división."},
+ {tema:"Pensamiento divergente", frente:"¿Cómo se mide el pensamiento divergente?", dorso:"La mayoría de los tests que intentan medir la creatividad desde una perspectiva psicométrica incluyen, de alguna manera, una medida del pensamiento divergente o de algunas de sus dimensiones; por eso se convierte en un elemento fundamental en el estudio formal de la creatividad."},
+ {tema:"Pensamiento divergente", frente:"¿Cómo entiende Guilford la creatividad?", dorso:"Como la capacidad mental que interviene en la realización creativa, caracterizada por la fluidez, la flexibilidad, la originalidad, el establecimiento de asociaciones lejanas, la sensibilidad ante los problemas y la posibilidad de redefinir las cuestiones."},
+ {tema:"Pensamiento divergente", frente:"Ojo: las 4 dimensiones del pensamiento divergente vs. las 6 notas de la creatividad", dorso:"No las confundas. Las 4 dimensiones del pensamiento divergente son fluencia, flexibilidad, originalidad y elaboración. En cambio, Guilford caracteriza la creatividad con seis rasgos: fluidez, flexibilidad, originalidad, el establecimiento de asociaciones lejanas, la sensibilidad ante los problemas y la posibilidad de redefinir las cuestiones. “Elaboración” es dimensión; “asociaciones lejanas”, “sensibilidad ante los problemas” y “redefinir las cuestiones” son notas de la creatividad."},
+ // --- Estructura del intelecto ---
+ {tema:"Estructura del intelecto", frente:"¿Qué es el modelo de la Estructura del Intelecto?", dorso:"El modelo multidimensional del intelecto de Guilford, también conocido como Modelo Cúbico o Modelo Morfológico. Se opone a entender la inteligencia como un factor general y busca clasificar las capacidades humanas y explicar los procesos intelectuales."},
+ {tema:"Estructura del intelecto", frente:"¿De qué 3 dimensiones se compone el intelecto según Guilford?", dorso:"Contenidos, operaciones (o procesos) y productos (resultados). De su combinación resultan 120 aptitudes independientes, representables como un cubo tridimensional de 120 cubos pequeños. En su versión más reciente, las aptitudes mentales primarias son 150."},
+ {tema:"Estructura del intelecto", frente:"¿De dónde salen las 120 aptitudes?", dorso:"De combinar las 3 dimensiones del modelo: 5 operaciones × 4 contenidos × 6 productos = 120 aptitudes mentales independientes (el “cubo”). En su versión más reciente, las aptitudes mentales primarias son 150."},
+ {tema:"Estructura del intelecto", frente:"¿Cuántas facetas tiene cada dimensión del modelo?", dorso:"Las operaciones son 5 (cognición, memoria, producción convergente, producción divergente, evaluación); los contenidos, 4 (figurativos, simbólicos, semánticos, conductuales); y los productos, 6 (unidades, clases, relaciones, sistemas, transformaciones, implicaciones). De ahí: 5 × 4 × 6 = 120 aptitudes."},
+ {tema:"Estructura del intelecto", frente:"¿Qué método estadístico empleó Guilford?", dorso:"El análisis factorial con rotación ortogonal, que favorecía la obtención de factores independientes, impidiendo saturar en un solo factor general."},
+ {tema:"Estructura del intelecto", frente:"Las 5 operaciones mentales", dorso:"Cognición (conocer, captar y comprender), memoria (codificar, retener y recordar), producción convergente (una única solución), producción divergente (diversas soluciones) y evaluación (juzgar si la información es precisa, adecuada, coherente o válida)."},
+ {tema:"Estructura del intelecto", frente:"Los 4 tipos de contenidos", dorso:"Figurativos (visuales, auditivos, kinestésicos), simbólicos (símbolos o signos sin significado propio), semánticos (el significado verbal) y conductuales (lo que se percibe del comportamiento de las personas)."},
+ {tema:"Estructura del intelecto", frente:"Los 6 tipos de productos", dorso:"Unidades, clases, relaciones, sistemas, transformaciones e implicaciones."},
+ {tema:"Estructura del intelecto", frente:"Productos: unidades, clases y relaciones", dorso:"Unidades: la unidad primaria de conocimiento. Clases: agrupaciones de unidades que comparten atributos. Relaciones: unidades vinculadas (como opuestas) en asociaciones, secuencias y analogías."},
+ {tema:"Estructura del intelecto", frente:"Productos: sistemas, transformaciones e implicaciones", dorso:"Sistemas: relaciones múltiples interrelacionadas para abarcar estructuras o redes. Transformaciones: cambios, perspectivas, conversiones o mutaciones del conocimiento. Implicaciones: predicciones, inferencias, consecuencias o anticipaciones de conocimiento."},
+ {tema:"Estructura del intelecto", frente:"¿Qué son las operaciones mentales?", dorso:"El procesamiento de la información. Incluyen la cognición, la memoria, la producción convergente, la producción divergente y la evaluación."},
+];
+const QUIZ = [
+ {pregunta:"¿Quién creó la técnica de la flor de loto (lotus blossom)?", opciones:["Edward de Bono","Joy Paul Guilford","Yasuo Matsumura","David Angulo de Haro"], correcta:2, explicacion:"La flor de loto fue creada por el japonés Yasuo Matsumura, presidente de Clover Management Research (Chiba City, Japón)."},
+ {pregunta:"La flor de loto sirve, ante todo, para…", opciones:["memorizar discursos largos","registrar visualmente la relación entre un concepto central y las alternativas que se desprenden de él","controlar el miedo escénico","medir la creatividad con tests psicométricos"], correcta:1, explicacion:"Es una herramienta cognitiva-analítica que proporciona un medio visual para registrar la relación entre un concepto central y las alternativas que de él se desprenden."},
+ {pregunta:"En la flor de loto se comienza con una hoja en la que se trazan…", opciones:["cuatro recuadros","seis recuadros","nueve recuadros","doce recuadros"], correcta:2, explicacion:"Se trazan nueve recuadros: en el centro va el tema inicial y en los ocho de alrededor (A a H) las ideas relacionadas."},
+ {pregunta:"¿En qué etapas de Design Thinking se ubica la flor de loto?", opciones:["Prototipar y Testear","Entender e Idear","Definir y Evaluar","Ejecutar y Cerrar"], correcta:1, explicacion:"Se utiliza en las etapas de Entender e Idear; es una técnica organizada de brainstorming, con mayor injerencia en las etapas tempranas del proceso de diseño."},
+ {pregunta:"¿Por qué la técnica toma el nombre de “flor de loto”?", opciones:["porque se creó en un jardín botánico","porque los conceptos secundarios se amplían a modo de pétalos desde un tema central","porque usa nueve colores como la flor","porque cada idea es una semilla que germina"], correcta:1, explicacion:"El tema central va ampliando conceptos secundarios a modo de pétalos, y esos a su vez se vuelven nuevos temas centrales, semejando visualmente a la flor de loto de la naturaleza."},
+ {pregunta:"En el paso 3 de la flor de loto, cada una de las 8 ideas se desarrolla con…", opciones:["un máximo de ocho nuevas ideas","una sola idea nueva","tres ideas obligatorias","tantas ideas como se quiera, sin límite"], correcta:0, explicacion:"Se usan las 8 ideas (A a H) como nuevos temas centrales, vinculando a cada una un máximo de ocho nuevas ideas, igual que se desarrolló el tema central."},
+ {pregunta:"La técnica de los seis sombreros está pensada, sobre todo, para…", opciones:["hablar en público sin nervios","equipos de trabajo y planificación de proyectos grupales","escribir un guion","mejorar la postura corporal"], correcta:1, explicacion:"Es una técnica para aplicar en equipos de trabajo o en la planificación de proyectos grupales; cada sombrero indica cambiar de rol y de manera de pensar."},
+ {pregunta:"El sombrero que representa la neutralidad y el pensamiento objetivo (solo datos, hechos y cifras) es el…", opciones:["blanco","rojo","azul","amarillo"], correcta:0, explicacion:"El sombrero blanco es la neutralidad: pensamiento objetivo, sin emociones ni opiniones, solo datos, hechos y cifras comprobables."},
+ {pregunta:"¿Qué sombrero permite expresar los sentimientos y la parte más intuitiva e irracional?", opciones:["el verde","el negro","el rojo","el blanco"], correcta:2, explicacion:"El sombrero rojo es la pasión: expresa los sentimientos, la parte irracional e intuitiva, e introduce los valores y a las personas en la toma de decisiones."},
+ {pregunta:"El pensamiento creativo, donde tienen cabida el brainstorming y las analogías, corresponde al sombrero…", opciones:["amarillo","verde","blanco","azul"], correcta:1, explicacion:"El sombrero verde (vegetación: crecimiento, generación, energía) se asocia al pensamiento creativo y se usa para generar ideas."},
+ {pregunta:"El punto de vista crítico y de cautela, que identifica peligros y problemas, es el sombrero…", opciones:["negro","rojo","amarillo","verde"], correcta:0, explicacion:"El sombrero negro (oscuridad) es el punto de vista crítico y de cautela; es quizás el que más solemos usar, porque se trata de identificar peligros y problemas."},
+ {pregunta:"¿Cuál es el contrapunto del sombrero negro, que ve el lado optimista y las ventajas de una idea?", opciones:["el blanco","el rojo","el amarillo","el azul"], correcta:2, explicacion:"El sombrero amarillo se asocia al sol: ve el lado optimista y las ventajas. Es el contrapunto del negro y más difícil de aplicar, sin caer en el “sí por el sí”."},
+ {pregunta:"¿Cuál es el llamado “sombrero de sombreros”, que gestiona y controla la dinámica?", opciones:["el blanco","el azul","el verde","el negro"], correcta:1, explicacion:"El sombrero azul transmite el control y gestiona la dinámica; es el “sombrero de sombreros” y se otorga a quien organiza la sesión."},
+ {pregunta:"Al aplicar los seis sombreros, el primer paso es…", opciones:["repartir los seis sombreros al azar","definir el problema y otorgar el sombrero azul a quien organiza la dinámica","empezar siempre por el sombrero rojo","fijar dos horas de sesión"], correcta:1, explicacion:"El primer paso es definir el problema a resolver de la mejor manera posible y otorgar el sombrero azul a la persona que va a organizar la dinámica."},
+ {pregunta:"¿Cuánto tiempo debe durar cada rol en la dinámica de los seis sombreros?", opciones:["entre 10 y 15 minutos","1 o 2 minutos","media hora","el que haga falta"], correcta:1, explicacion:"El tiempo de cada rol debe ser reducido (1 o 2 minutos) para generar un efecto dinámico y producir muchas opiniones en poco tiempo."},
+ {pregunta:"La sesión de los seis sombreros finaliza cuando…", opciones:["habla el sombrero rojo","se termina el tiempo asignado o las opiniones llegan a la saturación","todos se ponen el sombrero azul","se resuelve por votación"], correcta:1, explicacion:"Finaliza cuando se termina el tiempo asignado o cuando las opiniones llegan a un estado de saturación."},
+ {pregunta:"¿Quién acuñó el concepto de pensamiento divergente?", opciones:["Yasuo Matsumura","Joy Paul Guilford","Runco","Edward de Bono"], correcta:1, explicacion:"El pensamiento divergente fue acuñado por Joy Paul Guilford, considerado el padre del estudio científico de la creatividad."},
+ {pregunta:"¿Cuáles son las cuatro dimensiones del pensamiento divergente?", opciones:["cognición, memoria, evaluación y producción","fluencia, flexibilidad, originalidad y elaboración","unidades, clases, relaciones y sistemas","blanco, rojo, verde y azul"], correcta:1, explicacion:"Las dimensiones del pensamiento divergente son fluencia, flexibilidad, originalidad y elaboración."},
+ {pregunta:"La capacidad de generar muchas ideas diferentes se llama…", opciones:["flexibilidad","fluencia","originalidad","elaboración"], correcta:1, explicacion:"La fluencia es la capacidad de generar muchas ideas diferentes; la flexibilidad, en cambio, es generarlas de distintas categorías."},
+ {pregunta:"Generar ideas de distintas categorías corresponde a la dimensión…", opciones:["elaboración","originalidad","flexibilidad","fluencia"], correcta:2, explicacion:"La flexibilidad es la capacidad de generar ideas de distintas categorías."},
+ {pregunta:"El pensamiento convergente se caracteriza por…", opciones:["buscar soluciones abiertas e inusuales","tender a una única respuesta o solución","generar ideas de muchas categorías","asociarse directamente a la creatividad"], correcta:1, explicacion:"El convergente es el pensamiento lógico que tiende a una única respuesta o solución; el divergente busca soluciones abiertas, diferentes e inusuales."},
+ {pregunta:"El modelo de la Estructura del Intelecto de Guilford combina tres dimensiones:", opciones:["contenidos, operaciones y productos","emisor, mensaje y receptor","introducción, desarrollo y cierre","vocal, verbal y visual"], correcta:0, explicacion:"Las tres dimensiones son contenidos, operaciones (procesos) y productos (resultados); de su combinación resultan 120 aptitudes."},
+ {pregunta:"¿Cuántas aptitudes mentales primarias tiene el modelo de Guilford en su versión más reciente?", opciones:["120","150","90","220"], correcta:1, explicacion:"El modelo parte de 120 aptitudes (representadas como un cubo de 120 cubos), pero en su versión más reciente las aptitudes mentales primarias son 150."},
+ {pregunta:"¿Cuál de estas es una de las cinco operaciones mentales del modelo de Guilford?", opciones:["originalidad","evaluación","sistemas","el sombrero azul"], correcta:1, explicacion:"Las cinco operaciones son cognición, memoria, producción convergente, producción divergente y evaluación."},
+ {pregunta:"En el modelo de Guilford, los contenidos “simbólicos” son…", opciones:["lo que se percibe del comportamiento de las personas","información constituida por símbolos o signos sin significado propio","el significado verbal","imágenes visuales y auditivas"], correcta:1, explicacion:"Los contenidos simbólicos son información constituida por símbolos o signos sin significado propio; los conductuales, en cambio, son lo que se percibe del comportamiento."},
+ {pregunta:"¿Cuál de estos es uno de los seis tipos de “productos” del modelo de Guilford?", opciones:["cognición","fluencia","transformaciones","el sombrero verde"], correcta:2, explicacion:"Los seis productos son unidades, clases, relaciones, sistemas, transformaciones e implicaciones."},
+ {pregunta:"Para construir su modelo del intelecto, Guilford empleó…", opciones:["el análisis factorial con rotación ortogonal","la observación participante","una encuesta psicométrica de Runco","el diagrama de flor de loto"], correcta:0, explicacion:"Empleó el análisis factorial con rotación ortogonal, que favorecía la obtención de factores independientes e impedía saturar en un solo factor general."},
+ {pregunta:"En el modelo de Guilford, ¿cuántas operaciones, contenidos y productos hay, respectivamente?", opciones:["4, 5 y 6","5, 4 y 6","6, 4 y 5","5, 5 y 5"], correcta:1, explicacion:"Hay 5 operaciones, 4 contenidos y 6 productos; su combinación (5 × 4 × 6) da las 120 aptitudes del modelo."},
+ {pregunta:"¿Cuál de las siguientes NO es una de las cuatro dimensiones del pensamiento divergente?", opciones:["fluencia","flexibilidad","elaboración","el establecimiento de asociaciones lejanas"], correcta:3, explicacion:"Las cuatro dimensiones son fluencia, flexibilidad, originalidad y elaboración. “El establecimiento de asociaciones lejanas” es uno de los rasgos con que Guilford caracteriza la creatividad (junto con la sensibilidad ante los problemas y la posibilidad de redefinir las cuestiones), no una dimensión."},
+];
+const GLOSARIO = [
+ {termino:"Análisis factorial con rotación ortogonal", definicion:"Método estadístico que empleó Guilford; favorecía la obtención de factores independientes, impidiendo saturar en un solo factor general."},
+ {termino:"Brainstorming", definicion:"Técnica de generación de ideas. La flor de loto es una técnica “organizada” de brainstorming; en los seis sombreros, tiene cabida bajo el sombrero verde (creativo)."},
+ {termino:"Clases", definicion:"Producto del modelo de Guilford: agrupaciones de unidades que comparten atributos."},
+ {termino:"Clover Management Research", definicion:"Empresa de Chiba City (Japón) de la que Yasuo Matsumura es presidente; en ese marco creó el diagrama de la flor de loto."},
+ {termino:"Cognición", definicion:"Operación mental: capacidad de conocer, captar y comprender la información y el entorno que la rodea."},
+ {termino:"Conductuales (contenidos)", definicion:"Tipo de contenido del modelo de Guilford: lo que se percibe del comportamiento de las personas."},
+ {termino:"Contenidos", definicion:"Dimensión del modelo de Guilford: el tipo de información que las personas procesan. Son cuatro: figurativos, simbólicos, semánticos y conductuales."},
+ {termino:"Creatividad (según Guilford)", definicion:"Capacidad mental que interviene en la realización creativa; se caracteriza por la fluidez, la flexibilidad, la originalidad, el establecimiento de asociaciones lejanas, la sensibilidad ante los problemas y la posibilidad de redefinir las cuestiones. (No confundir sus seis rasgos con las cuatro dimensiones del pensamiento divergente.)"},
+ {termino:"Design Thinking", definicion:"Metodología del proceso de diseño; la flor de loto se usa en sus etapas de Entender e Idear para establecer el foco de atención."},
+ {termino:"Elaboración", definicion:"Dimensión del pensamiento divergente: capacidad de definir detalles y características, enriqueciendo la idea."},
+ {termino:"Estructura del Intelecto", definicion:"Modelo multidimensional de Guilford (Modelo Cúbico o Morfológico) que combina contenidos, operaciones y productos en 120 aptitudes independientes (150 en su versión más reciente)."},
+ {termino:"Evaluación", definicion:"Operación mental: capacidad de juzgar si la información es precisa, adecuada, coherente o válida para alcanzar una solución."},
+ {termino:"Figurativos (contenidos)", definicion:"Tipo de contenido del modelo de Guilford: información visual, auditiva o kinestésica."},
+ {termino:"Flexibilidad", definicion:"Dimensión del pensamiento divergente: capacidad de generar ideas de distintas categorías."},
+ {termino:"Flor de loto (Lotus Blossom)", definicion:"Técnica de creatividad creada por Yasuo Matsumura; medio visual que registra la relación entre un concepto central y las alternativas que de él se desprenden, a modo de pétalos."},
+ {termino:"Fluencia", definicion:"Dimensión del pensamiento divergente: capacidad de generar muchas ideas diferentes."},
+ {termino:"Implicaciones", definicion:"Producto del modelo de Guilford: predicciones, inferencias, consecuencias o anticipaciones de conocimiento."},
+ {termino:"Joy Paul Guilford", definicion:"Psicólogo que acuñó el pensamiento divergente; considerado el padre del estudio científico de la creatividad y autor del modelo de la Estructura del Intelecto."},
+ {termino:"Memoria", definicion:"Operación mental: capacidad para codificar información, retenerla y recordarla."},
+ {termino:"Modelo Cúbico (o Morfológico)", definicion:"Otra denominación del modelo de la Estructura del Intelecto de Guilford, representable como un cubo tridimensional de 120 cubos pequeños."},
+ {termino:"Operaciones mentales", definicion:"Dimensión del modelo de Guilford; el procesamiento de la información. Son cinco: cognición, memoria, producción convergente, producción divergente y evaluación."},
+ {termino:"Originalidad", definicion:"Dimensión del pensamiento divergente: la novedad, lo distinto, lo fuera de lo común."},
+ {termino:"Pensamiento convergente", definicion:"Pensamiento lógico que tiende a una única respuesta o solución; suele aplicarse en la solución de problemas. Es lo opuesto al divergente."},
+ {termino:"Pensamiento divergente", definicion:"Constructo de la Psicología Cognitiva acuñado por Guilford; el factor más destacable de la creatividad. Busca soluciones abiertas, diferentes e inusuales, hacia la innovación."},
+ {termino:"Producción convergente", definicion:"Operación mental: capacidad de encontrar una única solución a un problema, seguir reglas y desarrollar algoritmos para alcanzarla."},
+ {termino:"Producción divergente", definicion:"Operación mental: capacidad de generar diversas soluciones y respuestas a un problema o situación."},
+ {termino:"Productos", definicion:"Dimensión del modelo de Guilford; los resultados de las operaciones. Son seis: unidades, clases, relaciones, sistemas, transformaciones e implicaciones."},
+ {termino:"Relaciones", definicion:"Producto del modelo de Guilford: unidades vinculadas (como opuestas) en asociaciones, secuencias y analogías."},
+ {termino:"Runco", definicion:"Autor citado (1999): el trabajo de Guilford presenta el modelo más comprensivo sobre el pensamiento divergente."},
+ {termino:"Saturación de opiniones", definicion:"Estado en el que finaliza la sesión de los seis sombreros (junto con el fin del tiempo asignado)."},
+ {termino:"Semánticos (contenidos)", definicion:"Tipo de contenido del modelo de Guilford: hacen referencia al significado verbal."},
+ {termino:"Seis sombreros para pensar", definicion:"Técnica para equipos de trabajo y proyectos grupales; cada sombrero (color) representa una manera de pensar que el participante adopta al “ponérselo”."},
+ {termino:"Simbólicos (contenidos)", definicion:"Tipo de contenido del modelo de Guilford: información constituida por símbolos o signos sin significado propio."},
+ {termino:"Sistemas", definicion:"Producto del modelo de Guilford: relaciones múltiples interrelacionadas para abarcar estructuras o redes."},
+ {termino:"Sombrero amarillo", definicion:"Optimismo (el sol y su luz): ve el lado positivo y las ventajas de una idea. Contrapunto del negro y más difícil de aplicar; el de los soñadores o visionarios."},
+ {termino:"Sombrero azul", definicion:"Control: gestiona la dinámica y enfoca a los participantes. Es el “sombrero de sombreros”, que uno de los integrantes tiene siempre presente y puede cambiar los roles."},
+ {termino:"Sombrero blanco", definicion:"Neutralidad: pensamiento objetivo, sin emociones ni opiniones; solo datos, hechos y cifras comprobables."},
+ {termino:"Sombrero negro", definicion:"Oscuridad y cautela: punto de vista crítico que identifica peligros y problemas; es quizás el que más solemos utilizar. Evita lo ilegal, peligroso, contaminante o el gasto inútil."},
+ {termino:"Sombrero rojo", definicion:"Pasión: expresa los sentimientos, la parte irracional e intuitiva; introduce los valores y a las personas en la toma de decisiones."},
+ {termino:"Sombrero verde", definicion:"Creatividad (vegetación: crecimiento, generación, energía): genera ideas ante las problemáticas; da cabida al brainstorming y las analogías."},
+ {termino:"Transformaciones", definicion:"Producto del modelo de Guilford: cambios, perspectivas, conversiones o mutaciones del conocimiento."},
+ {termino:"Unidades", definicion:"Producto del modelo de Guilford: la unidad primaria de conocimiento."},
+ {termino:"Yasuo Matsumura", definicion:"Japonés, presidente de Clover Management Research (Chiba City, Japón); creador de la técnica de la flor de loto."},
+];
+
+// ============ UTILIDADES ============
+function barajar(a){
+  for(let i=a.length-1;i>0;i--){
+    const j=Math.floor(Math.random()*(i+1));
+    [a[i],a[j]]=[a[j],a[i]];
+  }
+  return a;
+}
+
+// ============ NAVEGACIÓN POR PESTAÑAS ============
+function initTabs(){
+  document.querySelectorAll('.tab').forEach(btn=>{
+    btn.addEventListener('click',()=>{
+      document.querySelectorAll('.tab').forEach(b=>b.classList.remove('activa'));
+      document.querySelectorAll('.panel').forEach(p=>p.classList.remove('activo'));
+      btn.classList.add('activa');
+      document.getElementById(btn.dataset.panel).classList.add('activo');
+    });
+  });
+}
+initTabs();
+
+// ============ TARJETAS ============
+let mazoActual=[], idxTarjeta=0, temaActivo="Todos";
+const elTarjeta=document.getElementById('tarjeta');
+
+function renderChips(){
+  const temas=["Todos",...new Set(TARJETAS.map(t=>t.tema))];
+  const cont=document.getElementById('chips-temas');
+  cont.innerHTML="";
+  temas.forEach(t=>{
+    const b=document.createElement('button');
+    b.className="chip"+(t===temaActivo?" activa":"");
+    b.textContent=t;
+    b.addEventListener('click',()=>{temaActivo=t;renderChips();setMazo();});
+    cont.appendChild(b);
+  });
+}
+function setMazo(){
+  mazoActual = temaActivo==="Todos" ? [...TARJETAS] : TARJETAS.filter(t=>t.tema===temaActivo);
+  idxTarjeta=0;
+  renderTarjeta();
+}
+function renderTarjeta(){
+  const t=mazoActual[idxTarjeta];
+  elTarjeta.classList.remove('girada');
+  document.getElementById('tema-tarjeta').textContent=t.tema;
+  document.getElementById('tarjeta-frente').textContent=t.frente;
+  document.getElementById('tarjeta-dorso').textContent=t.dorso;
+  document.getElementById('contador-tarjetas').textContent=(idxTarjeta+1)+" / "+mazoActual.length;
+}
+function moverTarjeta(paso){
+  idxTarjeta=(idxTarjeta+paso+mazoActual.length)%mazoActual.length;
+  renderTarjeta();
+}
+elTarjeta.addEventListener('click',()=>elTarjeta.classList.toggle('girada'));
+document.getElementById('btn-anterior').addEventListener('click',()=>moverTarjeta(-1));
+document.getElementById('btn-siguiente').addEventListener('click',()=>moverTarjeta(1));
+document.getElementById('btn-mezclar').addEventListener('click',()=>{barajar(mazoActual);idxTarjeta=0;renderTarjeta();});
+document.addEventListener('keydown',e=>{
+  if(!document.getElementById('panel-tarjetas').classList.contains('activo'))return;
+  if(e.target.tagName==='INPUT')return;
+  if(e.code==='Space'){e.preventDefault();elTarjeta.classList.toggle('girada');}
+  if(e.key==='ArrowLeft')moverTarjeta(-1);
+  if(e.key==='ArrowRight')moverTarjeta(1);
+});
+renderChips();
+setMazo();
+
+// ============ QUIZ ============
+let ordenQuiz=[], idxQuiz=0, aciertos=0, falladas=[];
+const elQuiz=document.getElementById('quiz-contenido');
+
+function iniciarQuiz(){
+  ordenQuiz=barajar([...QUIZ.keys()]);
+  idxQuiz=0; aciertos=0; falladas=[];
+  renderPregunta();
+}
+function renderPregunta(){
+  const q=QUIZ[ordenQuiz[idxQuiz]];
+  const pct=Math.round(idxQuiz/QUIZ.length*100);
+  elQuiz.innerHTML=
+    '<div class="progreso"><div class="progreso-relleno" style="width:'+pct+'%"></div></div>'+
+    '<div class="pregunta"><h2>'+q.pregunta+'</h2><div id="opciones"></div>'+
+    '<div id="feedback"></div>'+
+    '<div class="quiz-pie"><span>Pregunta '+(idxQuiz+1)+' de '+QUIZ.length+
+    '</span><span>Aciertos: '+aciertos+'</span></div></div>';
+  const cont=document.getElementById('opciones');
+  q.opciones.forEach((op,i)=>{
+    const b=document.createElement('button');
+    b.className='opcion'; b.textContent=op;
+    b.addEventListener('click',()=>responder(i));
+    cont.appendChild(b);
+  });
+}
+function responder(i){
+  const q=QUIZ[ordenQuiz[idxQuiz]];
+  const botones=document.querySelectorAll('.opcion');
+  botones.forEach(b=>b.disabled=true);
+  botones[q.correcta].classList.add('correcta');
+  if(i===q.correcta){ aciertos++; }
+  else{ botones[i].classList.add('incorrecta'); falladas.push(q); }
+  const fb=document.getElementById('feedback');
+  fb.innerHTML='<div class="explicacion">'+q.explicacion+'</div>';
+  const btn=document.createElement('button');
+  btn.className='boton boton-primario'; btn.style.marginTop='12px';
+  btn.innerHTML=(idxQuiz+1<QUIZ.length)?'Siguiente <svg class="icono" aria-hidden="true"><use href="#i-der"/></svg>':'Ver resultado';
+  btn.addEventListener('click',()=>{
+    idxQuiz++;
+    if(idxQuiz<QUIZ.length)renderPregunta(); else renderResultado();
+  });
+  fb.appendChild(btn);
+  btn.focus();
+}
+function renderResultado(){
+  const pct=Math.round(aciertos/QUIZ.length*100);
+  let html='<div class="pregunta resultado"><h2>Resultado</h2>'+
+    '<div class="puntaje">'+aciertos+' / '+QUIZ.length+' — '+pct+'%</div>';
+  if(falladas.length){
+    html+='<h2 style="margin:14px 0 4px">Para repasar:</h2>';
+    falladas.forEach(q=>{
+      html+='<div class="fallada"><b>'+q.pregunta+'</b><br>'+
+        '<span class="bien">✔ '+q.opciones[q.correcta]+'</span><br>'+
+        '<small>'+q.explicacion+'</small></div>';
+    });
+  } else {
+    html+='<p>¡Impecable! Todas correctas.</p>';
+  }
+  html+='<button class="boton boton-primario" style="margin-top:14px" '+
+    'onclick="iniciarQuiz()"><svg class="icono" aria-hidden="true"><use href="#i-rotar"/></svg> Reintentar (mezclado)</button></div>';
+  elQuiz.innerHTML=html;
+}
+iniciarQuiz();
+
+// ============ GLOSARIO ============
+function escaparRegex(s){return s.replace(/[.*+?^${}()|[\]\\]/g,'\\$&');}
+function resaltar(texto,filtro){
+  if(!filtro)return texto;
+  return texto.replace(new RegExp('('+escaparRegex(filtro)+')','gi'),'<mark>$1</mark>');
+}
+function renderGlosario(filtro){
+  filtro=(filtro||'').trim();
+  const lista=document.getElementById('lista-glosario');
+  const orden=[...GLOSARIO].sort((a,b)=>a.termino.localeCompare(b.termino,'es'));
+  const visibles=orden.filter(e=>
+    (e.termino+' '+e.definicion).toLowerCase().includes(filtro.toLowerCase()));
+  if(!visibles.length){
+    lista.innerHTML='<p class="sin-resultados">No hay términos que coincidan.</p>';
+    return;
+  }
+  lista.innerHTML=visibles.map(e=>
+    '<div class="entrada-glosario"><b>'+resaltar(e.termino,filtro)+'</b>'+
+    '<p>'+resaltar(e.definicion,filtro)+'</p></div>').join('');
+}
+document.getElementById('busqueda-glosario')
+  .addEventListener('input',e=>renderGlosario(e.target.value));
+renderGlosario('');
+
+// ============ TEMA CLARO/OSCURO ============
+document.getElementById('toggle-tema').addEventListener('click',()=>{
+  const nuevo=document.documentElement.dataset.tema==='oscuro'?'claro':'oscuro';
+  document.documentElement.dataset.tema=nuevo;
+  try{localStorage.setItem('tema-oratoria',nuevo);}catch(e){}
+});
+</script>
+</body>
+</html>

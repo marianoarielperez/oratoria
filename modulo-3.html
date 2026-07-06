@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Módulo 3 — La preparación del discurso · Material de estudio</title>
+<meta name="description" content="Material de estudio interactivo del Módulo 3 de Oratoria: la preparación del discurso, sus momentos, el miedo escénico y las técnicas de exposición y cierre. Tarjetas, quiz y glosario. Oratoria y técnicas de expresión — Lic. en Periodismo.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='19' font-size='19'>🎤</text></svg>">
+<script>(function(){var t=null;try{t=localStorage.getItem("tema-oratoria")}catch(e){}document.documentElement.dataset.tema=t||(window.matchMedia&&matchMedia("(prefers-color-scheme: dark)").matches?"oscuro":"claro")})();</script>
+<style>
+  :root{
+    --papel:#f5efe4; --superficie:#fdfaf3; --tinta:#272119; --tinta-suave:#716553;
+    --acento:#a84b24; --acento-suave:#f1dccb; --borde:#ded1b8; --regla:#b9a888;
+    --ok:#3f7d4a; --ok-bg:#e9f2e6; --mal:#a93b2c; --mal-bg:#f7e4de; --marca:#efd9a7;
+    --sombra:0 1px 2px rgba(45,33,20,.06),0 6px 18px rgba(45,33,20,.07);
+    --serif:'Palatino Linotype',Palatino,'Book Antiqua',Georgia,serif;
+    --sans:'Segoe UI',system-ui,-apple-system,sans-serif;
+  }
+  html[data-tema="oscuro"]{
+    --papel:#171310; --superficie:#211b15; --tinta:#ece2cf; --tinta-suave:#a4957e;
+    --acento:#d9784a; --acento-suave:#3b2519; --borde:#3b3327; --regla:#57493a;
+    --ok:#7cb787; --ok-bg:#22301f; --mal:#dd8574; --mal-bg:#38211b; --marca:#6b5320;
+    --sombra:0 1px 2px rgba(0,0,0,.4),0 8px 22px rgba(0,0,0,.35);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:var(--papel);color:var(--tinta);font-family:var(--sans);
+    line-height:1.55;min-height:100vh;transition:background .25s ease,color .25s ease}
+  .icono{width:18px;height:18px;flex:none;fill:none;stroke:currentColor;
+    stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+  :focus-visible{outline:2px solid var(--acento);outline-offset:2px}
+
+  /* ---- Masthead (cartel de conferencia) ---- */
+  header{max-width:760px;margin:0 auto;padding:30px 16px 0;text-align:center;position:relative}
+  .regla{border:none;border-top:4px double var(--regla);margin:14px 0 0}
+  .eyebrow{font-family:var(--sans);font-size:.7rem;letter-spacing:.22em;
+    text-transform:uppercase;color:var(--acento);margin-top:16px}
+  header h1{font-family:var(--serif);font-weight:normal;color:var(--tinta);
+    font-size:clamp(1.9rem,5.5vw,2.6rem);line-height:1.15;margin:6px 0 2px}
+  .lema{font-family:var(--serif);font-style:italic;color:var(--tinta-suave);font-size:1.02rem}
+  .toggle-tema,.volver{position:absolute;top:24px;width:40px;height:40px;
+    display:inline-flex;align-items:center;justify-content:center;border-radius:50%;
+    border:1px solid var(--borde);background:var(--superficie);color:var(--tinta-suave);
+    cursor:pointer;transition:border-color .15s ease,color .15s ease}
+  .toggle-tema{right:16px}
+  .volver{left:16px}
+  .toggle-tema:hover,.volver:hover{border-color:var(--acento);color:var(--acento)}
+  .toggle-tema .icono,.volver .icono{width:19px;height:19px}
+  .toggle-tema .i-sol{display:none}
+  html[data-tema="oscuro"] .toggle-tema .i-sol{display:block}
+  html[data-tema="oscuro"] .toggle-tema .i-luna{display:none}
+
+  /* ---- Pestañas ---- */
+  nav{display:flex;justify-content:center;gap:8px;flex-wrap:wrap;
+    max-width:760px;margin:18px auto 0;padding:0 16px}
+  .tab{display:inline-flex;align-items:center;gap:8px;font-family:var(--sans);
+    font-size:.92rem;background:var(--superficie);color:var(--tinta-suave);
+    border:1px solid var(--borde);border-radius:999px;padding:9px 18px;cursor:pointer;
+    transition:border-color .15s ease,color .15s ease,background .15s ease}
+  .tab:hover{border-color:var(--acento);color:var(--acento)}
+  .tab.activa{background:var(--acento);border-color:var(--acento);color:var(--papel)}
+  main{max-width:760px;margin:0 auto;padding:26px 16px 60px}
+  .panel{display:none}
+  .panel.activo{display:block}
+  .boton{display:inline-flex;align-items:center;gap:7px;font-family:var(--sans);
+    font-size:.92rem;background:var(--superficie);border:1px solid var(--borde);
+    border-radius:9px;padding:9px 15px;cursor:pointer;color:var(--tinta);
+    transition:border-color .15s ease,transform .15s ease}
+  .boton:hover{border-color:var(--acento);transform:translateY(-1px)}
+  .boton-primario{background:var(--acento);border-color:var(--acento);color:var(--papel)}
+  .boton-primario:hover{border-color:var(--acento)}
+
+  /* ---- Tarjetas (ficha de imprenta) ---- */
+  #chips-temas{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:20px;justify-content:center}
+  .chip{font-family:var(--sans);font-size:.8rem;background:var(--superficie);
+    border:1px solid var(--borde);border-radius:999px;padding:5px 13px;cursor:pointer;
+    color:var(--tinta-suave);transition:border-color .15s ease,color .15s ease,background .15s ease}
+  .chip:hover{border-color:var(--acento);color:var(--acento)}
+  .chip.activa{background:var(--acento-suave);border-color:var(--acento);color:var(--acento)}
+  .escena{margin-bottom:18px}
+  #tarjeta{display:grid;width:100%;min-height:300px;cursor:pointer}
+  .cara{grid-area:1/1;position:relative;background:var(--superficie);
+    border:1px solid var(--borde);border-radius:14px;box-shadow:var(--sombra);
+    padding:36px 32px;display:flex;flex-direction:column;align-items:center;
+    justify-content:center;text-align:center;gap:12px;transition:opacity .25s ease}
+  .cara::after{content:"";position:absolute;inset:7px;border:1px solid var(--regla);
+    border-radius:9px;pointer-events:none;opacity:.55}
+  #tarjeta.girada #cara-frente{opacity:0}
+  #tarjeta:not(.girada) #cara-dorso{opacity:0}
+  .etiqueta{font-family:var(--sans);font-size:.66rem;letter-spacing:.2em;
+    text-transform:uppercase;color:var(--tinta-suave);display:inline-flex;
+    align-items:center;gap:10px}
+  .etiqueta::before,.etiqueta::after{content:"";width:22px;height:1px;
+    background:var(--regla);display:inline-block}
+  #tema-tarjeta{color:var(--acento)}
+  #tarjeta-frente{font-size:clamp(1.2rem,3vw,1.45rem);line-height:1.4}
+  #tarjeta-dorso{font-size:1.12rem;line-height:1.6;color:var(--tinta)}
+  .controles-tarjetas{display:flex;justify-content:center;align-items:center;gap:10px;flex-wrap:wrap}
+  #contador-tarjetas{font-style:italic;color:var(--tinta-suave);font-size:.95rem;
+    min-width:70px;text-align:center}
+  .ayuda{font-family:var(--sans);text-align:center;color:var(--tinta-suave);
+    font-size:.78rem;margin-top:16px}
+
+  /* ---- Quiz ---- */
+  .progreso{background:var(--borde);border-radius:999px;height:6px;margin-bottom:20px;overflow:hidden}
+  .progreso-relleno{background:var(--acento);height:100%;width:0;transition:width .3s ease}
+  .pregunta{background:var(--superficie);border:1px solid var(--borde);border-radius:14px;
+    box-shadow:var(--sombra);padding:28px}
+  .pregunta h2{font-family:var(--sans);font-size:1.22rem;font-weight:normal;
+    line-height:1.4;margin-bottom:18px}
+  .opcion{display:block;width:100%;text-align:left;font-family:var(--sans);
+    font-size:1rem;background:var(--papel);border:1px solid var(--borde);
+    border-radius:9px;padding:12px 15px;margin-bottom:9px;cursor:pointer;
+    color:var(--tinta);transition:border-color .15s ease,transform .15s ease}
+  .opcion:hover:not(:disabled){border-color:var(--acento);transform:translateX(3px)}
+  .opcion:disabled{cursor:default;opacity:.7}
+  .opcion.correcta{background:var(--ok-bg);border-color:var(--ok);color:var(--ok);opacity:1}
+  .opcion.incorrecta{background:var(--mal-bg);border-color:var(--mal);color:var(--mal);opacity:1}
+  .explicacion{font-family:var(--sans);font-size:.95rem;background:var(--acento-suave);
+    border-radius:9px;padding:13px 15px;margin-top:6px}
+  .quiz-pie{display:flex;justify-content:space-between;align-items:center;margin-top:16px}
+  .quiz-pie span{font-family:var(--sans);color:var(--tinta-suave);font-size:.88rem}
+  .resultado{text-align:center;padding:12px 0}
+  .resultado .puntaje{font-family:var(--serif);font-size:2.7rem;color:var(--acento);margin:10px 0}
+  .fallada{background:var(--papel);border:1px solid var(--borde);border-radius:10px;
+    padding:14px;margin:10px 0;text-align:left;font-size:.95rem}
+  .fallada .bien{color:var(--ok)}
+
+  /* ---- Glosario ---- */
+  #busqueda-glosario{width:100%;font-family:var(--sans);font-size:1rem;
+    background:var(--superficie);border:1px solid var(--borde);border-radius:11px;
+    padding:13px 17px;margin-bottom:18px;color:var(--tinta)}
+  #busqueda-glosario:focus{outline:2px solid var(--acento);outline-offset:1px;border-color:var(--acento)}
+  .entrada-glosario{background:var(--superficie);border:1px solid var(--borde);
+    border-radius:11px;padding:14px 17px;margin-bottom:10px;transition:border-color .15s ease}
+  .entrada-glosario:hover{border-color:var(--regla)}
+  .entrada-glosario b{display:block;margin-bottom:3px;font-family:var(--sans);font-size:1.06rem}
+  .entrada-glosario p{font-family:var(--sans);font-size:.98rem;color:var(--tinta-suave)}
+  mark{background:var(--marca);color:inherit;border-radius:3px;padding:0 2px}
+  .sin-resultados{text-align:center;color:var(--tinta-suave);font-family:var(--sans);padding:26px 0}
+
+  @media (max-width:480px){
+    .cara{padding:22px 18px}
+    #tarjeta-frente{font-size:1.18rem}
+    #tarjeta-dorso{font-size:1.05rem}
+    .toggle-tema{top:14px;right:12px}
+    .volver{top:14px;left:12px}
+  }
+  @media (prefers-reduced-motion:reduce){
+    *{transition:none!important;animation:none!important}
+  }
+
+</style>
+</head>
+<body>
+<!-- Íconos: Lucide (lucide.dev), licencia ISC, incrustados para funcionar offline -->
+<svg xmlns="http://www.w3.org/2000/svg" style="display:none">
+  <symbol id="i-mic" viewBox="0 0 24 24"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" x2="12" y1="19" y2="22"/></symbol>
+  <symbol id="i-capas" viewBox="0 0 24 24"><path d="M12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.83Z"/><path d="m22 17.65-9.17 4.16a2 2 0 0 1-1.66 0L2 17.65"/><path d="m22 12.65-9.17 4.16a2 2 0 0 1-1.66 0L2 12.65"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><path d="M21.801 10A10 10 0 1 1 17 3.335"/><path d="m9 11 3 3L22 4"/></symbol>
+  <symbol id="i-lupa" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></symbol>
+  <symbol id="i-mezclar" viewBox="0 0 24 24"><path d="M2 18h1.4c1.3 0 2.5-.6 3.3-1.7l6.1-8.6c.7-1.1 2-1.7 3.3-1.7H22"/><path d="m18 2 4 4-4 4"/><path d="M2 6h1.9c1.5 0 2.9.9 3.6 2.2"/><path d="M22 18h-5.9c-1.3 0-2.6-.7-3.3-1.8l-.5-.8"/><path d="m18 14 4 4-4 4"/></symbol>
+  <symbol id="i-izq" viewBox="0 0 24 24"><path d="m12 19-7-7 7-7"/><path d="M19 12H5"/></symbol>
+  <symbol id="i-der" viewBox="0 0 24 24"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></symbol>
+  <symbol id="i-rotar" viewBox="0 0 24 24"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></symbol>
+  <symbol id="i-luna" viewBox="0 0 24 24"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></symbol>
+  <symbol id="i-sol" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></symbol>
+</svg>
+<header>
+  <a class="volver" href="index.html" title="Volver al índice" aria-label="Volver al índice de módulos"><svg class="icono" aria-hidden="true"><use href="#i-izq"/></svg></a>
+  <button class="toggle-tema" id="toggle-tema" title="Cambiar tema" aria-label="Cambiar entre modo claro y oscuro">
+    <svg class="icono i-luna" aria-hidden="true"><use href="#i-luna"/></svg>
+    <svg class="icono i-sol" aria-hidden="true"><use href="#i-sol"/></svg>
+  </button>
+  <hr class="regla">
+  <p class="eyebrow">Oratoria y técnicas de expresión · Módulo III</p>
+  <h1>La preparación del discurso</h1>
+  <p class="lema">Material de estudio para el parcial · 2026</p>
+  <hr class="regla">
+</header>
+<nav>
+  <button class="tab activa" data-panel="panel-tarjetas"><svg class="icono" aria-hidden="true"><use href="#i-capas"/></svg><span>Tarjetas</span></button>
+  <button class="tab" data-panel="panel-quiz"><svg class="icono" aria-hidden="true"><use href="#i-check"/></svg><span>Quiz</span></button>
+  <button class="tab" data-panel="panel-glosario"><svg class="icono" aria-hidden="true"><use href="#i-lupa"/></svg><span>Glosario</span></button>
+</nav>
+<main>
+  <section id="panel-tarjetas" class="panel activo">
+    <div id="chips-temas"></div>
+    <div class="escena">
+      <div id="tarjeta">
+        <div class="cara" id="cara-frente"><span class="etiqueta" id="tema-tarjeta"></span>
+          <div id="tarjeta-frente"></div>
+          <span class="etiqueta">tocá para ver la respuesta</span></div>
+        <div class="cara" id="cara-dorso"><span class="etiqueta">respuesta</span>
+          <div id="tarjeta-dorso"></div></div>
+      </div>
+    </div>
+    <div class="controles-tarjetas">
+      <button class="boton" id="btn-anterior"><svg class="icono" aria-hidden="true"><use href="#i-izq"/></svg>Anterior</button>
+      <span id="contador-tarjetas"></span>
+      <button class="boton" id="btn-siguiente">Siguiente<svg class="icono" aria-hidden="true"><use href="#i-der"/></svg></button>
+      <button class="boton" id="btn-mezclar"><svg class="icono" aria-hidden="true"><use href="#i-mezclar"/></svg>Mezclar</button>
+    </div>
+    <p class="ayuda">Teclado: espacio gira la tarjeta · flechas ← → navegan</p>
+  </section>
+  <section id="panel-quiz" class="panel">
+    <div id="quiz-contenido"></div>
+  </section>
+  <section id="panel-glosario" class="panel">
+    <input id="busqueda-glosario" type="search"
+      placeholder="Buscar término o autor… (ej.: retórica, Jacobson)">
+    <div id="lista-glosario"></div>
+  </section>
+</main>
+<script>
+// ============ DATOS DEL MÓDULO ============
+// Para generar el material de otro módulo, reemplazar SOLO estas constantes.
+const MODULO = { numero: 3, titulo: "La preparación del discurso" };
+const TARJETAS = [
+ // --- El discurso y el buen orador ---
+ {tema:"El discurso y el buen orador", frente:"¿Qué define a un buen orador?", dorso:"No es solo el que informa bien, argumenta sólidamente, presenta sus fuentes o transmite credibilidad: es quien tiene un objetivo bien definido sobre lo que pretende y lo logra a través de la persuasión, conjugando las tres V (lo vocal, lo verbal y lo visual) de manera que la congruencia sea el factor dominante."},
+ {tema:"El discurso y el buen orador", frente:"Las “tres V” del buen orador", dorso:"Lo vocal, lo verbal y lo visual. El orador las conjuga de manera que la congruencia sea el factor dominante."},
+ {tema:"El discurso y el buen orador", frente:"¿Qué es el discurso?", dorso:"Una forma de comunicación en la que un emisor construye un mensaje y lo transmite a un receptor usando un código (usualmente el lenguaje), a través de un canal que puede ser oral o escrito."},
+ {tema:"El discurso y el buen orador", frente:"¿Para qué sirve el discurso?", dorso:"Es la herramienta del proceso de socialización de un tema: permite aclarar, entretener, convencer, impresionar y/o conmover al receptor, generando en él una acción."},
+ {tema:"El discurso y el buen orador", frente:"Discurso vs. oratoria", dorso:"El discurso es un enunciado (o conjunto de enunciados) con el que se expresan oralmente pensamientos, razonamientos, sentimientos o deseos; la oratoria es el arte que hacemos con ello."},
+ {tema:"El discurso y el buen orador", frente:"¿Cualquiera puede pronunciar un discurso?", dorso:"Sí, pero lo hará mejor quien conoce las reglas gramaticales y sintácticas, prepara la exposición, tiene vocabulario, lee habitualmente y desarrolla la escucha activa. La palabra es una estructura superficial, un caparazón que necesita vida y significado, que provienen de la preparación y la experiencia."},
+ // --- Momentos del discurso ---
+ {tema:"Momentos del discurso", frente:"Los 5 modos de organización del discurso", dorso:"Narración, descripción, argumentación, explicación y diálogo."},
+ {tema:"Momentos del discurso", frente:"Los 3 momentos (estructura básica) del discurso", dorso:"Introducción, desarrollo y cierre."},
+ {tema:"Momentos del discurso", frente:"La introducción", dorso:"El componente donde se exponen los objetivos y los puntos clave del discurso. Son los primeros momentos de interacción con el público, cuando se determina si se logra captar su atención; la apertura debe planificarse con cuidado."},
+ {tema:"Momentos del discurso", frente:"¿Qué se puede mencionar en la apertura?", dorso:"La ocasión, el motivo de reunión, la organización o la idea que inspiró el encuentro; proporcionar un marco contextual breve que abra una primera puerta de encuentro con el público."},
+ {tema:"Momentos del discurso", frente:"Tácticas para iniciar un discurso", dorso:"Contar una historia o anécdota cautivadora, hacer una pregunta retórica, indicar un dato llamativo, usar una cita significativa, reproducir un video corto o mostrar una imagen simbólica."},
+ {tema:"Momentos del discurso", frente:"El desarrollo", dorso:"Es el discurso propiamente dicho y ocupa el mayor tiempo (suele ser el 80% o más). Se desarrolla el tema en profundidad y se ofrecen los fundamentos; es el momento en que se vislumbra todo el conocimiento del orador."},
+ {tema:"Momentos del discurso", frente:"El cierre o final", dorso:"Resume los puntos principales, refuerza la idea fuerza y destaca los elementos clave. Es la última impresión, lo que el público se lleva. Puede usar una frase o cita que invite a reflexionar, o una reseña vinculada con la introducción."},
+ {tema:"Momentos del discurso", frente:"El “hilo conductor”", dorso:"Si el orador observa que la atención puede decaer, debe alterar su plan e introducir elementos de activación. Tiene que controlar el hilo conductor entre la palabra y quienes escuchan; de ello depende el éxito de sus propósitos."},
+ // --- Preparación del discurso ---
+ {tema:"Preparación del discurso", frente:"Las preguntas clave al preparar el discurso", dorso:"¿Cuál es el motivo de la reunión? ¿A quiénes se dirige? ¿Sobre qué materia? ¿Cuánto tiempo hay? ¿Cómo abordar el tema? ¿Con qué elementos de apoyo? ¿En qué lugar? ¿Qué se debe evitar decir?"},
+ {tema:"Preparación del discurso", frente:"¿Por qué escribir un guion?", dorso:"Para organizar las ideas y preparar con mayor precisión lo que se quiere expresar, evitando parlamentos erráticos, divagar o que la presentación tome más tiempo de lo previsto. Puede tener el formato más eficiente (cuadro, llaves, prosa)."},
+ {tema:"Preparación del discurso", frente:"Palabras justas y significativas", dorso:"La concisión evita redundancias y titubeos y mantiene la coherencia entre las ideas. Usar palabras simples del propio vocabulario, atendiendo a la ocasión y al público, refleja sencillez y naturalidad."},
+ {tema:"Preparación del discurso", frente:"La contextualización", dorso:"Dar siempre una breve descripción de la situación histórica previa al hecho o al cambio que se relata, para entenderlo y poder compararlo con la actualidad."},
+ {tema:"Preparación del discurso", frente:"El lenguaje según el público", dorso:"Si el público es heterogéneo hay que usar palabras sencillas; no usar conceptos “herméticos” de las ciencias sociales o exactas y, si se usan, dar a continuación un sinónimo o un ejemplo que les aporte sentido."},
+ {tema:"Preparación del discurso", frente:"Las imágenes visuales", dorso:"Se usan para que el público “vea” el discurso y no solo lo escuche; así puede seguir con mayor facilidad la explicación y se facilita el recuerdo por más tiempo."},
+ // --- Conocer y captar al público ---
+ {tema:"Conocer y captar al público", frente:"¿Por qué conviene conocer a la audiencia?", dorso:"Conocerla es la manera más eficiente de aliviar el nerviosismo; además, comprender las características de los oyentes ayuda a estructurar y planificar el mensaje que se desea transmitir."},
+ {tema:"Conocer y captar al público", frente:"Trabajar la interacción con los oyentes", dorso:"No hay que hablar como si no hubiera nadie escuchando. Una técnica simple como el contacto visual provoca la conexión, la empatía y la conexión emocional. A distancia (Meet, Zoom), el contacto visual se amplía con una escucha activa real."},
+ {tema:"Conocer y captar al público", frente:"¿Cómo capturar la atención del público?", dorso:"Comenzar siempre con algo que sorprenda (por ejemplo, una pregunta retórica). Se puede no mencionar el título del tema al principio para propiciar la intriga o la curiosidad."},
+ {tema:"Conocer y captar al público", frente:"¿Qué es una pregunta retórica?", dorso:"Una pregunta que se lanza al público, en general, sin esperar la respuesta específica de ningún asistente."},
+ {tema:"Conocer y captar al público", frente:"Las “creencias instaladas”", dorso:"Los “mitos” o creencias que existen sobre el tema a abordar. No conviene ocultarlas (están en la memoria de la gente); es mejor ir brindando elementos a lo largo de la exposición para que queden desarticuladas."},
+ {tema:"Conocer y captar al público", frente:"¿Qué ejemplos dar?", dorso:"Los que surjan de la relación del tema con lo que el público conoce o vivenció, tomando en cuenta la edad, la escolaridad, la información que maneja, la formación política o el sector (oficios, arte, cultura, aspecto social)."},
+ // --- Miedo y miedo escénico ---
+ {tema:"Miedo y miedo escénico", frente:"¿Qué es el miedo?", dorso:"Una emoción caracterizada por una intensa sensación desagradable provocada por la percepción de un peligro, real o supuesto, presente, futuro o pasado. Es una emoción primaria derivada de la aversión natural al riesgo o la amenaza. Su máxima expresión es el pánico o terror."},
+ {tema:"Miedo y miedo escénico", frente:"El miedo desde el punto de vista biológico", dorso:"Un mecanismo de supervivencia y de defensa, surgido para permitir al individuo responder ante situaciones adversas con rapidez y eficacia. Es normal y beneficioso para el individuo y su especie."},
+ {tema:"Miedo y miedo escénico", frente:"El miedo desde el punto de vista neurológico", dorso:"Una forma común de organización del cerebro primario; consiste esencialmente en la activación de la amígdala, situada en el lóbulo temporal."},
+ {tema:"Miedo y miedo escénico", frente:"El miedo desde el punto de vista evolutivo", dorso:"Un complemento y una extensión de la función del dolor: nos alerta de peligros que amenazan la salud o la supervivencia, así como el dolor aparece cuando algo nocivo ataca el cuerpo."},
+ {tema:"Miedo y miedo escénico", frente:"El miedo desde los puntos de vista social/cultural y psicológico", dorso:"Social y cultural: puede formar parte del carácter; se aprende a temer y a no temer, y se relaciona con otros sentimientos (miedo al miedo, al amor, a la muerte, al ridículo). Psicológico: un estado afectivo necesario para la correcta adaptación del organismo al medio, que provoca angustia y ansiedad (se puede sentir sin un motivo claro)."},
+ {tema:"Miedo y miedo escénico", frente:"¿Qué porcentaje sufre miedo a hablar en público?", dorso:"Se estima que un 75% de la población siente algún grado de ansiedad y nerviosismo al hablar en público. Es una forma de ansiedad frecuente."},
+ {tema:"Miedo y miedo escénico", frente:"Los miedos más comunes al exponer", dorso:"Miedo a la primera vez, miedo a fracasar y miedo al qué dirán."},
+ {tema:"Miedo y miedo escénico", frente:"¿Qué es el miedo escénico?", dorso:"La respuesta psicofísica del organismo, generalmente intensa, que surge como consecuencia de pensamientos anticipatorios catastróficos sobre la situación real o imaginaria de hablar o actuar en público."},
+ {tema:"Miedo y miedo escénico", frente:"La “verdadera amenaza psicológica” al exponer", dorso:"Tomar conciencia de la vulnerabilidad que produce estar expuestos a la mirada de otros: sentirnos observados y evaluados nos lleva a valorar aspectos de nuestro comportamiento que en una situación de comodidad pasarían desapercibidos."},
+ // --- Técnicas, pánico y respiración ---
+ {tema:"Técnicas, pánico y respiración", frente:"Técnicas para controlar el miedo escénico", dorso:"Positividad (evitar todo pensamiento negativo), visualizar el éxito (imaginar al público interesado y motivado), imaginar o buscar en el público a alguien que genere confianza, y ejercicios de relajación previos a la presentación."},
+ {tema:"Técnicas, pánico y respiración", frente:"Sentir nervios antes de exponer, ¿es malo?", dorso:"No: es natural, y aceptarlo es el primer paso para controlarlo. Conviene preguntarse de dónde viene (pensamientos negativos, falta de preparación, malestar físico). Un poco de nervios, ansiedad o estrés pueden ser activadores eficaces de la mente."},
+ {tema:"Técnicas, pánico y respiración", frente:"La respiración con labios fruncidos", dorso:"Ayuda a relajarse; cuando falta el aliento, disminuir el ritmo de la respiración reduce la dificultad para respirar. Con el cuello y los hombros relajados y sentado con los pies en el suelo, se inhala lento por la nariz en 2 tiempos (agrandando el vientre) y se exhala por los labios fruncidos en 4 o más tiempos, como si se fuera a silbar o a apagar una vela."},
+ {tema:"Técnicas, pánico y respiración", frente:"¿Cuándo el miedo escénico se convierte en pánico?", dorso:"Cuando quien se expone es desbordado por la angustia, imagina situaciones catastróficas inminentes y pierde el control."},
+ {tema:"Técnicas, pánico y respiración", frente:"La reacción fisiológica del pánico", dorso:"Se libera más adrenalina al torrente sanguíneo, crece la demanda de oxígeno, la respiración se vuelve más profunda y rápida (hiperventilación) y disminuye el CO2 en sangre; aparecen el aturdimiento, los latidos cardíacos rápidos y la falta de aire."},
+ {tema:"Técnicas, pánico y respiración", frente:"El “bloqueo mental”", dorso:"Ante la inhibición de la capacidad de pensar y la parálisis de los órganos de la fonación, la mente queda en blanco y cesa la conciencia; al cesar la conciencia desaparece el temor, disminuyen la adrenalina y la demanda de oxígeno, y se restablece el equilibrio."},
+ {tema:"Técnicas, pánico y respiración", frente:"La cita de David Angulo de Haro", dorso:"Para ser buen orador hoy se necesita un esfuerzo titánico: el orador debe ser capaz de pacificar el espíritu angustiado de los oyentes, convencer a personas desconfiadas, motivar a personas apáticas y cambiar a personas reacias. Esta empresa exige conocimiento, autoestima, madurez y experiencia."},
+ // --- Imagen, recursos y cierre ---
+ {tema:"Imagen, recursos y cierre", frente:"La presentación personal del orador", dorso:"Proyectar una buena imagen sin opulencia ni extravagancia: la mejor opción es verse sobrio. Hay que evitar los colores llamativos y los adornos de gran tamaño (aros o collares pueden entrar en conflicto con los micrófonos o corbateros). Sobriedad y sencillez deben ser la norma."},
+ {tema:"Imagen, recursos y cierre", frente:"¿Cómo debe ser la indumentaria?", dorso:"Adecuada a la ocasión y, en lo ideal, lisa: sin símbolos, logos ni inscripciones (salvo que formen parte del mensaje o la ocasión). No usar remeras de clubes deportivos ni de partidos fuera de ese contexto."},
+ {tema:"Imagen, recursos y cierre", frente:"La posición corporal del orador (de pie)", dorso:"Una posición cómoda y natural, con las manos fuera de los bolsillos y a la vista y los hombros rectos y hacia atrás. La postura debe ser erguida, sosteniendo el cuerpo con la columna vertebral; se debe evitar la postura encorvada. Es beneficiosa para una correcta respiración."},
+ {tema:"Imagen, recursos y cierre", frente:"Detalles de la postura correcta", dorso:"Las orejas deben situarse sobre los hombros y la barbilla quedar paralela al suelo (conviene practicar frente a un espejo). Relajar los músculos faciales y mantener activas las piernas y la atención en los pies; mirar de reojo el suelo para evitar tropiezos, pero sin caminar con la cabeza o la mirada hacia abajo."},
+ {tema:"Imagen, recursos y cierre", frente:"Siglas, humor e ironía", dorso:"Hay que aclarar todas las siglas o términos en otro idioma (ONU, OEA, CARICOM, UNASUR, CELAC). El humor se usa con perspicacia (salvo que el tema o la ocasión no lo aconsejen); la ironía, ocasionalmente y sin abusar, porque en algunos públicos genera rechazo."},
+ {tema:"Imagen, recursos y cierre", frente:"La memoria estratégica", dorso:"Al preparar el discurso hay que tener claros los 3 o 4 puntos que queremos que el público recuerde al día siguiente del evento; esos puntos se podrán memorizar."},
+ {tema:"Imagen, recursos y cierre", frente:"El “mapa conceptual” o ayuda-memoria", dorso:"Una hoja con pocas palabras escritas en letra grande que nos orienta, de un solo golpe de vista, si se produce un vacío en la memoria o perdemos el hilo. No es un texto para leer, sino el esqueleto o esquema de la charla."},
+ {tema:"Imagen, recursos y cierre", frente:"Las fuentes", dorso:"Conviene citar las fuentes de los datos o cifras; si los nombres son extensos o poco conocidos, tener un apunte con el nombre correcto y leerlo. Es preferible leer una oración que nombrar mal una entidad, porque se puede incurrir en actos fallidos y expresiones vergonzosas."},
+ {tema:"Imagen, recursos y cierre", frente:"Las 4 técnicas de cierre de un discurso", dorso:"1) Probar tu punto con una historia o anécdota. 2) Hacer referencia nuevamente al principio. 3) Desafiar a la audiencia a tomar acción. 4) Usar una cita de una persona famosa y respetada (con un tema universal, sin controversia innecesaria)."},
+];
+const QUIZ = [
+ {pregunta:"En la respiración con labios fruncidos, ¿en cuántos tiempos se inhala y se exhala?", opciones:["se inhala en 4 y se exhala en 2","se inhala en 2 y se exhala en 4 o más","se inhala en 1 y se exhala en 1","no se cuentan los tiempos"], correcta:1, explicacion:"Se inhala lento por la nariz en 2 tiempos y se exhala por los labios fruncidos en 4 o más tiempos, como para apagar una vela."},
+ {pregunta:"¿Qué define, según el módulo, a un buen orador?", opciones:["El que informa con más datos","Tener un objetivo definido y lograrlo por persuasión, conjugando las tres V con congruencia","El que habla durante más tiempo","El que memoriza todo el discurso"], correcta:1, explicacion:"Buen orador es quien tiene un objetivo bien definido y lo logra a través de la persuasión, conjugando las tres V (vocal, verbal y visual) con la congruencia como factor dominante."},
+ {pregunta:"Las “tres V” del buen orador son…", opciones:["voz, voluntad y visión","vocal, verbal y visual","ver, valorar y validar","verbal, virtual y vocal"], correcta:1, explicacion:"Las tres V son lo vocal, lo verbal y lo visual; se conjugan de modo que la congruencia sea el factor dominante."},
+ {pregunta:"Al conjugar las tres V, ¿qué factor debe ser dominante?", opciones:["la rapidez","la congruencia","el volumen","la improvisación"], correcta:1, explicacion:"La congruencia debe ser el factor dominante entre lo vocal, lo verbal y lo visual."},
+ {pregunta:"Según el módulo, la relación entre discurso y oratoria es…", opciones:["son sinónimos","el discurso es el enunciado y la oratoria es el arte que hacemos con ello","la oratoria es el texto y el discurso el arte","ninguna, son cosas opuestas"], correcta:1, explicacion:"El discurso es un enunciado (o conjunto de enunciados); la oratoria es el arte que hacemos con ello."},
+ {pregunta:"¿Cuáles son los modos de organización del discurso?", opciones:["narración, descripción, argumentación, explicación y diálogo","introducción, nudo y desenlace","vocal, verbal y visual","ethos, pathos y logos"], correcta:0, explicacion:"Los modos prototípicos son narración, descripción, argumentación, explicación y diálogo."},
+ {pregunta:"La estructura básica del discurso consta de tres momentos:", opciones:["inicio, mitad y final","introducción, desarrollo y cierre","apertura, nudo y moraleja","tesis, antítesis y síntesis"], correcta:1, explicacion:"Los tres momentos son introducción, desarrollo y cierre."},
+ {pregunta:"¿Qué momento del discurso suele ocupar el 80% o más del tiempo?", opciones:["la introducción","el desarrollo","el cierre","la apertura"], correcta:1, explicacion:"El desarrollo es el discurso propiamente dicho y ocupa el mayor tiempo (suele ser el 80% o más)."},
+ {pregunta:"¿Cuál NO es una táctica recomendada para iniciar un discurso?", opciones:["contar una anécdota cautivadora","hacer una pregunta retórica","resumir de entrada todas las conclusiones","mostrar una imagen simbólica"], correcta:2, explicacion:"Las tácticas de inicio son anécdota, pregunta retórica, dato llamativo, cita, video o imagen; resumir las conclusiones corresponde al cierre, no a la apertura."},
+ {pregunta:"El cierre del discurso debe, ante todo…", opciones:["introducir un tema nuevo","resumir los puntos principales y reforzar la idea fuerza","ocupar el 80% del tiempo","presentar al orador"], correcta:1, explicacion:"El cierre resume los puntos principales, refuerza la idea fuerza y es la última impresión que se lleva el público."},
+ {pregunta:"Según el módulo, la manera más eficiente de aliviar el nerviosismo es…", opciones:["memorizar el discurso","conocer a la audiencia","hablar más rápido","leer todo el texto"], correcta:1, explicacion:"Conocer a la audiencia es la manera más eficiente de aliviar el nerviosismo y ayuda a planificar el mensaje."},
+ {pregunta:"Una pregunta retórica es…", opciones:["una pregunta que se lanza al público sin esperar respuesta específica","una pregunta con trampa","una pregunta que responde el propio público en voz alta","una pregunta de examen"], correcta:0, explicacion:"Es una pregunta que se lanza al público, en general, sin esperar la respuesta específica de ningún asistente."},
+ {pregunta:"Ante las “creencias instaladas” sobre el tema, conviene…", opciones:["ocultarlas para no darles importancia","no ocultarlas e ir brindando elementos para desarticularlas","negarlas de entrada","cambiar de tema"], correcta:1, explicacion:"No conviene ocultarlas (están en la memoria de la gente); es mejor ir aportando elementos para que queden desarticuladas."},
+ {pregunta:"“Su máxima expresión es el pánico o terror.” ¿De qué se habla?", opciones:["del estrés","del miedo","de la ansiedad","de la angustia"], correcta:1, explicacion:"El miedo es una emoción primaria cuya máxima expresión es el pánico o terror."},
+ {pregunta:"Desde el punto de vista neurológico, el miedo consiste esencialmente en la activación de…", opciones:["el hipocampo","la amígdala (en el lóbulo temporal)","la corteza prefrontal","el cerebelo"], correcta:1, explicacion:"Neurológicamente, el miedo consiste en la activación de la amígdala, situada en el lóbulo temporal."},
+ {pregunta:"Desde el punto de vista biológico, el miedo es…", opciones:["un trastorno que hay que eliminar","un mecanismo de supervivencia y defensa","una debilidad del carácter","una construcción puramente cultural"], correcta:1, explicacion:"Biológicamente es un mecanismo de supervivencia y defensa, normal y beneficioso, para responder con rapidez ante situaciones adversas."},
+ {pregunta:"¿Qué porcentaje de la población se estima que sufre ansiedad al hablar en público?", opciones:["25%","50%","75%","90%"], correcta:2, explicacion:"Se estima que un 75% de la población siente algún grado de ansiedad y nerviosismo al hablar en público."},
+ {pregunta:"Los tres miedos más comunes al exponer son…", opciones:["a la primera vez, a fracasar y al qué dirán","al público, al micrófono y al escenario","a olvidar, a repetir y a tartamudear","al ridículo, a la muerte y al amor"], correcta:0, explicacion:"Los miedos más comunes que menciona el módulo son el miedo a la primera vez, a fracasar y al qué dirán."},
+ {pregunta:"El miedo escénico surge como consecuencia de…", opciones:["pensamientos anticipatorios catastróficos sobre hablar o actuar en público","una mala alimentación","la falta de micrófono","el exceso de preparación"], correcta:0, explicacion:"El miedo escénico es la respuesta psicofísica que surge de pensamientos anticipatorios catastróficos sobre la situación real o imaginaria de hablar o actuar en público."},
+ {pregunta:"¿Cuál NO es una técnica recomendada para controlar el miedo escénico?", opciones:["la positividad","visualizar el éxito","los ejercicios de relajación","memorizar el discurso palabra por palabra"], correcta:3, explicacion:"Las técnicas recomendadas son la positividad, visualizar el éxito, buscar a alguien de confianza en el público y los ejercicios de relajación; memorizar palabra por palabra no figura."},
+ {pregunta:"En el pánico, la hiperventilación implica…", opciones:["respiración más lenta y aumento del CO2","respiración más profunda y rápida y disminución del CO2 en sangre","dejar de respirar por completo","respirar solo por la boca"], correcta:1, explicacion:"Con el pánico crece la demanda de oxígeno: la respiración se vuelve más profunda y rápida (hiperventilación) y disminuye el CO2 en sangre."},
+ {pregunta:"El “bloqueo mental” se produce cuando…", opciones:["el orador improvisa mejor","la mente queda en blanco y cesa la conciencia (y con ella el temor)","el público se retira","se corta el micrófono"], correcta:1, explicacion:"En el bloqueo mental la mente queda en blanco y cesa la conciencia; al cesar la conciencia desaparece el temor y se restablece el equilibrio."},
+ {pregunta:"¿Quién es el autor de la cita sobre el “esfuerzo titánico” que exige ser buen orador?", opciones:["Brenda López","David Angulo de Haro","Joaquín Díaz","Paul Ekman"], correcta:1, explicacion:"La cita es de David Angulo de Haro: el orador debe pacificar, convencer, motivar y cambiar, lo que exige conocimiento, autoestima, madurez y experiencia."},
+ {pregunta:"En la presentación personal del orador, la norma debe ser…", opciones:["la opulencia","la sobriedad y la sencillez","los colores llamativos","los adornos grandes"], correcta:1, explicacion:"La mejor opción es verse sobrio: sobriedad y sencillez deben ser la norma, evitando colores llamativos y adornos grandes."},
+ {pregunta:"En la “memoria estratégica”, ¿cuántos puntos clave conviene fijar para que el público recuerde?", opciones:["uno solo","3 o 4","diez","todos los del discurso"], correcta:1, explicacion:"Conviene tener claros los 3 o 4 puntos que queremos que el público recuerde al día siguiente; esos se podrán memorizar."},
+ {pregunta:"¿Cuál es una de las cuatro técnicas de cierre recomendadas?", opciones:["revelar el título recién al final","desafiar a la audiencia a tomar acción","hablar más rápido para terminar","pedir disculpas por el tiempo"], correcta:1, explicacion:"Las cuatro técnicas de cierre son: probar tu punto con una historia, hacer referencia al principio, desafiar a la audiencia a tomar acción y usar una cita."},
+ {pregunta:"El “mapa conceptual” o ayuda-memoria es…", opciones:["el texto completo del discurso para leer","un cartel con pocas palabras en letra grande que orienta si perdemos el hilo","una presentación de diapositivas","un resumen que se entrega al público"], correcta:1, explicacion:"Es el esqueleto de la charla: una hoja con pocas palabras en letra grande que, de un golpe de vista, orienta si hay un vacío en la memoria. No es un texto para leer."},
+];
+const GLOSARIO = [
+ {termino:"Buen orador", definicion:"Quien tiene un objetivo bien definido sobre lo que pretende y lo logra a través de la persuasión, conjugando las tres V (vocal, verbal y visual) con la congruencia como factor dominante."},
+ {termino:"Las tres V", definicion:"Lo vocal, lo verbal y lo visual: los tres planos que el buen orador conjuga de manera congruente."},
+ {termino:"Congruencia", definicion:"El factor que debe dominar al conjugar lo vocal, lo verbal y lo visual en un buen orador."},
+ {termino:"Discurso", definicion:"Forma de comunicación en la que un emisor construye un mensaje y lo transmite a un receptor mediante un código (usualmente el lenguaje), por un canal oral o escrito. Es un enunciado con el que se expresan pensamientos, razonamientos, sentimientos o deseos."},
+ {termino:"Oratoria", definicion:"El arte que hacemos con el discurso (el discurso es el enunciado; la oratoria, el arte)."},
+ {termino:"Modos de organización del discurso", definicion:"Los prototípicos: narración, descripción, argumentación, explicación y diálogo."},
+ {termino:"Momentos del discurso", definicion:"La estructura básica en tres componentes: introducción, desarrollo y cierre."},
+ {termino:"Introducción", definicion:"Momento donde se exponen los objetivos y puntos clave; primeros instantes de interacción, cuando se determina si se capta la atención del público."},
+ {termino:"Desarrollo", definicion:"El discurso propiamente dicho; ocupa el mayor tiempo (suele ser el 80% o más) y desarrolla el tema en profundidad con sus fundamentos."},
+ {termino:"Cierre", definicion:"Momento final que resume los puntos principales, refuerza la idea fuerza y deja la última impresión; puede usar una frase o cita para invitar a reflexionar."},
+ {termino:"Tácticas de inicio", definicion:"Recursos para abrir un discurso: contar una historia o anécdota, una pregunta retórica, un dato llamativo, una cita, un video corto o una imagen simbólica."},
+ {termino:"Hilo conductor", definicion:"La conexión entre la palabra y quienes escuchan; el orador debe controlarlo e introducir elementos de activación si la atención decae."},
+ {termino:"Preguntas clave", definicion:"Las que guían la preparación: motivo de la reunión, a quiénes se dirige, sobre qué materia, cuánto tiempo, cómo abordarlo, con qué apoyos, en qué lugar y qué evitar decir."},
+ {termino:"Guion", definicion:"Escrito (cuadro, llaves o prosa) que ayuda a organizar las ideas y evitar parlamentos erráticos, divagaciones o exceder el tiempo previsto."},
+ {termino:"Concisión", definicion:"Uso de palabras justas y significativas; evita redundancias y titubeos y mantiene la coherencia entre las ideas."},
+ {termino:"Contextualización", definicion:"Breve descripción de la situación histórica previa al hecho que se relata, para entenderlo y compararlo con la actualidad."},
+ {termino:"Imágenes visuales", definicion:"Recurso para que el público “vea” el discurso y no solo lo escuche; facilita seguir la explicación y el recuerdo por más tiempo."},
+ {termino:"Conocer a la audiencia", definicion:"La manera más eficiente de aliviar el nerviosismo; comprender a los oyentes ayuda a estructurar y planificar el mensaje."},
+ {termino:"Interacción con los oyentes", definicion:"Evitar hablar como si no hubiera nadie; el contacto visual provoca conexión, empatía y conexión emocional (a distancia se amplía con escucha activa real)."},
+ {termino:"Pregunta retórica", definicion:"Pregunta que se lanza al público, en general, sin esperar la respuesta específica de ningún asistente; sirve para captar la atención."},
+ {termino:"Creencias instaladas", definicion:"“Mitos” o creencias sobre el tema. No conviene ocultarlas; es mejor ir brindando elementos para desarticularlas a lo largo de la exposición."},
+ {termino:"Miedo", definicion:"Emoción primaria: intensa sensación desagradable provocada por la percepción de un peligro real o supuesto. Su máxima expresión es el pánico o terror."},
+ {termino:"Amígdala", definicion:"Estructura situada en el lóbulo temporal; desde el punto de vista neurológico, el miedo consiste esencialmente en su activación."},
+ {termino:"Puntos de vista sobre el miedo", definicion:"Biológico (mecanismo de supervivencia), neurológico (activación de la amígdala), evolutivo (extensión del dolor), social/cultural (se aprende a temer y a no temer) y psicológico (estado afectivo de adaptación al medio)."},
+ {termino:"Verdadera amenaza psicológica", definicion:"La vulnerabilidad de estar expuestos a la mirada de otros: sentirnos observados y evaluados nos hace valorar aspectos del comportamiento que en confort pasarían desapercibidos."},
+ {termino:"Miedo escénico", definicion:"Respuesta psicofísica del organismo, generalmente intensa, que surge de pensamientos anticipatorios catastróficos sobre hablar o actuar en público."},
+ {termino:"Pánico escénico", definicion:"El miedo escénico convertido en pánico: quien se expone es desbordado por la angustia, imagina catástrofes inminentes y pierde el control. Se presenta en distintos grados y formas y puede tratarse con abordajes terapéuticos especializados; los trastornos del lenguaje pueden requerir tratamiento fonoaudiológico o terapias focalizadas o integrales."},
+ {termino:"Hiperventilación", definicion:"En el pánico, respiración más profunda y rápida de lo habitual, con aumento de la demanda de oxígeno y disminución del CO2 en sangre; produce aturdimiento, latidos rápidos y falta de aire."},
+ {termino:"Bloqueo mental", definicion:"Salida del pánico: la mente queda en blanco y cesa la conciencia; al cesar la conciencia desaparece el temor, baja la adrenalina y se restablece el equilibrio."},
+ {termino:"Técnicas para el miedo escénico", definicion:"Positividad, visualizar el éxito, buscar en el público a alguien que dé confianza y ejercicios de relajación previos."},
+ {termino:"Respiración con labios fruncidos", definicion:"Técnica de relajación: inhalar lento por la nariz (agrandando el vientre) y exhalar lento por los labios fruncidos, como para apagar una vela; disminuir el ritmo reduce la dificultad para respirar."},
+ {termino:"David Angulo de Haro", definicion:"Autor citado: para ser buen orador hoy se necesita un esfuerzo titánico; el orador debe pacificar, convencer, motivar y cambiar, lo que exige conocimiento, autoestima, madurez y experiencia."},
+ {termino:"Presentación personal", definicion:"Proyectar una buena imagen sin opulencia ni extravagancia: verse sobrio, con sobriedad y sencillez como norma, evitando colores llamativos y adornos grandes."},
+ {termino:"Posición corporal", definicion:"Postura de pie cómoda, natural y erguida, sosteniendo el cuerpo con la columna; manos a la vista, hombros rectos y hacia atrás, orejas sobre los hombros y barbilla paralela al suelo."},
+ {termino:"Siglas", definicion:"Deben aclararse todas (así como los términos en otro idioma), porque en el público puede haber quien no las conozca (ONU, OEA, CARICOM, UNASUR, CELAC)."},
+ {termino:"Humor e ironía", definicion:"El humor se usa con perspicacia (salvo que el tema o la ocasión no lo aconsejen); la ironía, ocasionalmente y sin abusar, porque en algunos públicos genera rechazo."},
+ {termino:"Memoria estratégica", definicion:"Tener claros los 3 o 4 puntos que queremos que el público recuerde al día siguiente del evento; esos se podrán memorizar."},
+ {termino:"Mapa conceptual (ayuda-memoria)", definicion:"Hoja con pocas palabras en letra grande que orienta, de un golpe de vista, si se pierde el hilo. No es un texto para leer, sino el esqueleto de la charla."},
+ {termino:"Fuentes", definicion:"Conviene citarlas; si los nombres son extensos o poco conocidos, tener un apunte y leerlo. Es preferible leer una oración que nombrar mal una entidad."},
+ {termino:"Técnicas de cierre", definicion:"Cuatro alternativas: probar el punto con una historia, hacer referencia al principio, desafiar a la audiencia a tomar acción y usar una cita de alguien famoso y respetado."},
+];
+
+// ============ UTILIDADES ============
+function barajar(a){
+  for(let i=a.length-1;i>0;i--){
+    const j=Math.floor(Math.random()*(i+1));
+    [a[i],a[j]]=[a[j],a[i]];
+  }
+  return a;
+}
+
+// ============ NAVEGACIÓN POR PESTAÑAS ============
+function initTabs(){
+  document.querySelectorAll('.tab').forEach(btn=>{
+    btn.addEventListener('click',()=>{
+      document.querySelectorAll('.tab').forEach(b=>b.classList.remove('activa'));
+      document.querySelectorAll('.panel').forEach(p=>p.classList.remove('activo'));
+      btn.classList.add('activa');
+      document.getElementById(btn.dataset.panel).classList.add('activo');
+    });
+  });
+}
+initTabs();
+
+// ============ TARJETAS ============
+let mazoActual=[], idxTarjeta=0, temaActivo="Todos";
+const elTarjeta=document.getElementById('tarjeta');
+
+function renderChips(){
+  const temas=["Todos",...new Set(TARJETAS.map(t=>t.tema))];
+  const cont=document.getElementById('chips-temas');
+  cont.innerHTML="";
+  temas.forEach(t=>{
+    const b=document.createElement('button');
+    b.className="chip"+(t===temaActivo?" activa":"");
+    b.textContent=t;
+    b.addEventListener('click',()=>{temaActivo=t;renderChips();setMazo();});
+    cont.appendChild(b);
+  });
+}
+function setMazo(){
+  mazoActual = temaActivo==="Todos" ? [...TARJETAS] : TARJETAS.filter(t=>t.tema===temaActivo);
+  idxTarjeta=0;
+  renderTarjeta();
+}
+function renderTarjeta(){
+  const t=mazoActual[idxTarjeta];
+  elTarjeta.classList.remove('girada');
+  document.getElementById('tema-tarjeta').textContent=t.tema;
+  document.getElementById('tarjeta-frente').textContent=t.frente;
+  document.getElementById('tarjeta-dorso').textContent=t.dorso;
+  document.getElementById('contador-tarjetas').textContent=(idxTarjeta+1)+" / "+mazoActual.length;
+}
+function moverTarjeta(paso){
+  idxTarjeta=(idxTarjeta+paso+mazoActual.length)%mazoActual.length;
+  renderTarjeta();
+}
+elTarjeta.addEventListener('click',()=>elTarjeta.classList.toggle('girada'));
+document.getElementById('btn-anterior').addEventListener('click',()=>moverTarjeta(-1));
+document.getElementById('btn-siguiente').addEventListener('click',()=>moverTarjeta(1));
+document.getElementById('btn-mezclar').addEventListener('click',()=>{barajar(mazoActual);idxTarjeta=0;renderTarjeta();});
+document.addEventListener('keydown',e=>{
+  if(!document.getElementById('panel-tarjetas').classList.contains('activo'))return;
+  if(e.target.tagName==='INPUT')return;
+  if(e.code==='Space'){e.preventDefault();elTarjeta.classList.toggle('girada');}
+  if(e.key==='ArrowLeft')moverTarjeta(-1);
+  if(e.key==='ArrowRight')moverTarjeta(1);
+});
+renderChips();
+setMazo();
+
+// ============ QUIZ ============
+let ordenQuiz=[], idxQuiz=0, aciertos=0, falladas=[];
+const elQuiz=document.getElementById('quiz-contenido');
+
+function iniciarQuiz(){
+  ordenQuiz=barajar([...QUIZ.keys()]);
+  idxQuiz=0; aciertos=0; falladas=[];
+  renderPregunta();
+}
+function renderPregunta(){
+  const q=QUIZ[ordenQuiz[idxQuiz]];
+  const pct=Math.round(idxQuiz/QUIZ.length*100);
+  elQuiz.innerHTML=
+    '<div class="progreso"><div class="progreso-relleno" style="width:'+pct+'%"></div></div>'+
+    '<div class="pregunta"><h2>'+q.pregunta+'</h2><div id="opciones"></div>'+
+    '<div id="feedback"></div>'+
+    '<div class="quiz-pie"><span>Pregunta '+(idxQuiz+1)+' de '+QUIZ.length+
+    '</span><span>Aciertos: '+aciertos+'</span></div></div>';
+  const cont=document.getElementById('opciones');
+  q.opciones.forEach((op,i)=>{
+    const b=document.createElement('button');
+    b.className='opcion'; b.textContent=op;
+    b.addEventListener('click',()=>responder(i));
+    cont.appendChild(b);
+  });
+}
+function responder(i){
+  const q=QUIZ[ordenQuiz[idxQuiz]];
+  const botones=document.querySelectorAll('.opcion');
+  botones.forEach(b=>b.disabled=true);
+  botones[q.correcta].classList.add('correcta');
+  if(i===q.correcta){ aciertos++; }
+  else{ botones[i].classList.add('incorrecta'); falladas.push(q); }
+  const fb=document.getElementById('feedback');
+  fb.innerHTML='<div class="explicacion">'+q.explicacion+'</div>';
+  const btn=document.createElement('button');
+  btn.className='boton boton-primario'; btn.style.marginTop='12px';
+  btn.innerHTML=(idxQuiz+1<QUIZ.length)?'Siguiente <svg class="icono" aria-hidden="true"><use href="#i-der"/></svg>':'Ver resultado';
+  btn.addEventListener('click',()=>{
+    idxQuiz++;
+    if(idxQuiz<QUIZ.length)renderPregunta(); else renderResultado();
+  });
+  fb.appendChild(btn);
+  btn.focus();
+}
+function renderResultado(){
+  const pct=Math.round(aciertos/QUIZ.length*100);
+  let html='<div class="pregunta resultado"><h2>Resultado</h2>'+
+    '<div class="puntaje">'+aciertos+' / '+QUIZ.length+' — '+pct+'%</div>';
+  if(falladas.length){
+    html+='<h2 style="margin:14px 0 4px">Para repasar:</h2>';
+    falladas.forEach(q=>{
+      html+='<div class="fallada"><b>'+q.pregunta+'</b><br>'+
+        '<span class="bien">✔ '+q.opciones[q.correcta]+'</span><br>'+
+        '<small>'+q.explicacion+'</small></div>';
+    });
+  } else {
+    html+='<p>¡Impecable! Todas correctas.</p>';
+  }
+  html+='<button class="boton boton-primario" style="margin-top:14px" '+
+    'onclick="iniciarQuiz()"><svg class="icono" aria-hidden="true"><use href="#i-rotar"/></svg> Reintentar (mezclado)</button></div>';
+  elQuiz.innerHTML=html;
+}
+iniciarQuiz();
+
+// ============ GLOSARIO ============
+function escaparRegex(s){return s.replace(/[.*+?^${}()|[\]\\]/g,'\\$&');}
+function resaltar(texto,filtro){
+  if(!filtro)return texto;
+  return texto.replace(new RegExp('('+escaparRegex(filtro)+')','gi'),'<mark>$1</mark>');
+}
+function renderGlosario(filtro){
+  filtro=(filtro||'').trim();
+  const lista=document.getElementById('lista-glosario');
+  const orden=[...GLOSARIO].sort((a,b)=>a.termino.localeCompare(b.termino,'es'));
+  const visibles=orden.filter(e=>
+    (e.termino+' '+e.definicion).toLowerCase().includes(filtro.toLowerCase()));
+  if(!visibles.length){
+    lista.innerHTML='<p class="sin-resultados">No hay términos que coincidan.</p>';
+    return;
+  }
+  lista.innerHTML=visibles.map(e=>
+    '<div class="entrada-glosario"><b>'+resaltar(e.termino,filtro)+'</b>'+
+    '<p>'+resaltar(e.definicion,filtro)+'</p></div>').join('');
+}
+document.getElementById('busqueda-glosario')
+  .addEventListener('input',e=>renderGlosario(e.target.value));
+renderGlosario('');
+
+// ============ TEMA CLARO/OSCURO ============
+document.getElementById('toggle-tema').addEventListener('click',()=>{
+  const nuevo=document.documentElement.dataset.tema==='oscuro'?'claro':'oscuro';
+  document.documentElement.dataset.tema=nuevo;
+  try{localStorage.setItem('tema-oratoria',nuevo);}catch(e){}
+});
+</script>
+</body>
+</html>

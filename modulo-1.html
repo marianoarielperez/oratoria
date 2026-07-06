@@ -23,7 +23,7 @@
     --sombra:0 1px 2px rgba(0,0,0,.4),0 8px 22px rgba(0,0,0,.35);
   }
   *{box-sizing:border-box;margin:0;padding:0}
-  body{background:var(--papel);color:var(--tinta);font-family:var(--serif);
+  body{background:var(--papel);color:var(--tinta);font-family:var(--sans);
     line-height:1.55;min-height:100vh;transition:background .25s ease,color .25s ease}
   .icono{width:18px;height:18px;flex:none;fill:none;stroke:currentColor;
     stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
@@ -36,13 +36,15 @@
     text-transform:uppercase;color:var(--acento);margin-top:16px}
   header h1{font-family:var(--serif);font-weight:normal;color:var(--tinta);
     font-size:clamp(1.9rem,5.5vw,2.6rem);line-height:1.15;margin:6px 0 2px}
-  .lema{font-style:italic;color:var(--tinta-suave);font-size:1.02rem}
-  .toggle-tema{position:absolute;top:24px;right:16px;width:40px;height:40px;
+  .lema{font-family:var(--serif);font-style:italic;color:var(--tinta-suave);font-size:1.02rem}
+  .toggle-tema,.volver{position:absolute;top:24px;width:40px;height:40px;
     display:inline-flex;align-items:center;justify-content:center;border-radius:50%;
     border:1px solid var(--borde);background:var(--superficie);color:var(--tinta-suave);
     cursor:pointer;transition:border-color .15s ease,color .15s ease}
-  .toggle-tema:hover{border-color:var(--acento);color:var(--acento)}
-  .toggle-tema .icono{width:19px;height:19px}
+  .toggle-tema{right:16px}
+  .volver{left:16px}
+  .toggle-tema:hover,.volver:hover{border-color:var(--acento);color:var(--acento)}
+  .toggle-tema .icono,.volver .icono{width:19px;height:19px}
   .toggle-tema .i-sol{display:none}
   html[data-tema="oscuro"] .toggle-tema .i-sol{display:block}
   html[data-tema="oscuro"] .toggle-tema .i-luna{display:none}
@@ -75,8 +77,8 @@
   .chip:hover{border-color:var(--acento);color:var(--acento)}
   .chip.activa{background:var(--acento-suave);border-color:var(--acento);color:var(--acento)}
   .escena{margin-bottom:18px}
-  #tarjeta{position:relative;width:100%;min-height:300px;cursor:pointer}
-  .cara{position:absolute;inset:0;background:var(--superficie);
+  #tarjeta{display:grid;width:100%;min-height:300px;cursor:pointer}
+  .cara{grid-area:1/1;position:relative;background:var(--superficie);
     border:1px solid var(--borde);border-radius:14px;box-shadow:var(--sombra);
     padding:36px 32px;display:flex;flex-direction:column;align-items:center;
     justify-content:center;text-align:center;gap:12px;transition:opacity .25s ease}
@@ -90,8 +92,8 @@
   .etiqueta::before,.etiqueta::after{content:"";width:22px;height:1px;
     background:var(--regla);display:inline-block}
   #tema-tarjeta{color:var(--acento)}
-  #tarjeta-frente{font-size:clamp(1.15rem,3vw,1.42rem);line-height:1.4}
-  #tarjeta-dorso{font-size:1.02rem;color:var(--tinta)}
+  #tarjeta-frente{font-size:clamp(1.2rem,3vw,1.45rem);line-height:1.4}
+  #tarjeta-dorso{font-size:1.12rem;line-height:1.6;color:var(--tinta)}
   .controles-tarjetas{display:flex;justify-content:center;align-items:center;gap:10px;flex-wrap:wrap}
   #contador-tarjetas{font-style:italic;color:var(--tinta-suave);font-size:.95rem;
     min-width:70px;text-align:center}
@@ -103,17 +105,17 @@
   .progreso-relleno{background:var(--acento);height:100%;width:0;transition:width .3s ease}
   .pregunta{background:var(--superficie);border:1px solid var(--borde);border-radius:14px;
     box-shadow:var(--sombra);padding:28px}
-  .pregunta h2{font-family:var(--serif);font-size:1.18rem;font-weight:normal;
+  .pregunta h2{font-family:var(--sans);font-size:1.22rem;font-weight:normal;
     line-height:1.4;margin-bottom:18px}
   .opcion{display:block;width:100%;text-align:left;font-family:var(--sans);
-    font-size:.94rem;background:var(--papel);border:1px solid var(--borde);
+    font-size:1rem;background:var(--papel);border:1px solid var(--borde);
     border-radius:9px;padding:12px 15px;margin-bottom:9px;cursor:pointer;
     color:var(--tinta);transition:border-color .15s ease,transform .15s ease}
   .opcion:hover:not(:disabled){border-color:var(--acento);transform:translateX(3px)}
   .opcion:disabled{cursor:default;opacity:.7}
   .opcion.correcta{background:var(--ok-bg);border-color:var(--ok);color:var(--ok);opacity:1}
   .opcion.incorrecta{background:var(--mal-bg);border-color:var(--mal);color:var(--mal);opacity:1}
-  .explicacion{font-family:var(--sans);font-size:.89rem;background:var(--acento-suave);
+  .explicacion{font-family:var(--sans);font-size:.95rem;background:var(--acento-suave);
     border-radius:9px;padding:13px 15px;margin-top:6px}
   .quiz-pie{display:flex;justify-content:space-between;align-items:center;margin-top:16px}
   .quiz-pie span{font-family:var(--sans);color:var(--tinta-suave);font-size:.88rem}
@@ -131,16 +133,17 @@
   .entrada-glosario{background:var(--superficie);border:1px solid var(--borde);
     border-radius:11px;padding:14px 17px;margin-bottom:10px;transition:border-color .15s ease}
   .entrada-glosario:hover{border-color:var(--regla)}
-  .entrada-glosario b{display:block;margin-bottom:3px;font-family:var(--serif);font-size:1.04rem}
-  .entrada-glosario p{font-family:var(--sans);font-size:.9rem;color:var(--tinta-suave)}
+  .entrada-glosario b{display:block;margin-bottom:3px;font-family:var(--sans);font-size:1.06rem}
+  .entrada-glosario p{font-family:var(--sans);font-size:.98rem;color:var(--tinta-suave)}
   mark{background:var(--marca);color:inherit;border-radius:3px;padding:0 2px}
   .sin-resultados{text-align:center;color:var(--tinta-suave);font-family:var(--sans);padding:26px 0}
 
   @media (max-width:480px){
     .cara{padding:22px 18px}
-    #tarjeta-frente{font-size:1.08rem}
-    #tarjeta-dorso{font-size:.92rem}
+    #tarjeta-frente{font-size:1.18rem}
+    #tarjeta-dorso{font-size:1.05rem}
     .toggle-tema{top:14px;right:12px}
+    .volver{top:14px;left:12px}
   }
   @media (prefers-reduced-motion:reduce){
     *{transition:none!important;animation:none!important}
@@ -163,6 +166,7 @@
   <symbol id="i-sol" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></symbol>
 </svg>
 <header>
+  <a class="volver" href="index.html" title="Volver al índice" aria-label="Volver al índice de módulos"><svg class="icono" aria-hidden="true"><use href="#i-izq"/></svg></a>
   <button class="toggle-tema" id="toggle-tema" title="Cambiar tema" aria-label="Cambiar entre modo claro y oscuro">
     <svg class="icono i-luna" aria-hidden="true"><use href="#i-luna"/></svg>
     <svg class="icono i-sol" aria-hidden="true"><use href="#i-sol"/></svg>

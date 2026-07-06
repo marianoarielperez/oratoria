@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Submódulo — Herramientas mnemotécnicas · Material de estudio</title>
+<meta name="description" content="Material de estudio interactivo del Submódulo de Oratoria: herramientas mnemotécnicas — la memoria, los principios y los sistemas mnemotécnicos (enlace, relato, Loci, perchas y fonético). Tarjetas, quiz y glosario. Oratoria y técnicas de expresión — Lic. en Periodismo.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='19' font-size='19'>🎤</text></svg>">
+<script>(function(){var t=null;try{t=localStorage.getItem("tema-oratoria")}catch(e){}document.documentElement.dataset.tema=t||(window.matchMedia&&matchMedia("(prefers-color-scheme: dark)").matches?"oscuro":"claro")})();</script>
+<style>
+  :root{
+    --papel:#f5efe4; --superficie:#fdfaf3; --tinta:#272119; --tinta-suave:#716553;
+    --acento:#a84b24; --acento-suave:#f1dccb; --borde:#ded1b8; --regla:#b9a888;
+    --ok:#3f7d4a; --ok-bg:#e9f2e6; --mal:#a93b2c; --mal-bg:#f7e4de; --marca:#efd9a7;
+    --sombra:0 1px 2px rgba(45,33,20,.06),0 6px 18px rgba(45,33,20,.07);
+    --serif:'Palatino Linotype',Palatino,'Book Antiqua',Georgia,serif;
+    --sans:'Segoe UI',system-ui,-apple-system,sans-serif;
+  }
+  html[data-tema="oscuro"]{
+    --papel:#171310; --superficie:#211b15; --tinta:#ece2cf; --tinta-suave:#a4957e;
+    --acento:#d9784a; --acento-suave:#3b2519; --borde:#3b3327; --regla:#57493a;
+    --ok:#7cb787; --ok-bg:#22301f; --mal:#dd8574; --mal-bg:#38211b; --marca:#6b5320;
+    --sombra:0 1px 2px rgba(0,0,0,.4),0 8px 22px rgba(0,0,0,.35);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:var(--papel);color:var(--tinta);font-family:var(--serif);
+    line-height:1.55;min-height:100vh;transition:background .25s ease,color .25s ease}
+  .icono{width:18px;height:18px;flex:none;fill:none;stroke:currentColor;
+    stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+  :focus-visible{outline:2px solid var(--acento);outline-offset:2px}
+
+  /* ---- Masthead (cartel de conferencia) ---- */
+  header{max-width:760px;margin:0 auto;padding:30px 16px 0;text-align:center;position:relative}
+  .regla{border:none;border-top:4px double var(--regla);margin:14px 0 0}
+  .eyebrow{font-family:var(--sans);font-size:.7rem;letter-spacing:.22em;
+    text-transform:uppercase;color:var(--acento);margin-top:16px}
+  header h1{font-family:var(--serif);font-weight:normal;color:var(--tinta);
+    font-size:clamp(1.9rem,5.5vw,2.6rem);line-height:1.15;margin:6px 0 2px}
+  .lema{font-style:italic;color:var(--tinta-suave);font-size:1.02rem}
+  .toggle-tema{position:absolute;top:24px;right:16px;width:40px;height:40px;
+    display:inline-flex;align-items:center;justify-content:center;border-radius:50%;
+    border:1px solid var(--borde);background:var(--superficie);color:var(--tinta-suave);
+    cursor:pointer;transition:border-color .15s ease,color .15s ease}
+  .toggle-tema:hover{border-color:var(--acento);color:var(--acento)}
+  .toggle-tema .icono{width:19px;height:19px}
+  .toggle-tema .i-sol{display:none}
+  html[data-tema="oscuro"] .toggle-tema .i-sol{display:block}
+  html[data-tema="oscuro"] .toggle-tema .i-luna{display:none}
+
+  /* ---- Pestañas ---- */
+  nav{display:flex;justify-content:center;gap:8px;flex-wrap:wrap;
+    max-width:760px;margin:18px auto 0;padding:0 16px}
+  .tab{display:inline-flex;align-items:center;gap:8px;font-family:var(--sans);
+    font-size:.92rem;background:var(--superficie);color:var(--tinta-suave);
+    border:1px solid var(--borde);border-radius:999px;padding:9px 18px;cursor:pointer;
+    transition:border-color .15s ease,color .15s ease,background .15s ease}
+  .tab:hover{border-color:var(--acento);color:var(--acento)}
+  .tab.activa{background:var(--acento);border-color:var(--acento);color:var(--papel)}
+  main{max-width:760px;margin:0 auto;padding:26px 16px 60px}
+  .panel{display:none}
+  .panel.activo{display:block}
+  .boton{display:inline-flex;align-items:center;gap:7px;font-family:var(--sans);
+    font-size:.92rem;background:var(--superficie);border:1px solid var(--borde);
+    border-radius:9px;padding:9px 15px;cursor:pointer;color:var(--tinta);
+    transition:border-color .15s ease,transform .15s ease}
+  .boton:hover{border-color:var(--acento);transform:translateY(-1px)}
+  .boton-primario{background:var(--acento);border-color:var(--acento);color:var(--papel)}
+  .boton-primario:hover{border-color:var(--acento)}
+
+  /* ---- Tarjetas (ficha de imprenta) ---- */
+  #chips-temas{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:20px;justify-content:center}
+  .chip{font-family:var(--sans);font-size:.8rem;background:var(--superficie);
+    border:1px solid var(--borde);border-radius:999px;padding:5px 13px;cursor:pointer;
+    color:var(--tinta-suave);transition:border-color .15s ease,color .15s ease,background .15s ease}
+  .chip:hover{border-color:var(--acento);color:var(--acento)}
+  .chip.activa{background:var(--acento-suave);border-color:var(--acento);color:var(--acento)}
+  .escena{margin-bottom:18px}
+  #tarjeta{position:relative;width:100%;min-height:300px;cursor:pointer}
+  .cara{position:absolute;inset:0;background:var(--superficie);
+    border:1px solid var(--borde);border-radius:14px;box-shadow:var(--sombra);
+    padding:36px 32px;display:flex;flex-direction:column;align-items:center;
+    justify-content:center;text-align:center;gap:12px;transition:opacity .25s ease}
+  .cara::after{content:"";position:absolute;inset:7px;border:1px solid var(--regla);
+    border-radius:9px;pointer-events:none;opacity:.55}
+  #tarjeta.girada #cara-frente{opacity:0}
+  #tarjeta:not(.girada) #cara-dorso{opacity:0}
+  .etiqueta{font-family:var(--sans);font-size:.66rem;letter-spacing:.2em;
+    text-transform:uppercase;color:var(--tinta-suave);display:inline-flex;
+    align-items:center;gap:10px}
+  .etiqueta::before,.etiqueta::after{content:"";width:22px;height:1px;
+    background:var(--regla);display:inline-block}
+  #tema-tarjeta{color:var(--acento)}
+  #tarjeta-frente{font-size:clamp(1.15rem,3vw,1.42rem);line-height:1.4}
+  #tarjeta-dorso{font-size:1.02rem;color:var(--tinta)}
+  .controles-tarjetas{display:flex;justify-content:center;align-items:center;gap:10px;flex-wrap:wrap}
+  #contador-tarjetas{font-style:italic;color:var(--tinta-suave);font-size:.95rem;
+    min-width:70px;text-align:center}
+  .ayuda{font-family:var(--sans);text-align:center;color:var(--tinta-suave);
+    font-size:.78rem;margin-top:16px}
+
+  /* ---- Quiz ---- */
+  .progreso{background:var(--borde);border-radius:999px;height:6px;margin-bottom:20px;overflow:hidden}
+  .progreso-relleno{background:var(--acento);height:100%;width:0;transition:width .3s ease}
+  .pregunta{background:var(--superficie);border:1px solid var(--borde);border-radius:14px;
+    box-shadow:var(--sombra);padding:28px}
+  .pregunta h2{font-family:var(--serif);font-size:1.18rem;font-weight:normal;
+    line-height:1.4;margin-bottom:18px}
+  .opcion{display:block;width:100%;text-align:left;font-family:var(--sans);
+    font-size:.94rem;background:var(--papel);border:1px solid var(--borde);
+    border-radius:9px;padding:12px 15px;margin-bottom:9px;cursor:pointer;
+    color:var(--tinta);transition:border-color .15s ease,transform .15s ease}
+  .opcion:hover:not(:disabled){border-color:var(--acento);transform:translateX(3px)}
+  .opcion:disabled{cursor:default;opacity:.7}
+  .opcion.correcta{background:var(--ok-bg);border-color:var(--ok);color:var(--ok);opacity:1}
+  .opcion.incorrecta{background:var(--mal-bg);border-color:var(--mal);color:var(--mal);opacity:1}
+  .explicacion{font-family:var(--sans);font-size:.89rem;background:var(--acento-suave);
+    border-radius:9px;padding:13px 15px;margin-top:6px}
+  .quiz-pie{display:flex;justify-content:space-between;align-items:center;margin-top:16px}
+  .quiz-pie span{font-family:var(--sans);color:var(--tinta-suave);font-size:.88rem}
+  .resultado{text-align:center;padding:12px 0}
+  .resultado .puntaje{font-family:var(--serif);font-size:2.7rem;color:var(--acento);margin:10px 0}
+  .fallada{background:var(--papel);border:1px solid var(--borde);border-radius:10px;
+    padding:14px;margin:10px 0;text-align:left;font-size:.95rem}
+  .fallada .bien{color:var(--ok)}
+
+  /* ---- Glosario ---- */
+  #busqueda-glosario{width:100%;font-family:var(--sans);font-size:1rem;
+    background:var(--superficie);border:1px solid var(--borde);border-radius:11px;
+    padding:13px 17px;margin-bottom:18px;color:var(--tinta)}
+  #busqueda-glosario:focus{outline:2px solid var(--acento);outline-offset:1px;border-color:var(--acento)}
+  .entrada-glosario{background:var(--superficie);border:1px solid var(--borde);
+    border-radius:11px;padding:14px 17px;margin-bottom:10px;transition:border-color .15s ease}
+  .entrada-glosario:hover{border-color:var(--regla)}
+  .entrada-glosario b{display:block;margin-bottom:3px;font-family:var(--serif);font-size:1.04rem}
+  .entrada-glosario p{font-family:var(--sans);font-size:.9rem;color:var(--tinta-suave)}
+  mark{background:var(--marca);color:inherit;border-radius:3px;padding:0 2px}
+  .sin-resultados{text-align:center;color:var(--tinta-suave);font-family:var(--sans);padding:26px 0}
+
+  @media (max-width:480px){
+    .cara{padding:22px 18px}
+    #tarjeta-frente{font-size:1.08rem}
+    #tarjeta-dorso{font-size:.92rem}
+    .toggle-tema{top:14px;right:12px}
+  }
+  @media (prefers-reduced-motion:reduce){
+    *{transition:none!important;animation:none!important}
+  }
+
+</style>
+</head>
+<body>
+<!-- Íconos: Lucide (lucide.dev), licencia ISC, incrustados para funcionar offline -->
+<svg xmlns="http://www.w3.org/2000/svg" style="display:none">
+  <symbol id="i-mic" viewBox="0 0 24 24"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" x2="12" y1="19" y2="22"/></symbol>
+  <symbol id="i-capas" viewBox="0 0 24 24"><path d="M12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.83Z"/><path d="m22 17.65-9.17 4.16a2 2 0 0 1-1.66 0L2 17.65"/><path d="m22 12.65-9.17 4.16a2 2 0 0 1-1.66 0L2 12.65"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><path d="M21.801 10A10 10 0 1 1 17 3.335"/><path d="m9 11 3 3L22 4"/></symbol>
+  <symbol id="i-lupa" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></symbol>
+  <symbol id="i-mezclar" viewBox="0 0 24 24"><path d="M2 18h1.4c1.3 0 2.5-.6 3.3-1.7l6.1-8.6c.7-1.1 2-1.7 3.3-1.7H22"/><path d="m18 2 4 4-4 4"/><path d="M2 6h1.9c1.5 0 2.9.9 3.6 2.2"/><path d="M22 18h-5.9c-1.3 0-2.6-.7-3.3-1.8l-.5-.8"/><path d="m18 14 4 4-4 4"/></symbol>
+  <symbol id="i-izq" viewBox="0 0 24 24"><path d="m12 19-7-7 7-7"/><path d="M19 12H5"/></symbol>
+  <symbol id="i-der" viewBox="0 0 24 24"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></symbol>
+  <symbol id="i-rotar" viewBox="0 0 24 24"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></symbol>
+  <symbol id="i-luna" viewBox="0 0 24 24"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></symbol>
+  <symbol id="i-sol" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></symbol>
+</svg>
+<header>
+  <button class="toggle-tema" id="toggle-tema" title="Cambiar tema" aria-label="Cambiar entre modo claro y oscuro">
+    <svg class="icono i-luna" aria-hidden="true"><use href="#i-luna"/></svg>
+    <svg class="icono i-sol" aria-hidden="true"><use href="#i-sol"/></svg>
+  </button>
+  <hr class="regla">
+  <p class="eyebrow">Oratoria y técnicas de expresión · Submódulo</p>
+  <h1>Herramientas mnemotécnicas</h1>
+  <p class="lema">Material de estudio para el parcial · 2026</p>
+  <hr class="regla">
+</header>
+<nav>
+  <button class="tab activa" data-panel="panel-tarjetas"><svg class="icono" aria-hidden="true"><use href="#i-capas"/></svg><span>Tarjetas</span></button>
+  <button class="tab" data-panel="panel-quiz"><svg class="icono" aria-hidden="true"><use href="#i-check"/></svg><span>Quiz</span></button>
+  <button class="tab" data-panel="panel-glosario"><svg class="icono" aria-hidden="true"><use href="#i-lupa"/></svg><span>Glosario</span></button>
+</nav>
+<main>
+  <section id="panel-tarjetas" class="panel activo">
+    <div id="chips-temas"></div>
+    <div class="escena">
+      <div id="tarjeta">
+        <div class="cara" id="cara-frente"><span class="etiqueta" id="tema-tarjeta"></span>
+          <div id="tarjeta-frente"></div>
+          <span class="etiqueta">tocá para ver la respuesta</span></div>
+        <div class="cara" id="cara-dorso"><span class="etiqueta">respuesta</span>
+          <div id="tarjeta-dorso"></div></div>
+      </div>
+    </div>
+    <div class="controles-tarjetas">
+      <button class="boton" id="btn-anterior"><svg class="icono" aria-hidden="true"><use href="#i-izq"/></svg>Anterior</button>
+      <span id="contador-tarjetas"></span>
+      <button class="boton" id="btn-siguiente">Siguiente<svg class="icono" aria-hidden="true"><use href="#i-der"/></svg></button>
+      <button class="boton" id="btn-mezclar"><svg class="icono" aria-hidden="true"><use href="#i-mezclar"/></svg>Mezclar</button>
+    </div>
+    <p class="ayuda">Teclado: espacio gira la tarjeta · flechas ← → navegan</p>
+  </section>
+  <section id="panel-quiz" class="panel">
+    <div id="quiz-contenido"></div>
+  </section>
+  <section id="panel-glosario" class="panel">
+    <input id="busqueda-glosario" type="search"
+      placeholder="Buscar término o autor… (ej.: retórica, Jacobson)">
+    <div id="lista-glosario"></div>
+  </section>
+</main>
+<script>
+// ============ DATOS DEL MÓDULO ============
+// Para generar el material de otro módulo, reemplazar SOLO estas constantes.
+const MODULO = { numero: "Submódulo 2", titulo: "Herramientas mnemotécnicas" };
+const TARJETAS = [
+ // --- Mnemotecnia e historia ---
+ {tema:"Mnemotecnia e historia", frente:"¿Qué es la mnemotecnia?", dorso:"En su definición popular, el arte de la memorización. Es una estrategia de aprendizaje que mejora el registro, el almacenamiento y la recuperación de información de la memoria; agiliza la retención de forma asociativa para que los contenidos adquieran solidez y sirvan de referentes en la construcción de nuevas estructuras cognitivas."},
+ {tema:"Mnemotecnia e historia", frente:"¿Dónde nació la mnemotecnia en Occidente?", dorso:"En la antigua Grecia, como parte importante de la Retórica (el arte de hablar), donde las técnicas mnemónicas eran habituales. Luego fueron adoptadas por los oradores romanos."},
+ {tema:"Mnemotecnia e historia", frente:"¿A quién atribuye Cicerón el descubrimiento de las reglas de la memoria?", dorso:"A Simónides de Ceos, poeta lírico griego. Cicerón lo señala en el siglo I a.C. Las reglas fueron ampliadas después, entre otros, por el epicúreo Metrodoro."},
+ {tema:"Mnemotecnia e historia", frente:"¿Quién es reconocido como creador de la mnemotecnia?", dorso:"Simónides de Ceos, creador de la mnemotecnia y de los métodos nemotécnicos o “memorándums”. Usó por primera vez el sistema loci en el año 477 a.C."},
+ {tema:"Mnemotecnia e historia", frente:"La anécdota del banquete de Scopas", dorso:"Simónides recordó el lugar en que estaba sentado cada invitado en el banquete de Scopas, lo que ayudó a reconocer los cadáveres: “el orden es quien da mayor luz a la memoria”."},
+ {tema:"Mnemotecnia e historia", frente:"¿Qué es la “memoria artificial”?", dorso:"El conjunto de recursos que describen los autores latinos para desarrollar la memoria. El orador recuerda las cosas y no las palabras, porque la imagen estimula, reafirma y aumenta la capacidad de la “memoria natural” con la que el ser humano nace."},
+ {tema:"Mnemotecnia e historia", frente:"¿Cómo funciona la mnemotecnia?", dorso:"Mediante la imagen mental, que organiza e interpreta el material de estudio y facilita su adquisición y recuerdo. A medida que el educando avanza en su proceso cognitivo, la imagen pierde protagonismo a favor del lenguaje, pero sigue siendo necesaria. Ejemplo: la imagen del término “soplar” ayuda a recordar el orden cronológico de Sócrates, Platón y Aristóteles y quién fue maestro de quién. (Fuente: Calvo Aramendi, 2022.)"},
+ {tema:"Mnemotecnia e historia", frente:"¿Quiénes aplican hoy la mnemotecnia? (ejemplo)", dorso:"Diversas profesiones. Por ejemplo, los comerciales especializados en ventas: tras un período de aprendizaje y práctica, memorizan el nombre del cliente y demuestran conocer bien el producto para explicarlo de manera eficaz y elocuente."},
+ // --- La memoria y el aprendizaje ---
+ {tema:"La memoria y el aprendizaje", frente:"Definición de memoria (Mora, 2016)", dorso:"“Es el proceso por el que retenemos lo aprendido a lo largo del tiempo, siendo en el hipocampo donde se registra la traza mnemónica de lo percibido y aprendido.”"},
+ {tema:"La memoria y el aprendizaje", frente:"Definición de memoria (Antón, 2005)", dorso:"“Capacidad mental que nos permite almacenar información y recuperarla posteriormente.” Es una capacidad necesaria para las actividades diarias y para culminar el proceso de aprendizaje."},
+ {tema:"La memoria y el aprendizaje", frente:"“Sin memoria no hay aprendizaje”: ¿qué es aprender?", dorso:"Una forma de optimizar nuestras respuestas ante situaciones para las que no estamos programados. La memoria es la habilidad que permite el funcionamiento del resto de nuestras funciones cognitivas."},
+ {tema:"La memoria y el aprendizaje", frente:"Memoria consciente vs. inconsciente (capacidad)", dorso:"En la memoria a corto y a largo plazo solo podemos alojar cierta cantidad de información. El inconsciente, en cambio, contiene un monto casi ilimitado de recuerdos, experiencias e informaciones asimiladas por el estudio."},
+ {tema:"La memoria y el aprendizaje", frente:"Las dos clases de aprendizaje", dorso:"Explícito (consciente): asociar ideas, comparar, deducir; se puede evocar y contar tras memorizarlo. Inconsciente: automático, no se evoca verbalmente y requiere tiempo y repetición (p.e. habilidades visomotoras como andar en bicicleta). Las lecciones inculcadas en la memoria motriz se repiten automáticamente (Bergson, 2010)."},
+ {tema:"La memoria y el aprendizaje", frente:"¿Qué caracteriza al aprendizaje inconsciente?", dorso:"Es filogenéticamente antiguo: se realiza desde hace millones de años en todas las especies animales. La adquisición de muchos hábitos es un mecanismo de aprendizaje inconsciente."},
+ {tema:"La memoria y el aprendizaje", frente:"Los tipos de memoria (según el sentido)", dorso:"Sensitiva, gustativa, auditiva, olfativa, visual, de tacto, semántica o de lenguaje, y episódica o autobiográfica."},
+ {tema:"La memoria y el aprendizaje", frente:"Los tipos de memoria según el tiempo de duración", dorso:"Memoria a corto plazo y memoria a largo plazo."},
+ // --- Principios de la mnemotecnia ---
+ {tema:"Principios de la mnemotecnia", frente:"Los 5 principios básicos de la mnemotecnia", dorso:"Asociación, atención, organización, significación y visualización. Fueron determinados por investigaciones de la década de 1970 (siglo XX)."},
+ {tema:"Principios de la mnemotecnia", frente:"Principio de asociación", dorso:"Es esencial para todos los métodos: el material objeto de estudio debe asociarse con información que el sujeto ya tiene memorizada. Cuanto más conocimiento previo, mayor probabilidad de recordarlo; asociarlo con uno mismo o con hechos autobiográficos facilita el recuerdo."},
+ {tema:"Principios de la mnemotecnia", frente:"Principio de atención", dorso:"La mnemotecnia incrementa la atención porque exige concentrarse en el material para elaborar imágenes y asociaciones. Así el aprendizaje se vuelve más ameno y mejora el rendimiento."},
+ {tema:"Principios de la mnemotecnia", frente:"Principio de organización", dorso:"Los métodos ofrecen una organización lógica del material (alfabética, por categorías o numérica), lo que reduce su dificultad y permite registrarlo y recuperarlo de forma sistemática. Vale también para el material imaginativo, no solo el verbal."},
+ {tema:"Principios de la mnemotecnia", frente:"Principio de significación", dorso:"La función más importante y esencial: dar sentido a un material que por su naturaleza carece de él (p.e. el sistema fonético de los números). Se aprende mejor cuanta mayor significación tenga el material y cuantas menos interferencias haya."},
+ {tema:"Principios de la mnemotecnia", frente:"Principio de visualización", dorso:"Los mediadores de las asociaciones son imágenes. Es el principio más utilizado a lo largo de la historia y el más investigado, porque la mayoría de los métodos requieren, en algún momento, imágenes mentales."},
+ {tema:"Principios de la mnemotecnia", frente:"¿La mnemotecnia reemplaza el estudio?", dorso:"No: los métodos mnemotécnicos no reemplazan las estrategias de estudio, sino que las completan y hacen la tarea más efectiva. Se apoyan en los mecanismos de la memoria natural y pueden combinarse con otras estrategias, como espaciar las sesiones de estudio y dividir el material."},
+ // --- Sistemas: enlace y relato ---
+ {tema:"Sistemas: enlace y relato", frente:"¿Cuáles son los sistemas mnemotécnicos más usados?", dorso:"El sistema de enlace, el fonético, el Loci o de los lugares, el de perchas y el de relato."},
+ {tema:"Sistemas: enlace y relato", frente:"Sistema de enlace (o de encadenamiento)", dorso:"El más elemental de todos: cada ítem funciona como señal de recuerdo del siguiente (excepto el primero). Consta de dos fases: formar imágenes mentales de cada ítem y asociarlas entre sí de forma interactiva. Permite recuperar la información en orden directo o inverso."},
+ {tema:"Sistemas: enlace y relato", frente:"Sistema de relato", dorso:"Variante del sistema de enlace en la que los ítems se relacionan mediante la elaboración de un relato o historia. Es fundamentalmente verbal (generalmente no implica imágenes), aunque su eficacia aumenta cuando coexisten componentes verbales y visuales."},
+ {tema:"Sistemas: enlace y relato", frente:"Limitación del sistema de relato", dorso:"No resulta eficaz para el aprendizaje de listas de más de 30 ítems, por la complejidad de elaborar y recordar un relato tan extenso. Además, recuperar la información en orden inverso se vuelve extremadamente complejo."},
+ {tema:"Sistemas: enlace y relato", frente:"Enlace vs. relato: la diferencia clave", dorso:"En el enlace, las asociaciones entre cada par de ítems son independientes, por lo que se recupera en orden directo o inverso; su componente básico son las imágenes. En el relato, los ítems se integran en una secuencia/historia, así que una asociación afecta a las siguientes y el orden inverso es muy difícil; es fundamentalmente verbal."},
+ // --- Sistema Loci y de perchas ---
+ {tema:"Sistema Loci y de perchas", frente:"Sistema Loci (de los lugares o de tópicos)", dorso:"Usa lugares o ubicaciones para situar mentalmente lo que se quiere memorizar. “Loci” —como el griego “topos”— significa lugar o ubicación. Es el sistema más antiguo (data del año 500 a.C.), de Simónides de Ceos, y permaneció como único sistema hasta mediados del siglo XVII, cuando aparecieron el de perchas y el fonético."},
+ {tema:"Sistema Loci y de perchas", frente:"¿Quiénes usaban el sistema Loci y para qué?", dorso:"Los oradores griegos y romanos, para memorizar sus discursos: visualizaban la palabra clave de cada tema y la ubicaban mentalmente en partes de un edificio; para recuperarla, recorrían mentalmente el edificio. No se limita a edificios: sirve el barrio, las partes del cuerpo o cualquier itinerario conocido de antemano."},
+ {tema:"Sistema Loci y de perchas", frente:"Las dos fases del sistema Loci", dorso:"1) Memorizar imágenes mentales de lugares conocidos siguiendo un orden lógico o natural. 2) Ubicar visualmente los ítems en esos lugares según el orden en que deben recordarse. Para recuperar la información, se recorre mentalmente el itinerario de los lugares."},
+ {tema:"Sistema Loci y de perchas", frente:"Sistema de perchas", dorso:"Las “palabras percha” funcionan como perchas mentales de las que se cuelgan los ítems a memorizar: se asocian con un grupo de sustantivos concretos, memorizados de antemano, que guardan una relación significativa con los números. Se fundamenta en el uso de imágenes mentales."},
+ {tema:"Sistema Loci y de perchas", frente:"Origen del sistema de perchas", dorso:"A mediados del siglo XVII, por Henry Herdson, como una extensión del método de los lugares. Cada dígito se representaba con objetos de parecido físico con el número: 1 = vela, 3 = tridente, 8 = gafas."},
+ {tema:"Sistema Loci y de perchas", frente:"El aporte de John Sambrook (1870)", dorso:"Cambió las palabras percha de parecido físico por palabras y sílabas que rimaban con los números (por sus características acústicas y no físicas). Las variantes del sistema eligen la palabra percha por rima, por parecido físico o por las connotaciones de su significado."},
+ {tema:"Sistema Loci y de perchas", frente:"¿Cómo se elige la palabra percha? (criterios y ejemplos)", dorso:"Por rima con el número (1 = zumo, 2 = tos), por parecido físico con el número (1 = lápiz, 2 = cisne) o por las connotaciones de su significado (1 = yo; 3 = tenedor, porque tiene tres dientes)."},
+ {tema:"Sistema Loci y de perchas", frente:"El sistema de perchas también puede usar el alfabeto", dorso:"Además de los números, el sistema de perchas puede apoyarse en el alfabeto: se asocia una palabra concreta a cada letra, normalmente por la letra con que comienza (A = are, B = beso, C = casa)."},
+ // --- Sistema fonético ---
+ {tema:"Sistema fonético", frente:"¿Qué es el sistema fonético?", dorso:"También llamado “figura-alfabeto”, “gancho”, “número-alfabeto”, “número-consonante”, “número-letra” o “número-sonido”. Su objetivo es memorizar cifras transformándolas antes en palabras (es más fácil recordar palabras que números): asocia cada número del 0 al 9 con un sonido consonántico e intercala vocales para formar palabras."},
+ {tema:"Sistema fonético", frente:"Historia del sistema fonético", dorso:"Aparece a mediados del s.XVII (1648) con el alemán Winkelmann, que asociaba los números a consonantes de forma aleatoria; tuvo una variante de Leibniz. Richard Grey (1730) es considerado el creador del sistema de archivo mental; le siguieron Pierre Herigone (1580-1643), Gregor Von Feinaigle (1813) y Francis Fauvel Gouraud (1844). La versión actual la elaboraron, a finales del s.XIX, William James y Loisette."},
+ {tema:"Sistema fonético", frente:"La tabla actual del sistema fonético (español)", dorso:"1 = b, v, p · 2 = d, t · 3 = n, l · 4 = m · 5 = s · 6 = g, j, q, k · 7 = f · 8 = ch, ñ, y · 9 = r · 0 = z, c. Incluye todos los sonidos consonánticos del español salvo la “ll” y la “x” (por su baja frecuencia de aparición)."},
+ {tema:"Sistema fonético", frente:"La tabla temprana de Leibniz (variante de Winkelmann)", dorso:"Leibniz propuso una variante temprana con estas equivalencias: 1 = b, p, w · 2 = c, q, k, z · 3 = f, v · 4 = g · 5 = l · 6 = m · 7 = n · 8 = r · 9 = s, t · 0 = d. Cuidado: no es la tabla actual (la de James y Loisette), que es la que se usa hoy."},
+ {tema:"Sistema fonético", frente:"Reglas de codificación del sistema fonético", dorso:"Una consonante repetida que produce un solo sonido cuenta como un único dígito (gorro = 69); si la consonante repetida produce sonidos diferentes, se codifican los dos (accidente = 00232). Las dificultades pueden salvarse formando frases cuyas iniciales sigan el orden numérico del 0 al 9."},
+ {tema:"Sistema fonético", frente:"¿Para qué sirve el sistema fonético?", dorso:"Es el más eficaz para recordar cifras, porque atribuye significado a los números. Se aplica a la asociación entre nombres y fechas, la realización mental de operaciones matemáticas, el recuerdo de fechas, la tabla de multiplicar, etc. Es el más complejo de los sistemas de archivo mental y requiere mucha práctica."},
+];
+const QUIZ = [
+ {pregunta:"En el sistema de perchas, elegir “1 = lápiz, 2 = cisne” es un ejemplo de palabra percha por…", opciones:["rima con el número","parecido físico con el número","connotaciones de su significado","orden alfabético"], correcta:1, explicacion:"Por parecido físico. Por rima serían 1=zumo, 2=tos; por connotaciones, 1=yo o 3=tenedor (tiene tres dientes)."},
+ {pregunta:"Además de los números, ¿en qué puede apoyarse el sistema de perchas?", opciones:["en el alfabeto (A=are, B=beso, C=casa)","en los colores","en las notas musicales","en figuras geométricas"], correcta:0, explicacion:"El sistema de perchas también puede usar el alfabeto, asociando una palabra concreta a cada letra, normalmente por su inicial (A=are, B=beso, C=casa)."},
+ {pregunta:"¿Quién elaboró una variante temprana del sistema fonético de Winkelmann, distinta de la tabla actual?", opciones:["William James","Leibniz","Gregor Von Feinaigle","John Sambrook"], correcta:1, explicacion:"El PDF señala como variante del sistema de Winkelmann la elaborada por Leibniz (1=b,p,w; 2=c,q,k,z…), anterior a la versión actual de James y Loisette."},
+ {pregunta:"¿Qué es la mnemotecnia?", opciones:["Un sistema de escritura antiguo","Una estrategia de aprendizaje para mejorar el registro, el almacenamiento y la recuperación de información","Una rama de la gramática","Un tipo de discurso persuasivo"], correcta:1, explicacion:"La mnemotecnia (arte de la memorización) es una estrategia de aprendizaje que mejora el registro, el almacenamiento y la recuperación de la información de forma asociativa."},
+ {pregunta:"¿Dónde nació la mnemotecnia en Occidente?", opciones:["En Roma, con Cicerón","En la antigua Grecia, dentro de la Retórica","En el Egipto faraónico","En la Ilustración francesa"], correcta:1, explicacion:"En Occidente su origen está en la antigua Grecia, como parte de la Retórica; luego la adoptaron los oradores romanos."},
+ {pregunta:"¿Quién es reconocido como el creador de la mnemotecnia y del sistema loci?", opciones:["Cicerón","Metrodoro","Simónides de Ceos","Aristóteles"], correcta:2, explicacion:"Simónides de Ceos, poeta lírico griego, es el creador de la mnemotecnia; usó por primera vez el sistema loci en el 477 a.C."},
+ {pregunta:"¿A quién atribuye Cicerón el descubrimiento de las reglas de la memoria?", opciones:["A Simónides de Ceos","A Platón","A Leibniz","A sí mismo"], correcta:0, explicacion:"Cicerón (s.I a.C.) atribuye el descubrimiento de las reglas de la memoria a Simónides de Ceos."},
+ {pregunta:"La anécdota del banquete de Scopas ilustra que…", opciones:["la memoria es infinita","el orden es quien da mayor luz a la memoria","las palabras importan más que las imágenes","la memoria natural no existe"], correcta:1, explicacion:"Simónides reconoció los cadáveres recordando el lugar de cada invitado: el orden da mayor luz a la memoria."},
+ {pregunta:"En la “memoria artificial”, el orador recuerda…", opciones:["las palabras exactas","las cosas y no las palabras","solo números","nombres propios"], correcta:1, explicacion:"El orador hace uso de la mnemotecnia recordando las cosas y no las palabras, ya que la imagen refuerza la memoria natural."},
+ {pregunta:"Según Mora (2016), ¿dónde se registra la traza mnemónica?", opciones:["en el córtex visual","en el hipocampo","en el cerebelo","en el tálamo"], correcta:1, explicacion:"Mora (2016): en el hipocampo se registra la traza mnemónica de lo percibido y aprendido."},
+ {pregunta:"Según el submódulo, “sin memoria no hay…”", opciones:["lenguaje","aprendizaje","emoción","atención"], correcta:1, explicacion:"“Sin memoria no hay aprendizaje”: aprender es optimizar nuestras respuestas ante situaciones para las que no estamos programados."},
+ {pregunta:"Andar en bicicleta es un ejemplo de aprendizaje…", opciones:["explícito","inconsciente","semántico","episódico"], correcta:1, explicacion:"El aprendizaje inconsciente es automático y no se evoca verbalmente; a través de él se adquieren habilidades visomotoras como andar en bicicleta."},
+ {pregunta:"¿Cuál NO es un tipo de memoria mencionado en el submódulo?", opciones:["Olfativa","Episódica o autobiográfica","Semántica o de lenguaje","Numérica"], correcta:3, explicacion:"Los tipos son sensitiva, gustativa, auditiva, olfativa, visual, de tacto, semántica y episódica; “numérica” no figura."},
+ {pregunta:"La memoria episódica también se llama…", opciones:["semántica","autobiográfica","sensitiva","motriz"], correcta:1, explicacion:"La memoria episódica es también la autobiográfica."},
+ {pregunta:"¿Cuáles son los cinco principios básicos de la mnemotecnia?", opciones:["Asociación, atención, organización, significación y visualización","Enlace, relato, Loci, perchas y fonético","Registro, almacenamiento, recuperación, orden e imagen","Memoria, atención, lenguaje, emoción y hábito"], correcta:0, explicacion:"Los cinco principios son asociación, atención, organización, significación y visualización."},
+ {pregunta:"El principio “más importante y esencial”, que da sentido a un material que carece de él, es el de…", opciones:["asociación","organización","significación","visualización"], correcta:2, explicacion:"El principio de significación es el más importante: dar sentido a un material que por su naturaleza no lo tiene (p.e. el sistema fonético de los números)."},
+ {pregunta:"El principio cuyos mediadores son imágenes, el más utilizado de la historia, es el de…", opciones:["atención","visualización","asociación","organización"], correcta:1, explicacion:"El principio de visualización usa imágenes como mediadores; es el más utilizado e investigado."},
+ {pregunta:"Asociar el material con hechos autobiográficos corresponde al principio de…", opciones:["asociación","significación","organización","atención"], correcta:0, explicacion:"El principio de asociación: asociar el material con uno mismo o con acontecimientos autobiográficos facilita el recuerdo."},
+ {pregunta:"¿Cuáles son los cinco sistemas mnemotécnicos más usados?", opciones:["Enlace, fonético, Loci, perchas y relato","Asociación, atención, organización, significación y visualización","Corto plazo, largo plazo, sensitiva, visual y semántica","Retórica, dialéctica, poética, fonética y gramática"], correcta:0, explicacion:"Los sistemas más usados son el de enlace, el fonético, el Loci, el de perchas y el de relato."},
+ {pregunta:"El sistema más elemental, donde cada ítem es señal de recuerdo del siguiente, es el…", opciones:["Loci","de perchas","de enlace","fonético"], correcta:2, explicacion:"El sistema de enlace (o encadenamiento) es el más elemental: cada ítem funciona como señal del siguiente, excepto el primero."},
+ {pregunta:"En el sistema de relato, recuperar la información en orden inverso es…", opciones:["muy sencillo","extremadamente complejo","imposible","igual que en el de enlace"], correcta:1, explicacion:"Como los ítems forman una historia integrada, en el relato el recuerdo en orden inverso se hace extremadamente complejo."},
+ {pregunta:"El sistema de relato no resulta eficaz para listas de más de…", opciones:["10 ítems","30 ítems","100 ítems","5 ítems"], correcta:1, explicacion:"Su aplicación no es eficaz para listas de más de 30 ítems, por la complejidad de elaborar y recordar un relato tan extenso."},
+ {pregunta:"El sistema mnemotécnico más antiguo (año 500 a.C.), de Simónides de Ceos, es el…", opciones:["de perchas","fonético","Loci o de los lugares","de relato"], correcta:2, explicacion:"El sistema Loci es el más antiguo (data del 500 a.C.) y su autor es Simónides de Ceos."},
+ {pregunta:"¿Quién creó el sistema de perchas (s.XVII), como extensión del método de los lugares?", opciones:["John Sambrook","Henry Herdson","Leibniz","Richard Grey"], correcta:1, explicacion:"Henry Herdson creó el sistema de perchas a mediados del s.XVII, como extensión del método de los lugares (1=vela, 3=tridente, 8=gafas)."},
+ {pregunta:"En 1870, John Sambrook cambió las palabras percha de parecido físico por otras que…", opciones:["rimaban con los números","tenían más sílabas","empezaban con vocal","representaban colores"], correcta:0, explicacion:"Sambrook (1870) las reemplazó por palabras y sílabas que rimaban con los números: características acústicas y no físicas."},
+ {pregunta:"El objetivo del sistema fonético es memorizar…", opciones:["nombres propios","cifras, transformándolas antes en palabras","lugares","emociones"], correcta:1, explicacion:"El sistema fonético memoriza cifras transformándolas en palabras, porque es más fácil recordar palabras que números."},
+ {pregunta:"En la tabla actual del sistema fonético, el número 1 corresponde a los sonidos…", opciones:["b, v, p","d, t","n, l","z, c"], correcta:0, explicacion:"En la versión actual (James y Loisette): 1 = b, v, p. (Los sonidos z, c corresponden al 0.)"},
+ {pregunta:"¿Quiénes elaboraron la versión actual del sistema fonético (finales del s.XIX)?", opciones:["Winkelmann y Leibniz","William James y Loisette","Herigone y Von Feinaigle","Grey y Gouraud"], correcta:1, explicacion:"La versión actual, inalterable durante todo el s.XX, la elaboraron William James y Loisette a finales del s.XIX."},
+ {pregunta:"En el sistema fonético, “gorro” se codifica como 69 porque…", opciones:["tiene dos sílabas","una consonante repetida que produce un solo sonido cuenta como un único dígito","la “g” vale 6 y la “o” vale 9","es una palabra percha"], correcta:1, explicacion:"Cuando una consonante repetida produce un solo sonido, cuenta como un único dígito (gorro = 69); si produce sonidos distintos, se codifican los dos (accidente = 00232)."},
+];
+const GLOSARIO = [
+ {termino:"Mnemotecnia", definicion:"Arte de la memorización: estrategia de aprendizaje que mejora el registro, el almacenamiento y la recuperación de la información, de forma asociativa."},
+ {termino:"Memoria artificial", definicion:"Conjunto de recursos que describen los autores latinos para desarrollar la memoria; en ella el orador recuerda las cosas y no las palabras."},
+ {termino:"Memoria natural", definicion:"La capacidad de memoria con la que el ser humano nace; la imagen la estimula, reafirma y aumenta."},
+ {termino:"Memoria", definicion:"Proceso por el que retenemos lo aprendido en el tiempo (Mora, 2016: se registra en el hipocampo); capacidad de almacenar información y recuperarla después (Antón, 2005)."},
+ {termino:"Traza mnemónica", definicion:"Registro de lo percibido y aprendido; según Mora (2016) se inscribe en el hipocampo."},
+ {termino:"Aprendizaje explícito", definicion:"Aprendizaje consciente: asociar ideas, comparar, deducir; se puede evocar y contar tras memorizarlo."},
+ {termino:"Aprendizaje inconsciente", definicion:"Aprendizaje automático, no evocable verbalmente; requiere tiempo y repetición (p.e. habilidades visomotoras como andar en bicicleta). Filogenéticamente antiguo."},
+ {termino:"Memoria motriz", definicion:"Según Bergson (2010), las lecciones inculcadas en la memoria motriz se repiten automáticamente."},
+ {termino:"Tipos de memoria", definicion:"Sensitiva, gustativa, auditiva, olfativa, visual, de tacto, semántica (de lenguaje) y episódica (autobiográfica); y, según la duración, a corto y a largo plazo."},
+ {termino:"Memoria a corto plazo", definicion:"Tipo de memoria según su duración; solo aloja cierta cantidad de información."},
+ {termino:"Memoria a largo plazo", definicion:"Tipo de memoria según su duración; junto con la de corto plazo, limitada frente al inconsciente, casi ilimitado."},
+ {termino:"Memoria semántica", definicion:"Memoria de lenguaje; uno de los tipos de memoria."},
+ {termino:"Memoria episódica", definicion:"O autobiográfica: la memoria de los hechos y sucesos propios."},
+ {termino:"Simónides de Ceos", definicion:"Poeta lírico griego (Yulis, 556 a.C. – Siracusa, 467 a.C.), reconocido como creador de la mnemotecnia y del sistema loci (usado por primera vez en 477 a.C.). Protagonista de la anécdota del banquete de Scopas."},
+ {termino:"Cicerón", definicion:"Orador romano (s.I a.C.) que atribuye a Simónides de Ceos el descubrimiento de las reglas de la memoria."},
+ {termino:"Metrodoro", definicion:"Epicúreo que amplió las reglas de la memoria formuladas por Simónides de Ceos."},
+ {termino:"Principio de asociación", definicion:"Asociar el material nuevo con información ya memorizada (o con hechos autobiográficos); esencial para todos los métodos mnemotécnicos."},
+ {termino:"Principio de atención", definicion:"La mnemotecnia obliga a concentrarse para crear imágenes y asociaciones, lo que mejora la atención y el rendimiento."},
+ {termino:"Principio de organización", definicion:"Organizar el material de forma lógica (alfabética, por categorías o numérica) para registrarlo y recuperarlo sistemáticamente."},
+ {termino:"Principio de significación", definicion:"Dar sentido a un material que por su naturaleza carece de él; es la función más importante y esencial."},
+ {termino:"Principio de visualización", definicion:"Usar imágenes como mediadores de las asociaciones; el principio más utilizado e investigado de la historia."},
+ {termino:"Sistema de enlace", definicion:"O de encadenamiento: el más elemental; cada ítem es señal de recuerdo del siguiente. Usa imágenes; permite recuperación directa o inversa."},
+ {termino:"Sistema de relato", definicion:"Variante del enlace en que los ítems se unen en una historia; fundamentalmente verbal; ineficaz para más de 30 ítems y muy difícil de recuperar en orden inverso."},
+ {termino:"Sistema Loci", definicion:"O de los lugares / de tópicos: sitúa lo que se quiere recordar en lugares o ubicaciones. El más antiguo (500 a.C.), de Simónides de Ceos; usado por oradores griegos y romanos."},
+ {termino:"Sistema de perchas", definicion:"Sistema en que las “palabras percha” (sustantivos concretos ligados a los números) actúan como perchas mentales de las que se cuelgan los ítems. Se basa en imágenes mentales."},
+ {termino:"Palabras percha", definicion:"Sustantivos concretos, memorizados de antemano y relacionados con los números, que sirven de señal de recuerdo en el sistema de perchas. Se eligen por rima (1=zumo, 2=tos), parecido físico (1=lápiz, 2=cisne) o connotaciones (1=yo; 3=tenedor). También pueden basarse en el alfabeto (A=are, B=beso, C=casa)."},
+ {termino:"Henry Herdson", definicion:"Creó el sistema de perchas a mediados del s.XVII, como extensión del método de los lugares (1=vela, 3=tridente, 8=gafas)."},
+ {termino:"John Sambrook", definicion:"En 1870 cambió las palabras percha de parecido físico por palabras y sílabas que rimaban con los números."},
+ {termino:"Sistema fonético", definicion:"O “figura-alfabeto”: memoriza cifras transformándolas en palabras, asociando cada número (0 a 9) con un sonido consonántico."},
+ {termino:"Winkelmann", definicion:"Alemán que introdujo el sistema fonético a mediados del s.XVII (1648), asociando los números a consonantes de forma aleatoria."},
+ {termino:"Leibniz", definicion:"Autor de una variante temprana del sistema fonético de Winkelmann, con la tabla: 1=b,p,w · 2=c,q,k,z · 3=f,v · 4=g · 5=l · 6=m · 7=n · 8=r · 9=s,t · 0=d (distinta de la actual de James y Loisette)."},
+ {termino:"Richard Grey", definicion:"(1730) Considerado el creador del sistema de archivo mental; hizo que también las vocales, y no solo las consonantes, se relacionaran con los números."},
+ {termino:"Pierre Herigone", definicion:"Matemático y astrónomo francés (1580-1643); asignó correspondencia numérica a las vocales y asoció sílabas con números."},
+ {termino:"Gregor Von Feinaigle", definicion:"(1813) Actualizó el sistema fonético: solo las consonantes se corresponden con números, según su similitud y poder de asociación."},
+ {termino:"Francis Fauvel Gouraud", definicion:"(1844) Publicó una clasificación de las palabras del inglés que podían representar los números del 1 al 10.000."},
+ {termino:"William James y Loisette", definicion:"Elaboraron, a finales del s.XIX, la versión actual del sistema fonético (números asociados a sonidos consonánticos), inalterable durante el s.XX."},
+ {termino:"Sistema de archivo mental", definicion:"Conjunto de imágenes o palabras memorizadas de antemano que sirven de señal de recuerdo; base de los sistemas de perchas y fonético."},
+ {termino:"Imagen mental", definicion:"Mediador central de la mnemotecnia: organiza e interpreta el material de estudio y facilita su adquisición y recuerdo."},
+ {termino:"Calvo Aramendi", definicion:"Fuente (2022): “Uso de la mnemotécnica como herramienta educativa”, citada por el submódulo."},
+];
+
+// ============ UTILIDADES ============
+function barajar(a){
+  for(let i=a.length-1;i>0;i--){
+    const j=Math.floor(Math.random()*(i+1));
+    [a[i],a[j]]=[a[j],a[i]];
+  }
+  return a;
+}
+
+// ============ NAVEGACIÓN POR PESTAÑAS ============
+function initTabs(){
+  document.querySelectorAll('.tab').forEach(btn=>{
+    btn.addEventListener('click',()=>{
+      document.querySelectorAll('.tab').forEach(b=>b.classList.remove('activa'));
+      document.querySelectorAll('.panel').forEach(p=>p.classList.remove('activo'));
+      btn.classList.add('activa');
+      document.getElementById(btn.dataset.panel).classList.add('activo');
+    });
+  });
+}
+initTabs();
+
+// ============ TARJETAS ============
+let mazoActual=[], idxTarjeta=0, temaActivo="Todos";
+const elTarjeta=document.getElementById('tarjeta');
+
+function renderChips(){
+  const temas=["Todos",...new Set(TARJETAS.map(t=>t.tema))];
+  const cont=document.getElementById('chips-temas');
+  cont.innerHTML="";
+  temas.forEach(t=>{
+    const b=document.createElement('button');
+    b.className="chip"+(t===temaActivo?" activa":"");
+    b.textContent=t;
+    b.addEventListener('click',()=>{temaActivo=t;renderChips();setMazo();});
+    cont.appendChild(b);
+  });
+}
+function setMazo(){
+  mazoActual = temaActivo==="Todos" ? [...TARJETAS] : TARJETAS.filter(t=>t.tema===temaActivo);
+  idxTarjeta=0;
+  renderTarjeta();
+}
+function renderTarjeta(){
+  const t=mazoActual[idxTarjeta];
+  elTarjeta.classList.remove('girada');
+  document.getElementById('tema-tarjeta').textContent=t.tema;
+  document.getElementById('tarjeta-frente').textContent=t.frente;
+  document.getElementById('tarjeta-dorso').textContent=t.dorso;
+  document.getElementById('contador-tarjetas').textContent=(idxTarjeta+1)+" / "+mazoActual.length;
+}
+function moverTarjeta(paso){
+  idxTarjeta=(idxTarjeta+paso+mazoActual.length)%mazoActual.length;
+  renderTarjeta();
+}
+elTarjeta.addEventListener('click',()=>elTarjeta.classList.toggle('girada'));
+document.getElementById('btn-anterior').addEventListener('click',()=>moverTarjeta(-1));
+document.getElementById('btn-siguiente').addEventListener('click',()=>moverTarjeta(1));
+document.getElementById('btn-mezclar').addEventListener('click',()=>{barajar(mazoActual);idxTarjeta=0;renderTarjeta();});
+document.addEventListener('keydown',e=>{
+  if(!document.getElementById('panel-tarjetas').classList.contains('activo'))return;
+  if(e.target.tagName==='INPUT')return;
+  if(e.code==='Space'){e.preventDefault();elTarjeta.classList.toggle('girada');}
+  if(e.key==='ArrowLeft')moverTarjeta(-1);
+  if(e.key==='ArrowRight')moverTarjeta(1);
+});
+renderChips();
+setMazo();
+
+// ============ QUIZ ============
+let ordenQuiz=[], idxQuiz=0, aciertos=0, falladas=[];
+const elQuiz=document.getElementById('quiz-contenido');
+
+function iniciarQuiz(){
+  ordenQuiz=barajar([...QUIZ.keys()]);
+  idxQuiz=0; aciertos=0; falladas=[];
+  renderPregunta();
+}
+function renderPregunta(){
+  const q=QUIZ[ordenQuiz[idxQuiz]];
+  const pct=Math.round(idxQuiz/QUIZ.length*100);
+  elQuiz.innerHTML=
+    '<div class="progreso"><div class="progreso-relleno" style="width:'+pct+'%"></div></div>'+
+    '<div class="pregunta"><h2>'+q.pregunta+'</h2><div id="opciones"></div>'+
+    '<div id="feedback"></div>'+
+    '<div class="quiz-pie"><span>Pregunta '+(idxQuiz+1)+' de '+QUIZ.length+
+    '</span><span>Aciertos: '+aciertos+'</span></div></div>';
+  const cont=document.getElementById('opciones');
+  q.opciones.forEach((op,i)=>{
+    const b=document.createElement('button');
+    b.className='opcion'; b.textContent=op;
+    b.addEventListener('click',()=>responder(i));
+    cont.appendChild(b);
+  });
+}
+function responder(i){
+  const q=QUIZ[ordenQuiz[idxQuiz]];
+  const botones=document.querySelectorAll('.opcion');
+  botones.forEach(b=>b.disabled=true);
+  botones[q.correcta].classList.add('correcta');
+  if(i===q.correcta){ aciertos++; }
+  else{ botones[i].classList.add('incorrecta'); falladas.push(q); }
+  const fb=document.getElementById('feedback');
+  fb.innerHTML='<div class="explicacion">'+q.explicacion+'</div>';
+  const btn=document.createElement('button');
+  btn.className='boton boton-primario'; btn.style.marginTop='12px';
+  btn.innerHTML=(idxQuiz+1<QUIZ.length)?'Siguiente <svg class="icono" aria-hidden="true"><use href="#i-der"/></svg>':'Ver resultado';
+  btn.addEventListener('click',()=>{
+    idxQuiz++;
+    if(idxQuiz<QUIZ.length)renderPregunta(); else renderResultado();
+  });
+  fb.appendChild(btn);
+  btn.focus();
+}
+function renderResultado(){
+  const pct=Math.round(aciertos/QUIZ.length*100);
+  let html='<div class="pregunta resultado"><h2>Resultado</h2>'+
+    '<div class="puntaje">'+aciertos+' / '+QUIZ.length+' — '+pct+'%</div>';
+  if(falladas.length){
+    html+='<h2 style="margin:14px 0 4px">Para repasar:</h2>';
+    falladas.forEach(q=>{
+      html+='<div class="fallada"><b>'+q.pregunta+'</b><br>'+
+        '<span class="bien">✔ '+q.opciones[q.correcta]+'</span><br>'+
+        '<small>'+q.explicacion+'</small></div>';
+    });
+  } else {
+    html+='<p>¡Impecable! Todas correctas.</p>';
+  }
+  html+='<button class="boton boton-primario" style="margin-top:14px" '+
+    'onclick="iniciarQuiz()"><svg class="icono" aria-hidden="true"><use href="#i-rotar"/></svg> Reintentar (mezclado)</button></div>';
+  elQuiz.innerHTML=html;
+}
+iniciarQuiz();
+
+// ============ GLOSARIO ============
+function escaparRegex(s){return s.replace(/[.*+?^${}()|[\]\\]/g,'\\$&');}
+function resaltar(texto,filtro){
+  if(!filtro)return texto;
+  return texto.replace(new RegExp('('+escaparRegex(filtro)+')','gi'),'<mark>$1</mark>');
+}
+function renderGlosario(filtro){
+  filtro=(filtro||'').trim();
+  const lista=document.getElementById('lista-glosario');
+  const orden=[...GLOSARIO].sort((a,b)=>a.termino.localeCompare(b.termino,'es'));
+  const visibles=orden.filter(e=>
+    (e.termino+' '+e.definicion).toLowerCase().includes(filtro.toLowerCase()));
+  if(!visibles.length){
+    lista.innerHTML='<p class="sin-resultados">No hay términos que coincidan.</p>';
+    return;
+  }
+  lista.innerHTML=visibles.map(e=>
+    '<div class="entrada-glosario"><b>'+resaltar(e.termino,filtro)+'</b>'+
+    '<p>'+resaltar(e.definicion,filtro)+'</p></div>').join('');
+}
+document.getElementById('busqueda-glosario')
+  .addEventListener('input',e=>renderGlosario(e.target.value));
+renderGlosario('');
+
+// ============ TEMA CLARO/OSCURO ============
+document.getElementById('toggle-tema').addEventListener('click',()=>{
+  const nuevo=document.documentElement.dataset.tema==='oscuro'?'claro':'oscuro';
+  document.documentElement.dataset.tema=nuevo;
+  try{localStorage.setItem('tema-oratoria',nuevo);}catch(e){}
+});
+</script>
+</body>
+</html>

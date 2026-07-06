@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Oratoria — Material de estudio</title>
+<meta name="description" content="Material de estudio interactivo de Oratoria y técnicas de expresión (Lic. en Periodismo): tarjetas de repaso, quiz y glosario por módulo.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='19' font-size='19'>🎤</text></svg>">
+<script>(function(){var t=null;try{t=localStorage.getItem("tema-oratoria")}catch(e){}document.documentElement.dataset.tema=t||(window.matchMedia&&matchMedia("(prefers-color-scheme: dark)").matches?"oscuro":"claro")})();</script>
+<style>
+  :root{
+    --papel:#f5efe4; --superficie:#fdfaf3; --tinta:#272119; --tinta-suave:#716553;
+    --acento:#a84b24; --acento-suave:#f1dccb; --borde:#ded1b8; --regla:#b9a888;
+    --sombra:0 1px 2px rgba(45,33,20,.06),0 6px 18px rgba(45,33,20,.07);
+    --serif:'Palatino Linotype',Palatino,'Book Antiqua',Georgia,serif;
+    --sans:'Segoe UI',system-ui,-apple-system,sans-serif;
+  }
+  html[data-tema="oscuro"]{
+    --papel:#171310; --superficie:#211b15; --tinta:#ece2cf; --tinta-suave:#a4957e;
+    --acento:#d9784a; --acento-suave:#3b2519; --borde:#3b3327; --regla:#57493a;
+    --sombra:0 1px 2px rgba(0,0,0,.4),0 8px 22px rgba(0,0,0,.35);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:var(--papel);color:var(--tinta);font-family:var(--serif);
+    line-height:1.55;min-height:100vh;transition:background .25s ease,color .25s ease}
+  .icono{width:18px;height:18px;flex:none;fill:none;stroke:currentColor;
+    stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+  :focus-visible{outline:2px solid var(--acento);outline-offset:2px}
+  header{max-width:760px;margin:0 auto;padding:30px 16px 0;text-align:center;position:relative}
+  .regla{border:none;border-top:4px double var(--regla);margin:14px 0 0}
+  .eyebrow{font-family:var(--sans);font-size:.7rem;letter-spacing:.22em;
+    text-transform:uppercase;color:var(--acento);margin-top:16px}
+  header h1{font-family:var(--serif);font-weight:normal;color:var(--tinta);
+    font-size:clamp(1.9rem,5.5vw,2.6rem);line-height:1.15;margin:6px 0 2px}
+  .lema{font-style:italic;color:var(--tinta-suave);font-size:1.02rem}
+  .toggle-tema{position:absolute;top:24px;right:16px;width:40px;height:40px;
+    display:inline-flex;align-items:center;justify-content:center;border-radius:50%;
+    border:1px solid var(--borde);background:var(--superficie);color:var(--tinta-suave);
+    cursor:pointer;transition:border-color .15s ease,color .15s ease}
+  .toggle-tema:hover{border-color:var(--acento);color:var(--acento)}
+  .toggle-tema .icono{width:19px;height:19px}
+  .toggle-tema .i-sol{display:none}
+  html[data-tema="oscuro"] .toggle-tema .i-sol{display:block}
+  html[data-tema="oscuro"] .toggle-tema .i-luna{display:none}
+  main{max-width:760px;margin:0 auto;padding:30px 16px 40px;display:grid;gap:14px}
+  .modulo{display:block;background:var(--superficie);border:1px solid var(--borde);
+    border-radius:14px;box-shadow:var(--sombra);padding:24px 26px;position:relative;
+    text-decoration:none;color:var(--tinta);transition:border-color .15s ease,transform .15s ease}
+  .modulo::after{content:"";position:absolute;inset:6px;border:1px solid var(--regla);
+    border-radius:9px;pointer-events:none;opacity:.5}
+  a.modulo:hover{border-color:var(--acento);transform:translateY(-2px)}
+  .modulo .num{font-family:var(--sans);font-size:.68rem;letter-spacing:.2em;
+    text-transform:uppercase;color:var(--acento)}
+  .modulo h2{font-family:var(--serif);font-weight:normal;font-size:1.45rem;margin:4px 0 6px}
+  .modulo p{font-family:var(--sans);font-size:.9rem;color:var(--tinta-suave)}
+  .modulo .meta{display:flex;gap:14px;margin-top:12px;font-family:var(--sans);
+    font-size:.78rem;color:var(--tinta-suave);flex-wrap:wrap}
+  .modulo .cta{display:inline-flex;align-items:center;gap:7px;margin-top:14px;
+    font-family:var(--sans);font-size:.88rem;color:var(--acento)}
+  .proximamente{opacity:.55}
+  .proximamente h2{display:inline-flex;align-items:center;gap:9px}
+  .sello{display:inline-block;font-family:var(--sans);font-size:.7rem;letter-spacing:.12em;
+    text-transform:uppercase;border:1px solid var(--regla);border-radius:999px;
+    padding:3px 10px;color:var(--tinta-suave);margin-top:10px}
+  footer{max-width:760px;margin:0 auto;padding:10px 16px 40px;text-align:center;
+    font-family:var(--sans);font-size:.76rem;color:var(--tinta-suave)}
+  @media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<svg xmlns="http://www.w3.org/2000/svg" style="display:none">
+  <symbol id="i-luna" viewBox="0 0 24 24"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></symbol>
+  <symbol id="i-sol" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></symbol>
+  <symbol id="i-libro" viewBox="0 0 24 24"><path d="M12 7v14"/><path d="M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z"/></symbol>
+  <symbol id="i-candado" viewBox="0 0 24 24"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></symbol>
+  <symbol id="i-der" viewBox="0 0 24 24"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></symbol>
+</svg>
+<header>
+  <button class="toggle-tema" id="toggle-tema" title="Cambiar tema" aria-label="Cambiar entre modo claro y oscuro">
+    <svg class="icono i-luna" aria-hidden="true"><use href="#i-luna"/></svg>
+    <svg class="icono i-sol" aria-hidden="true"><use href="#i-sol"/></svg>
+  </button>
+  <hr class="regla">
+  <p class="eyebrow">Lic. en Periodismo · 2026</p>
+  <h1>Oratoria y técnicas de expresión</h1>
+  <p class="lema">Material de estudio por módulo: tarjetas, quiz y glosario</p>
+  <hr class="regla">
+</header>
+<main>
+  <a class="modulo" href="modulo-1.html">
+    <span class="num">Módulo I</span>
+    <h2>Principios de Oratoria</h2>
+    <p>Origen y tipos de oratoria, retórica y dialéctica, géneros discursivos, el circuito de la comunicación de Jacobson, competencias comunicativas, comunicación no verbal y storytelling.</p>
+    <span class="meta"><span>47 tarjetas</span><span>28 preguntas</span><span>49 términos</span></span>
+    <span class="cta">Estudiar <svg class="icono" aria-hidden="true"><use href="#i-der"/></svg></span>
+  </a>
+  <a class="modulo" href="modulo-2.html">
+    <span class="num">Módulo II</span>
+    <h2>Técnica vocal y comunicación no verbal</h2>
+    <p>La voz y sus cualidades, la respiración, la entonación y las técnicas de locución, y la comunicación no verbal: kinesia, proxemia, paralingüística y lenguaje corporal.</p>
+    <span class="meta"><span>60 tarjetas</span><span>32 preguntas</span><span>50 términos</span></span>
+    <span class="cta">Estudiar <svg class="icono" aria-hidden="true"><use href="#i-der"/></svg></span>
+  </a>
+  <a class="modulo" href="submodulo-2.html">
+    <span class="num">Submódulo</span>
+    <h2>Herramientas mnemotécnicas</h2>
+    <p>Complemento del Módulo II. La mnemotecnia y su historia, la memoria y el aprendizaje, los cinco principios y los cinco sistemas mnemotécnicos (enlace, relato, Loci, perchas y fonético).</p>
+    <span class="meta"><span>42 tarjetas</span><span>29 preguntas</span><span>39 términos</span></span>
+    <span class="cta">Estudiar <svg class="icono" aria-hidden="true"><use href="#i-der"/></svg></span>
+  </a>
+  <div class="modulo proximamente">
+    <span class="num">Módulo III</span>
+    <h2><svg class="icono" aria-hidden="true"><use href="#i-candado"/></svg>En preparación</h2>
+    <span class="sello">Próximamente</span>
+  </div>
+  <div class="modulo proximamente">
+    <span class="num">Módulo IV</span>
+    <h2><svg class="icono" aria-hidden="true"><use href="#i-candado"/></svg>En preparación</h2>
+    <span class="sello">Próximamente</span>
+  </div>
+</main>
+<footer>
+  Basado en los módulos de la cátedra Oratoria y técnicas de expresión (Lic. Brenda López).
+  Íconos: <a href="https://lucide.dev" style="color:inherit">Lucide</a> (ISC), incrustados.
+</footer>
+<script>
+document.getElementById('toggle-tema').addEventListener('click',()=>{
+  const nuevo=document.documentElement.dataset.tema==='oscuro'?'claro':'oscuro';
+  document.documentElement.dataset.tema=nuevo;
+  try{localStorage.setItem('tema-oratoria',nuevo);}catch(e){}
+});
+</script>
+</body>
+</html>

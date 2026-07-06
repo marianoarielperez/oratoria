@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Módulo 2 — Técnica vocal y comunicación no verbal · Material de estudio</title>
+<meta name="description" content="Material de estudio interactivo del Módulo 2 de Oratoria: técnica vocal, respiración, entonación y comunicación no verbal, con tarjetas, quiz y glosario. Oratoria y técnicas de expresión — Lic. en Periodismo.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='19' font-size='19'>🎤</text></svg>">
+<script>(function(){var t=null;try{t=localStorage.getItem("tema-oratoria")}catch(e){}document.documentElement.dataset.tema=t||(window.matchMedia&&matchMedia("(prefers-color-scheme: dark)").matches?"oscuro":"claro")})();</script>
+<style>
+  :root{
+    --papel:#f5efe4; --superficie:#fdfaf3; --tinta:#272119; --tinta-suave:#716553;
+    --acento:#a84b24; --acento-suave:#f1dccb; --borde:#ded1b8; --regla:#b9a888;
+    --ok:#3f7d4a; --ok-bg:#e9f2e6; --mal:#a93b2c; --mal-bg:#f7e4de; --marca:#efd9a7;
+    --sombra:0 1px 2px rgba(45,33,20,.06),0 6px 18px rgba(45,33,20,.07);
+    --serif:'Palatino Linotype',Palatino,'Book Antiqua',Georgia,serif;
+    --sans:'Segoe UI',system-ui,-apple-system,sans-serif;
+  }
+  html[data-tema="oscuro"]{
+    --papel:#171310; --superficie:#211b15; --tinta:#ece2cf; --tinta-suave:#a4957e;
+    --acento:#d9784a; --acento-suave:#3b2519; --borde:#3b3327; --regla:#57493a;
+    --ok:#7cb787; --ok-bg:#22301f; --mal:#dd8574; --mal-bg:#38211b; --marca:#6b5320;
+    --sombra:0 1px 2px rgba(0,0,0,.4),0 8px 22px rgba(0,0,0,.35);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:var(--papel);color:var(--tinta);font-family:var(--serif);
+    line-height:1.55;min-height:100vh;transition:background .25s ease,color .25s ease}
+  .icono{width:18px;height:18px;flex:none;fill:none;stroke:currentColor;
+    stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+  :focus-visible{outline:2px solid var(--acento);outline-offset:2px}
+
+  /* ---- Masthead (cartel de conferencia) ---- */
+  header{max-width:760px;margin:0 auto;padding:30px 16px 0;text-align:center;position:relative}
+  .regla{border:none;border-top:4px double var(--regla);margin:14px 0 0}
+  .eyebrow{font-family:var(--sans);font-size:.7rem;letter-spacing:.22em;
+    text-transform:uppercase;color:var(--acento);margin-top:16px}
+  header h1{font-family:var(--serif);font-weight:normal;color:var(--tinta);
+    font-size:clamp(1.9rem,5.5vw,2.6rem);line-height:1.15;margin:6px 0 2px}
+  .lema{font-style:italic;color:var(--tinta-suave);font-size:1.02rem}
+  .toggle-tema{position:absolute;top:24px;right:16px;width:40px;height:40px;
+    display:inline-flex;align-items:center;justify-content:center;border-radius:50%;
+    border:1px solid var(--borde);background:var(--superficie);color:var(--tinta-suave);
+    cursor:pointer;transition:border-color .15s ease,color .15s ease}
+  .toggle-tema:hover{border-color:var(--acento);color:var(--acento)}
+  .toggle-tema .icono{width:19px;height:19px}
+  .toggle-tema .i-sol{display:none}
+  html[data-tema="oscuro"] .toggle-tema .i-sol{display:block}
+  html[data-tema="oscuro"] .toggle-tema .i-luna{display:none}
+
+  /* ---- Pestañas ---- */
+  nav{display:flex;justify-content:center;gap:8px;flex-wrap:wrap;
+    max-width:760px;margin:18px auto 0;padding:0 16px}
+  .tab{display:inline-flex;align-items:center;gap:8px;font-family:var(--sans);
+    font-size:.92rem;background:var(--superficie);color:var(--tinta-suave);
+    border:1px solid var(--borde);border-radius:999px;padding:9px 18px;cursor:pointer;
+    transition:border-color .15s ease,color .15s ease,background .15s ease}
+  .tab:hover{border-color:var(--acento);color:var(--acento)}
+  .tab.activa{background:var(--acento);border-color:var(--acento);color:var(--papel)}
+  main{max-width:760px;margin:0 auto;padding:26px 16px 60px}
+  .panel{display:none}
+  .panel.activo{display:block}
+  .boton{display:inline-flex;align-items:center;gap:7px;font-family:var(--sans);
+    font-size:.92rem;background:var(--superficie);border:1px solid var(--borde);
+    border-radius:9px;padding:9px 15px;cursor:pointer;color:var(--tinta);
+    transition:border-color .15s ease,transform .15s ease}
+  .boton:hover{border-color:var(--acento);transform:translateY(-1px)}
+  .boton-primario{background:var(--acento);border-color:var(--acento);color:var(--papel)}
+  .boton-primario:hover{border-color:var(--acento)}
+
+  /* ---- Tarjetas (ficha de imprenta) ---- */
+  #chips-temas{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:20px;justify-content:center}
+  .chip{font-family:var(--sans);font-size:.8rem;background:var(--superficie);
+    border:1px solid var(--borde);border-radius:999px;padding:5px 13px;cursor:pointer;
+    color:var(--tinta-suave);transition:border-color .15s ease,color .15s ease,background .15s ease}
+  .chip:hover{border-color:var(--acento);color:var(--acento)}
+  .chip.activa{background:var(--acento-suave);border-color:var(--acento);color:var(--acento)}
+  .escena{margin-bottom:18px}
+  #tarjeta{position:relative;width:100%;min-height:300px;cursor:pointer}
+  .cara{position:absolute;inset:0;background:var(--superficie);
+    border:1px solid var(--borde);border-radius:14px;box-shadow:var(--sombra);
+    padding:36px 32px;display:flex;flex-direction:column;align-items:center;
+    justify-content:center;text-align:center;gap:12px;transition:opacity .25s ease}
+  .cara::after{content:"";position:absolute;inset:7px;border:1px solid var(--regla);
+    border-radius:9px;pointer-events:none;opacity:.55}
+  #tarjeta.girada #cara-frente{opacity:0}
+  #tarjeta:not(.girada) #cara-dorso{opacity:0}
+  .etiqueta{font-family:var(--sans);font-size:.66rem;letter-spacing:.2em;
+    text-transform:uppercase;color:var(--tinta-suave);display:inline-flex;
+    align-items:center;gap:10px}
+  .etiqueta::before,.etiqueta::after{content:"";width:22px;height:1px;
+    background:var(--regla);display:inline-block}
+  #tema-tarjeta{color:var(--acento)}
+  #tarjeta-frente{font-size:clamp(1.15rem,3vw,1.42rem);line-height:1.4}
+  #tarjeta-dorso{font-size:1.02rem;color:var(--tinta)}
+  .controles-tarjetas{display:flex;justify-content:center;align-items:center;gap:10px;flex-wrap:wrap}
+  #contador-tarjetas{font-style:italic;color:var(--tinta-suave);font-size:.95rem;
+    min-width:70px;text-align:center}
+  .ayuda{font-family:var(--sans);text-align:center;color:var(--tinta-suave);
+    font-size:.78rem;margin-top:16px}
+
+  /* ---- Quiz ---- */
+  .progreso{background:var(--borde);border-radius:999px;height:6px;margin-bottom:20px;overflow:hidden}
+  .progreso-relleno{background:var(--acento);height:100%;width:0;transition:width .3s ease}
+  .pregunta{background:var(--superficie);border:1px solid var(--borde);border-radius:14px;
+    box-shadow:var(--sombra);padding:28px}
+  .pregunta h2{font-family:var(--serif);font-size:1.18rem;font-weight:normal;
+    line-height:1.4;margin-bottom:18px}
+  .opcion{display:block;width:100%;text-align:left;font-family:var(--sans);
+    font-size:.94rem;background:var(--papel);border:1px solid var(--borde);
+    border-radius:9px;padding:12px 15px;margin-bottom:9px;cursor:pointer;
+    color:var(--tinta);transition:border-color .15s ease,transform .15s ease}
+  .opcion:hover:not(:disabled){border-color:var(--acento);transform:translateX(3px)}
+  .opcion:disabled{cursor:default;opacity:.7}
+  .opcion.correcta{background:var(--ok-bg);border-color:var(--ok);color:var(--ok);opacity:1}
+  .opcion.incorrecta{background:var(--mal-bg);border-color:var(--mal);color:var(--mal);opacity:1}
+  .explicacion{font-family:var(--sans);font-size:.89rem;background:var(--acento-suave);
+    border-radius:9px;padding:13px 15px;margin-top:6px}
+  .quiz-pie{display:flex;justify-content:space-between;align-items:center;margin-top:16px}
+  .quiz-pie span{font-family:var(--sans);color:var(--tinta-suave);font-size:.88rem}
+  .resultado{text-align:center;padding:12px 0}
+  .resultado .puntaje{font-family:var(--serif);font-size:2.7rem;color:var(--acento);margin:10px 0}
+  .fallada{background:var(--papel);border:1px solid var(--borde);border-radius:10px;
+    padding:14px;margin:10px 0;text-align:left;font-size:.95rem}
+  .fallada .bien{color:var(--ok)}
+
+  /* ---- Glosario ---- */
+  #busqueda-glosario{width:100%;font-family:var(--sans);font-size:1rem;
+    background:var(--superficie);border:1px solid var(--borde);border-radius:11px;
+    padding:13px 17px;margin-bottom:18px;color:var(--tinta)}
+  #busqueda-glosario:focus{outline:2px solid var(--acento);outline-offset:1px;border-color:var(--acento)}
+  .entrada-glosario{background:var(--superficie);border:1px solid var(--borde);
+    border-radius:11px;padding:14px 17px;margin-bottom:10px;transition:border-color .15s ease}
+  .entrada-glosario:hover{border-color:var(--regla)}
+  .entrada-glosario b{display:block;margin-bottom:3px;font-family:var(--serif);font-size:1.04rem}
+  .entrada-glosario p{font-family:var(--sans);font-size:.9rem;color:var(--tinta-suave)}
+  mark{background:var(--marca);color:inherit;border-radius:3px;padding:0 2px}
+  .sin-resultados{text-align:center;color:var(--tinta-suave);font-family:var(--sans);padding:26px 0}
+
+  @media (max-width:480px){
+    .cara{padding:22px 18px}
+    #tarjeta-frente{font-size:1.08rem}
+    #tarjeta-dorso{font-size:.92rem}
+    .toggle-tema{top:14px;right:12px}
+  }
+  @media (prefers-reduced-motion:reduce){
+    *{transition:none!important;animation:none!important}
+  }
+
+</style>
+</head>
+<body>
+<!-- Íconos: Lucide (lucide.dev), licencia ISC, incrustados para funcionar offline -->
+<svg xmlns="http://www.w3.org/2000/svg" style="display:none">
+  <symbol id="i-mic" viewBox="0 0 24 24"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" x2="12" y1="19" y2="22"/></symbol>
+  <symbol id="i-capas" viewBox="0 0 24 24"><path d="M12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.83Z"/><path d="m22 17.65-9.17 4.16a2 2 0 0 1-1.66 0L2 17.65"/><path d="m22 12.65-9.17 4.16a2 2 0 0 1-1.66 0L2 12.65"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><path d="M21.801 10A10 10 0 1 1 17 3.335"/><path d="m9 11 3 3L22 4"/></symbol>
+  <symbol id="i-lupa" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></symbol>
+  <symbol id="i-mezclar" viewBox="0 0 24 24"><path d="M2 18h1.4c1.3 0 2.5-.6 3.3-1.7l6.1-8.6c.7-1.1 2-1.7 3.3-1.7H22"/><path d="m18 2 4 4-4 4"/><path d="M2 6h1.9c1.5 0 2.9.9 3.6 2.2"/><path d="M22 18h-5.9c-1.3 0-2.6-.7-3.3-1.8l-.5-.8"/><path d="m18 14 4 4-4 4"/></symbol>
+  <symbol id="i-izq" viewBox="0 0 24 24"><path d="m12 19-7-7 7-7"/><path d="M19 12H5"/></symbol>
+  <symbol id="i-der" viewBox="0 0 24 24"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></symbol>
+  <symbol id="i-rotar" viewBox="0 0 24 24"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></symbol>
+  <symbol id="i-luna" viewBox="0 0 24 24"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></symbol>
+  <symbol id="i-sol" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></symbol>
+</svg>
+<header>
+  <button class="toggle-tema" id="toggle-tema" title="Cambiar tema" aria-label="Cambiar entre modo claro y oscuro">
+    <svg class="icono i-luna" aria-hidden="true"><use href="#i-luna"/></svg>
+    <svg class="icono i-sol" aria-hidden="true"><use href="#i-sol"/></svg>
+  </button>
+  <hr class="regla">
+  <p class="eyebrow">Oratoria y técnicas de expresión · Módulo II</p>
+  <h1>Técnica vocal y comunicación no verbal</h1>
+  <p class="lema">Material de estudio para el parcial · 2026</p>
+  <hr class="regla">
+</header>
+<nav>
+  <button class="tab activa" data-panel="panel-tarjetas"><svg class="icono" aria-hidden="true"><use href="#i-capas"/></svg><span>Tarjetas</span></button>
+  <button class="tab" data-panel="panel-quiz"><svg class="icono" aria-hidden="true"><use href="#i-check"/></svg><span>Quiz</span></button>
+  <button class="tab" data-panel="panel-glosario"><svg class="icono" aria-hidden="true"><use href="#i-lupa"/></svg><span>Glosario</span></button>
+</nav>
+<main>
+  <section id="panel-tarjetas" class="panel activo">
+    <div id="chips-temas"></div>
+    <div class="escena">
+      <div id="tarjeta">
+        <div class="cara" id="cara-frente"><span class="etiqueta" id="tema-tarjeta"></span>
+          <div id="tarjeta-frente"></div>
+          <span class="etiqueta">tocá para ver la respuesta</span></div>
+        <div class="cara" id="cara-dorso"><span class="etiqueta">respuesta</span>
+          <div id="tarjeta-dorso"></div></div>
+      </div>
+    </div>
+    <div class="controles-tarjetas">
+      <button class="boton" id="btn-anterior"><svg class="icono" aria-hidden="true"><use href="#i-izq"/></svg>Anterior</button>
+      <span id="contador-tarjetas"></span>
+      <button class="boton" id="btn-siguiente">Siguiente<svg class="icono" aria-hidden="true"><use href="#i-der"/></svg></button>
+      <button class="boton" id="btn-mezclar"><svg class="icono" aria-hidden="true"><use href="#i-mezclar"/></svg>Mezclar</button>
+    </div>
+    <p class="ayuda">Teclado: espacio gira la tarjeta · flechas ← → navegan</p>
+  </section>
+  <section id="panel-quiz" class="panel">
+    <div id="quiz-contenido"></div>
+  </section>
+  <section id="panel-glosario" class="panel">
+    <input id="busqueda-glosario" type="search"
+      placeholder="Buscar término o autor… (ej.: retórica, Jacobson)">
+    <div id="lista-glosario"></div>
+  </section>
+</main>
+<script>
+// ============ DATOS DEL MÓDULO ============
+// Para generar el material de otro módulo, reemplazar SOLO estas constantes.
+const MODULO = { numero: 2, titulo: "Técnica vocal y comunicación no verbal" };
+const TARJETAS = [
+ // --- El orador ---
+ {tema:"El orador", frente:"¿Cuáles son las virtudes más importantes para perfeccionar la expresión pública?", dorso:"La voluntad, la constancia y la práctica. Son las que permiten perder el miedo y controlar la ansiedad que puede surgir cuando se prende un micrófono o una cámara."},
+ {tema:"El orador", frente:"¿Qué cualidades del orador se adquieren con el estudio y cuáles son dones de la naturaleza?", dorso:"El módulo enumera ocho: imaginación, memoria fiel, buena presencia, voz clara, pronunciación correcta, acción noble, confianza plena y gran facilidad de hablar. Las cuatro últimas (pronunciación correcta, acción noble, confianza plena y gran facilidad de hablar) pueden adquirirse con el estudio y un largo ejercicio; las demás son dones de la naturaleza, que el arte puede perfeccionar pero no suplir."},
+ // --- La voz ---
+ {tema:"La voz", frente:"¿Qué es hablar?", dorso:"Articular sonidos por medio de los órganos de la fonación. Lo importante del habla es poder transmitir en la audiencia lo que literal y emocionalmente se expresa."},
+ {tema:"La voz", frente:"Si el acto de hablar es un instrumento para obtener un fin, ¿cuál es la principal herramienta?", dorso:"Nuestra voz. El habla puede emplearse para un fin determinado: conmover, sugestionar, persuadir, atemorizar, alegrar, etc."},
+ {tema:"La voz", frente:"¿Por qué se dice que la voz es personal?", dorso:"Porque nadie en el mundo tiene nuestra voz ni puede copiarla: es la síntesis de nuestra morfología, psiquis y la experiencia adquirida en la vinculación con los agentes de socialización a lo largo de la vida."},
+ {tema:"La voz", frente:"¿Qué expresa la voz humana?", dorso:"Es vital y expresa la intimidad del ser: creencias, valores, sentimientos y seguridad, como también la duda, la angustia y el temor. Su cultivo abarca mucho más que la modulación de las palabras."},
+ {tema:"La voz", frente:"“La voz es la materia prima del lenguaje, como…”", dorso:"“…el mármol o el barro es la materia prima de la escultura.” La voz es la herramienta natural que amplifica la capacidad comunicacional de forma instantánea."},
+ {tema:"La voz", frente:"¿Cómo se produce la voz en las cuerdas vocales?", dorso:"Las cuerdas vocales son pequeños músculos elásticos alojados en la garganta. Cuando están abiertas (recogidas a los lados) el aire pasa libre y solo respiramos; cuando están cerradas, el aire choca con ellas al salir y ese choque provoca una vibración que produce el sonido: la voz."},
+ {tema:"La voz", frente:"¿En qué unidades se miden la intensidad y la frecuencia de la voz?", dorso:"La intensidad, en decibelios (dB); la frecuencia, en hercios (Hz)."},
+ {tema:"La voz", frente:"Valores de intensidad de la voz", dorso:"En una conversación varía entre 50 y 60 dB; superar los 80 dB puede lesionar la faringe."},
+ {tema:"La voz", frente:"Rango de frecuencias de la voz (timbre y habla normal)", dorso:"El timbre en el hombre se extiende de 100 a 8.000 Hz y en la mujer de 200 a 9.000 Hz. En el habla normal, la frecuencia ronda los 145 Hz en el hombre y los 230 Hz en la mujer."},
+ // --- Cualidades de la voz ---
+ {tema:"Cualidades de la voz", frente:"Las 4 cualidades de la voz", dorso:"Tono, timbre, intensidad y cantidad."},
+ {tema:"Cualidades de la voz", frente:"¿Qué es el tono?", dorso:"La mayor o menor elevación del sonido, producida por la rapidez de la vibración de las cuerdas vocales: a mayor rapidez, sonido más agudo. Según el tono, las voces se clasifican en agudas, centrales o graves."},
+ {tema:"Cualidades de la voz", frente:"Clasificación de las voces según el tono", dorso:"Agudas: soprano (mujer) y tenor (hombre). Centrales: mezzosoprano (mujer) y barítono (hombre). Graves: contralto (mujer) y bajo (hombre)."},
+ {tema:"Cualidades de la voz", frente:"¿Qué es el timbre?", dorso:"La personalidad o calidad diferenciadora de la voz: aunque solo existen seis tonos de voz, el timbre distingue a cada persona. Lo producen los “armónicos accesorios” (por eso un mismo do no suena igual en un violín que en un piano)."},
+ {tema:"Cualidades de la voz", frente:"¿Qué son la intensidad y la cantidad (como cualidades)?", dorso:"La intensidad depende del volumen y de la cantidad de aire que se utiliza para difundir la voz. La cantidad es la duración de un sonido emitido, que propicia la calidad del mismo."},
+ {tema:"Cualidades de la voz", frente:"Voz consistente", dorso:"Depende de la fuerza de la voz: no debe ser demasiado fuerte, porque expresaría autoritarismo (que la gente rechaza), ni débil, porque expresaría temor e inseguridad y carecería de autoridad y credibilidad."},
+ {tema:"Cualidades de la voz", frente:"Voz fluida", dorso:"La fluidez hace que las palabras se sucedan de forma rítmica y constante. La lentitud, las detenciones y la precipitación son negativas porque indican temor, angustia, inseguridad y duda."},
+ {tema:"Cualidades de la voz", frente:"Voz vibrante", dorso:"Cualidad superior que se produce por la conjunción equilibrada entre claridad, consistencia y fluidez. Determina la intensidad, la proyección y la calidad de la voz; proporciona autoridad y poder y atrae la atención del oyente."},
+ {tema:"Cualidades de la voz", frente:"Voz cálida", dorso:"La calidez es una cualidad profundamente humana: expresa bondad, honestidad, fuerza afectiva, moral y espiritual. Las personas de voz cálida tienen un poder especial para convencer, persuadir y motivar."},
+ {tema:"Cualidades de la voz", frente:"¿Cómo cuidar la voz para mantenerla saludable?", dorso:"Se recomienda evitar el consumo de tabaco, alcohol, picantes y/o agua fría, sobre todo antes de las exposiciones orales de larga duración."},
+ // --- La respiración ---
+ {tema:"La respiración", frente:"¿Cuántas clases de respiración hay y cuáles?", dorso:"Dos: la respiración pectoral y la respiración diafragmática o abdominal."},
+ {tema:"La respiración", frente:"Respiración pectoral", dorso:"Es la más fácil (la aplicamos aun dormidos): el aire ingresa de golpe y se eleva la zona alta (pectoral), subutilizando la capacidad pulmonar. Es muy corta y suele no ser suficiente para sostener una frase larga; al final de la frase disminuye el volumen o se pierde la voz."},
+ {tema:"La respiración", frente:"¿Por qué es un error llenar forzadamente los pulmones?", dorso:"Entre las costillas hay pequeños nervios que se irritan cuando la expansión torácica es exagerada. Luego el aire sale con rapidez, se habla de manera sofocada y entrecortada, y se fuerzan los músculos de la garganta, lo que puede provocar ronquera."},
+ {tema:"La respiración", frente:"Respiración diafragmática o abdominal", dorso:"Se basa en el movimiento del diafragma (el músculo que separa la cavidad torácica del vientre): al bajar hacia el vientre succiona aire a los pulmones y al subir lo expulsa. Se llama abdominal porque el diafragma, al bajar, empuja los órganos del abdomen."},
+ {tema:"La respiración", frente:"Beneficios de la respiración diafragmática", dorso:"Lleva gran cantidad de aire a los pulmones, oxigena la sangre, es muy relajante, actúa sobre el plexo solar liberando la ansiedad (el “nudo en el estómago”), estimula el corazón y mejora la circulación, masajea los órganos abdominales, descongestiona el hígado y ayuda al tránsito intestinal."},
+ {tema:"La respiración", frente:"¿Cuál es la respiración más aconsejable y por qué?", dorso:"La abdominal-diafragmática, para manejar la voz de forma profesional y saludable. Conviene practicarla varias veces al día y con regularidad: favorece el acostumbramiento y la relajación y permite leer frases largas de modo convincente y seguro."},
+ // --- Entonación y locución ---
+ {tema:"Entonación y locución", frente:"¿Qué es la entonación?", dorso:"Las distintas inflexiones que hacemos al leer o al hablar y las variantes en la intensidad del tono de voz. Es, en esencia, lo que produce agrado o repulsa al oído: sin una entonación correcta no hay interpretación y el mensaje no llega."},
+ {tema:"Entonación y locución", frente:"¿Qué factores condicionan la entonación?", dorso:"Factores gramaticales, emocionales e incluso elementos ambientales."},
+ {tema:"Entonación y locución", frente:"¿Qué es un grupo fónico?", dorso:"La parte de la cadena hablada comprendida entre dos signos de puntuación. El habla común no es continua: consta de períodos o lapsos."},
+ {tema:"Entonación y locución", frente:"¿Qué es la curva de entonación?", dorso:"Al resaltar una oración, palabra o sílaba (énfasis) se producen dos consecuencias: una referida a la altura tonal y otra al plano emocional. Ese fenómeno se conoce como “curva de entonación”, “curva melódica” o “línea tonal”."},
+ {tema:"Entonación y locución", frente:"¿Qué son los tonemas y cuántas clases hay?", dorso:"Son los altibajos sonoros de la curva melódica. Hay tres clases: tonema descendente o cadencia (la voz baja), tonema horizontal o suspensión (la voz se mantiene) y tonema ascendente o anticadencia (la voz sube)."},
+ {tema:"Entonación y locución", frente:"¿Cómo se reflejan los signos de puntuación al hablar?", dorso:"Hay que reflejarlos en la lectura y en los discursos mediante pausas, tono y énfasis. Con solo una inflexión de la voz una afirmación puede convertirse en interrogación (“Vamos a comer” / “¿Vamos a comer?”)."},
+ {tema:"Entonación y locución", frente:"Los 3 errores de entonación", dorso:"Monorritmia, monotonía y esdrujulización. Se incurre en ellos cuando no se usan las pausas, las variaciones tonales y la intensidad."},
+ {tema:"Entonación y locución", frente:"¿Qué es la monorritmia?", dorso:"Llevar un mismo ritmo de lectura o discurso, sin vida. Produce un efecto sedante que hace olvidar el contenido (ejemplos: los rezos, los discursos leídos, los dictados)."},
+ {tema:"Entonación y locución", frente:"¿Qué es la monotonía?", dorso:"Leer en un mismo tono, sin utilizar la curva melódica. También se la conoce como lectura plana."},
+ {tema:"Entonación y locución", frente:"¿Qué es la esdrujulización?", dorso:"Cargar los acentos inadecuadamente: se habla como dando saltos o haciendo pausas indebidas y bruscas, generalmente al querer enfatizar palabras. Ejemplo: “el présidente de la Nación”."},
+ // --- Comunicación no verbal ---
+ {tema:"Comunicación no verbal", frente:"¿Qué es la comunicación no verbal?", dorso:"El proceso de emitir y recibir mensajes que acompañan, modifican o remplazan el habla, sin llegar a ser un sistema comunicativo autónomo. No es parte de lo que se dice con las palabras, sino que define el marco en el cual esas palabras se interpretan."},
+ {tema:"Comunicación no verbal", frente:"¿Qué afirma Paul Ekman sobre las conductas no verbales?", dorso:"“Las conductas no verbales pueden complementar, acentuar y aclarar los mensajes, pero también pueden debilitarlos y hasta contradecirlos.”"},
+ {tema:"Comunicación no verbal", frente:"¿Se puede separar lo verbal de lo no verbal?", dorso:"No: es imposible que el sistema comunicativo verbal esté separado del no verbal. Cuando existe una interrelación se activan todos los sentidos y cada uno expresa, desde sus capacidades, lo que se quiere transmitir."},
+ {tema:"Comunicación no verbal", frente:"Según Almeida Macías y otros, ¿qué elementos comunican?", dorso:"Los signos, los símbolos, las posturas corporales, las manifestaciones gestuales, los olores y la vestimenta tienen el poder de comunicar y transmitir un mensaje al interlocutor."},
+ {tema:"Comunicación no verbal", frente:"¿Qué carácter tiene la CNV como subsistema?", dorso:"Es un subsistema esencial de la conducta expresiva y una manifestación genuina del individuo: de carácter espontáneo, inconsciente y a veces difícil de controlar. Puede usarse de manera intencional para reforzar expresiones, pero solo lo logran quienes se entrenan profesionalmente para ese fin."},
+ {tema:"Comunicación no verbal", frente:"¿Desde qué enfoque se estudia la CNV y qué dimensiones tiene?", dorso:"Desde un enfoque personológico, que integra la unidad de lo cognitivo, lo afectivo y lo ejecutivo. Se proponen cuatro dimensiones: cognitiva, afectiva, ejecutiva y estilo comunicativo."},
+ {tema:"Comunicación no verbal", frente:"Dimensiones afectiva y ejecutiva de la CNV", dorso:"La afectiva se relaciona con la motivación por la carrera (intrínseca y extrínseca) y la satisfacción personal en el desempeño profesional. La ejecutiva se relaciona con el saber hacer, la independencia y la efectividad en su aplicación."},
+ {tema:"Comunicación no verbal", frente:"Dimensión estilo comunicativo", dorso:"La forma personal, original, única y peculiar de comunicarse; integra elementos adquiridos por aprendizaje intuitivo, con motivos, necesidades y afectos. Puede manifestarse como flexibilidad-rigidez y como originalidad-imitación."},
+ // --- Kinesia, proxemia y paralingüística ---
+ {tema:"Kinesia, proxemia y paralingüística", frente:"¿Qué contiene la dimensión cognitiva de la CNV?", dorso:"Los conocimientos esenciales sobre las habilidades comunicativas no verbales, que incluyen la kinesia, la proxemia y la paralingüística."},
+ {tema:"Kinesia, proxemia y paralingüística", frente:"¿Qué es la kinesia?", dorso:"Estudia el significado de los movimientos corporales y los gestos en una situación comunicativa."},
+ {tema:"Kinesia, proxemia y paralingüística", frente:"Los tipos de kinesis", dorso:"La postura, los gestos, las expresiones del rostro, la mirada, la sonrisa, y el tacto y el olfato."},
+ {tema:"Kinesia, proxemia y paralingüística", frente:"La postura (kinesis)", dorso:"Expresa la actitud de las personas en relación con su entorno. Se habla de postura o posición cerrada cuando se cruzan los brazos y/o las piernas."},
+ {tema:"Kinesia, proxemia y paralingüística", frente:"Las expresiones del rostro", dorso:"Reflejan múltiples estados de ánimo con sus emociones y sentimientos: felicidad, tristeza, ira, asco, sorpresa, miedo y desprecio."},
+ {tema:"Kinesia, proxemia y paralingüística", frente:"La mirada (kinesis)", dorso:"El contacto ocular desempeña roles que regulan la comunicación: indica el turno para hablar o actuar, es fuente de información, expresa emociones y comunica la naturaleza de la relación interpersonal."},
+ {tema:"Kinesia, proxemia y paralingüística", frente:"La sonrisa (kinesis)", dorso:"Expresa alegría, simpatía o felicidad. Existen diferentes tipos de sonrisas según combinaciones de los quince músculos faciales implicados."},
+ {tema:"Kinesia, proxemia y paralingüística", frente:"¿Qué es la proxemia?", dorso:"El uso del espacio que hacen dos o más personas en el proceso comunicativo: la distancia existente entre el emisor y el receptor."},
+ {tema:"Kinesia, proxemia y paralingüística", frente:"¿Qué es la paralingüística?", dorso:"El conjunto de elementos no verbales de la voz: intensidad, volumen, velocidad, ritmo, entonación, risa y llanto."},
+ // --- Lenguaje corporal y gestos ---
+ {tema:"Lenguaje corporal y gestos", frente:"¿Por qué es clave el rostro en el primer encuentro?", dorso:"El rostro es el punto principal del cuerpo y es en lo que nos fijamos al conocer a alguien (tratamos de grabar sus rasgos). Una cara amplia y despejada da una proyección positiva a la imagen o personalidad."},
+ {tema:"Lenguaje corporal y gestos", frente:"Gestos del rostro que conviene cuidar", dorso:"Evitar parpadear demasiado (denota vacilación e inseguridad); mantener contacto visual directo (demuestra decisión, sinceridad y valentía); y mantener la boca cerrada al escuchar (calma y seguridad), sin morderse ni humedecerse los labios (timidez, inseguridad, titubeo e indecisión)."},
+ {tema:"Lenguaje corporal y gestos", frente:"¿Qué transmite la forma de sentarse?", dorso:"Quien controla sus movimientos al estar sentado denota tranquilidad, seguridad y sentido común; quien no logra mantener la posición o mueve mucho los brazos y las manos suele ser calificado de irresponsable y errático. La rigidez al sentarse evidencia tensión y agresividad."},
+ {tema:"Lenguaje corporal y gestos", frente:"¿Qué sugiere la posición de las piernas al sentarse?", dorso:"No cruzar las piernas y mantener ambos pies en el piso sugiere seguridad en uno mismo. Mantener las piernas cruzadas y balancear una demuestra nerviosismo, impaciencia y temor. Para demostrar atención absoluta: pies en el piso, manos sobre las rodillas e inclinarse ligeramente hacia adelante."},
+ {tema:"Lenguaje corporal y gestos", frente:"Algunos gestos y lo que revelan", dorso:"Palma abierta: sinceridad · Puño cerrado: tensión, nerviosismo · Tamborilear los dedos: intranquilidad, impaciencia · Jugar con bolígrafos u objetos: inquietud, ansiedad · Echarse hacia atrás en la butaca: confianza en uno mismo · Ocultar las manos: falsedad y temor."},
+ {tema:"Lenguaje corporal y gestos", frente:"¿Qué es la “sonrisa profesional”?", dorso:"Una sonrisa que la mayoría de las veces es forzada y se convierte en una especie de máscara para nuestros verdaderos sentimientos. Sus mayores cultores son los políticos, los actores y los hombres y mujeres de negocios."},
+];
+const QUIZ = [
+ {pregunta:"Según el módulo, las virtudes más importantes para perfeccionar la expresión pública (perder el miedo y controlar la ansiedad) son…", opciones:["la imaginación, la memoria y la buena presencia","la voluntad, la constancia y la práctica","la voz clara, el timbre y la entonación","el talento, la suerte y el carisma"], correcta:1, explicacion:"El módulo afirma que las virtudes más importantes son la voluntad, la constancia y la práctica; el resto son dones que el arte perfecciona pero no suple."},
+ {pregunta:"De las cualidades del orador, ¿cuáles pueden adquirirse con el estudio y un largo ejercicio?", opciones:["Las cuatro últimas: pronunciación correcta, acción noble, confianza plena y gran facilidad de hablar","La imaginación, la memoria fiel y la buena presencia","Todas por igual","Ninguna: todas son dones de la naturaleza"], correcta:0, explicacion:"Las cuatro últimas de la lista se adquieren con estudio y ejercicio; las demás (imaginación, memoria fiel, buena presencia, voz clara) son dones de la naturaleza."},
+ {pregunta:"¿Qué es hablar, según el módulo?", opciones:["Modular las palabras con los labios","Articular sonidos por medio de los órganos de la fonación","Hacer vibrar el diafragma","Proyectar la voz desde el pecho"], correcta:1, explicacion:"Hablar es articular sonidos por medio de los órganos de la fonación; lo importante es transmitir lo que literal y emocionalmente se expresa."},
+ {pregunta:"La voz es personal porque…", opciones:["se aprende en la escuela","es la síntesis de nuestra morfología, psiquis y experiencia de socialización","depende solo de las cuerdas vocales","se puede copiar con práctica"], correcta:1, explicacion:"Nadie tiene ni puede copiar nuestra voz: es la síntesis de la morfología, la psiquis y la experiencia adquirida con los agentes de socialización."},
+ {pregunta:"¿En qué unidad se mide la intensidad de la voz?", opciones:["Hercios (Hz)","Decibelios (dB)","Vatios (W)","Octavas"], correcta:1, explicacion:"La intensidad se mide en decibelios (dB); la frecuencia, en hercios (Hz)."},
+ {pregunta:"Superar los 80 dB al hablar puede…", opciones:["mejorar la proyección","lesionar la faringe","agravar el timbre","aumentar la cantidad"], correcta:1, explicacion:"En una conversación la intensidad va de 50 a 60 dB; superar los 80 dB puede lesionar la faringe."},
+ {pregunta:"En el habla normal, la frecuencia de la voz del hombre ronda los…", opciones:["100 Hz","145 Hz","230 Hz","8.000 Hz"], correcta:1, explicacion:"En el habla normal la frecuencia ronda los 145 Hz en el hombre y los 230 Hz en la mujer."},
+ {pregunta:"¿Cuáles son las cuatro cualidades de la voz?", opciones:["Tono, timbre, intensidad y cantidad","Claridad, consistencia, fluidez y calidez","Tono, ritmo, pausa y énfasis","Volumen, velocidad, entonación y llanto"], correcta:0, explicacion:"Las cualidades de la voz son tono, timbre, intensidad y cantidad."},
+ {pregunta:"La voz aguda corresponde, en la mujer y en el hombre, a…", opciones:["la contralto y el bajo","la soprano y el tenor","la mezzosoprano y el barítono","la soprano y el barítono"], correcta:1, explicacion:"Agudas: soprano (mujer) y tenor (hombre). Centrales: mezzosoprano y barítono. Graves: contralto y bajo."},
+ {pregunta:"La cualidad de la voz que es su “personalidad” o calidad diferenciadora, producida por los armónicos accesorios, es…", opciones:["el tono","el timbre","la intensidad","la cantidad"], correcta:1, explicacion:"El timbre diferencia a cada persona (aunque solo hay seis tonos de voz); lo producen los armónicos accesorios."},
+ {pregunta:"Una voz demasiado fuerte expresa…", opciones:["calidez","autoritarismo","fluidez","vibración"], correcta:1, explicacion:"La voz consistente no debe ser ni demasiado fuerte (expresa autoritarismo, que la gente rechaza) ni débil (temor e inseguridad)."},
+ {pregunta:"La cualidad superior que surge de la conjunción equilibrada de claridad, consistencia y fluidez es la voz…", opciones:["cálida","consistente","vibrante","fluida"], correcta:2, explicacion:"La voz vibrante es la cualidad superior; proporciona autoridad y poder y atrae la atención del oyente."},
+ {pregunta:"Para mantener una voz saludable, el módulo recomienda evitar sobre todo antes de exposiciones largas…", opciones:["el agua tibia y el té","el tabaco, el alcohol, los picantes y el agua fría","los lácteos y el café","el silencio prolongado"], correcta:1, explicacion:"Se recomienda evitar tabaco, alcohol, picantes y/o agua fría, sobre todo antes de las exposiciones orales de larga duración."},
+ {pregunta:"¿Cuántas clases de respiración distingue el módulo?", opciones:["Una","Dos","Tres","Cuatro"], correcta:1, explicacion:"Dos: la respiración pectoral y la respiración diafragmática o abdominal."},
+ {pregunta:"¿Cuál es la respiración más aconsejable para manejar la voz de forma profesional y saludable?", opciones:["La pectoral","La diafragmática o abdominal","La torácica alta","La clavicular"], correcta:1, explicacion:"La abdominal-diafragmática es la más aconsejable; conviene practicarla varias veces al día y con regularidad."},
+ {pregunta:"La respiración diafragmática libera la ansiedad (el “nudo en el estómago”) actuando sobre…", opciones:["la faringe","el plexo solar","las cuerdas vocales","los pómulos"], correcta:1, explicacion:"Entre sus beneficios, actúa sobre el plexo solar liberando la ansiedad y ese “nudo en el estómago”."},
+ {pregunta:"Un problema de la respiración pectoral es que…", opciones:["lleva demasiado aire a los pulmones","es corta y no alcanza para sostener una frase larga","relaja en exceso el diafragma","descongestiona el hígado"], correcta:1, explicacion:"La pectoral es corta e insuficiente para una frase larga: al final disminuye el volumen o se pierde la voz."},
+ {pregunta:"Las inflexiones que hacemos al leer o hablar y las variantes en la intensidad del tono se llaman…", opciones:["entonación","proxemia","cadencia","paralingüística"], correcta:0, explicacion:"La entonación es lo que produce agrado o repulsa al oído; sin ella no hay interpretación y el mensaje no llega."},
+ {pregunta:"La parte de la cadena hablada comprendida entre dos signos de puntuación es un…", opciones:["tonema","grupo fónico","período melódico","énfasis"], correcta:1, explicacion:"El grupo fónico es la parte de la cadena hablada entre dos signos de puntuación; el habla consta de períodos o lapsos."},
+ {pregunta:"El tonema descendente se denomina también…", opciones:["anticadencia","suspensión","cadencia","inflexión"], correcta:2, explicacion:"Cadencia (descendente), suspensión (horizontal) y anticadencia (ascendente) son las tres clases de tonemas."},
+ {pregunta:"Leer en un mismo tono, sin usar la curva melódica (“lectura plana”), es…", opciones:["monorritmia","monotonía","esdrujulización","suspensión"], correcta:1, explicacion:"La monotonía es la lectura plana; la monorritmia es llevar un mismo ritmo, sin vida."},
+ {pregunta:"Cargar los acentos inadecuadamente, hablando “a saltos” (ej.: “el présidente”), es…", opciones:["monorritmia","monotonía","esdrujulización","cadencia"], correcta:2, explicacion:"La esdrujulización es cargar mal los acentos, con pausas indebidas y bruscas, al querer enfatizar."},
+ {pregunta:"¿Cuál de estos NO es un error de entonación, sino una clase de tonema?", opciones:["Monorritmia","Monotonía","Esdrujulización","Cadencia"], correcta:3, explicacion:"Los tres errores son monorritmia, monotonía y esdrujulización. La cadencia es un tonema (el descendente)."},
+ {pregunta:"¿Qué autor afirma que las conductas no verbales pueden complementar y aclarar los mensajes, pero también debilitarlos y contradecirlos?", opciones:["Almeida Macías","Paul Ekman","Roman Jacobson","Walter Fisher"], correcta:1, explicacion:"La frase es de Paul Ekman, citado en la presentación del módulo."},
+ {pregunta:"La comunicación no verbal, según el módulo…", opciones:["es un sistema comunicativo autónomo","acompaña, modifica o remplaza el habla, sin ser un sistema autónomo","reemplaza por completo al lenguaje verbal","solo existe en la escritura"], correcta:1, explicacion:"La CNV acompaña, modifica o remplaza el habla sin llegar a ser un sistema comunicativo autónomo; define el marco en que se interpretan las palabras."},
+ {pregunta:"La dimensión cognitiva de la CNV incluye tres saberes:", opciones:["kinesia, proxemia y paralingüística","postura, gesto y mirada","tono, timbre y cantidad","cognitiva, afectiva y ejecutiva"], correcta:0, explicacion:"La dimensión cognitiva incluye la kinesia, la proxemia y la paralingüística."},
+ {pregunta:"La disciplina que estudia el significado de los movimientos corporales y los gestos es la…", opciones:["proxemia","paralingüística","kinesia","semiótica"], correcta:2, explicacion:"La kinesia estudia los movimientos corporales y los gestos; la proxemia, el uso del espacio; la paralingüística, los elementos no verbales de la voz."},
+ {pregunta:"El uso del espacio y la distancia entre el emisor y el receptor es objeto de la…", opciones:["kinesia","proxemia","paralingüística","entonación"], correcta:1, explicacion:"La proxemia es el uso del espacio que hacen dos o más personas: la distancia entre emisor y receptor."},
+ {pregunta:"Intensidad, volumen, velocidad, ritmo, entonación, risa y llanto son elementos de la…", opciones:["kinesia","proxemia","paralingüística","cadencia"], correcta:2, explicacion:"La paralingüística es el conjunto de elementos no verbales de la voz."},
+ {pregunta:"¿Cuál NO es una de las cuatro dimensiones del estudio de la CNV desde el enfoque personológico?", opciones:["Cognitiva","Afectiva","Ejecutiva","Kinésica"], correcta:3, explicacion:"Las cuatro dimensiones son cognitiva, afectiva, ejecutiva y estilo comunicativo. La kinesia está dentro de la dimensión cognitiva."},
+ {pregunta:"Según el módulo, las expresiones del rostro reflejan emociones como…", opciones:["felicidad, tristeza, ira, asco, sorpresa, miedo y desprecio","amor, odio, envidia y celos","calma, tensión y euforia","alegría, pena y nostalgia"], correcta:0, explicacion:"El rostro refleja felicidad, tristeza, ira, asco, sorpresa, miedo y desprecio."},
+ {pregunta:"La “sonrisa profesional”, según el módulo, es…", opciones:["la sonrisa espontánea de alegría","una sonrisa forzada que enmascara los verdaderos sentimientos","una técnica de respiración","un tipo de tonema"], correcta:1, explicacion:"Es una sonrisa forzada, una máscara; sus mayores cultores son políticos, actores y gente de negocios."},
+];
+const GLOSARIO = [
+ {termino:"Cualidades del orador", definicion:"El módulo enumera ocho (imaginación, memoria fiel, buena presencia, voz clara, pronunciación correcta, acción noble, confianza plena y gran facilidad de hablar); las cuatro últimas se adquieren con estudio y ejercicio, las demás son dones de la naturaleza."},
+ {termino:"Voluntad, constancia y práctica", definicion:"Las virtudes más importantes para perfeccionar la expresión pública: permiten perder el miedo y controlar la ansiedad frente a un micrófono o una cámara."},
+ {termino:"Almeida Macías", definicion:"Autor citado en el módulo: sostiene que los signos, símbolos, posturas corporales, gestos, olores y vestimenta tienen el poder de comunicar y transmitir un mensaje al interlocutor."},
+ {termino:"Anticadencia", definicion:"Tonema ascendente de la curva melódica (la voz sube)."},
+ {termino:"Armónicos accesorios", definicion:"Componentes sonoros propios de cada persona que producen el timbre y le dan una voz propia."},
+ {termino:"Cadena hablada", definicion:"El habla común, que no es continua: consta de períodos o lapsos separados por signos de puntuación (los grupos fónicos)."},
+ {termino:"Cadencia", definicion:"Tonema descendente de la curva melódica (la voz baja)."},
+ {termino:"Cantidad", definicion:"Cualidad de la voz: la duración de un sonido emitido, que propicia la calidad del mismo."},
+ {termino:"Comunicación no verbal", definicion:"Proceso de emitir y recibir mensajes que acompañan, modifican o remplazan el habla, sin ser un sistema comunicativo autónomo. Define el marco en que se interpretan las palabras."},
+ {termino:"Cualidades de la voz", definicion:"Tono, timbre, intensidad y cantidad."},
+ {termino:"Cuerdas vocales", definicion:"Pequeños músculos elásticos de la garganta; al cerrarse, el aire choca con ellas y vibra, produciendo el sonido de la voz."},
+ {termino:"Curva melódica", definicion:"Apariencia gráfica de los altibajos sonoros del habla; también llamada curva de entonación o línea tonal. Esos altibajos son los tonemas."},
+ {termino:"Decibelio (dB)", definicion:"Unidad de la intensidad de la voz. En una conversación varía entre 50 y 60 dB; superar los 80 dB puede lesionar la faringe."},
+ {termino:"Diafragma", definicion:"Músculo que separa la cavidad torácica del vientre; al bajar succiona aire a los pulmones y al subir lo expulsa. Base de la respiración diafragmática."},
+ {termino:"Dimensión afectiva", definicion:"Dimensión de la CNV ligada a la motivación por la carrera (intrínseca y extrínseca) y a la satisfacción personal en el desempeño profesional."},
+ {termino:"Dimensión cognitiva", definicion:"Dimensión de la CNV que contiene los conocimientos esenciales: la kinesia, la proxemia y la paralingüística."},
+ {termino:"Dimensión ejecutiva", definicion:"Dimensión de la CNV ligada al saber hacer, la independencia y la efectividad en su aplicación."},
+ {termino:"Ekman, Paul", definicion:"Autor citado: “Las conductas no verbales pueden complementar, acentuar y aclarar los mensajes, pero también pueden debilitarlos y hasta contradecirlos.”"},
+ {termino:"Enfoque personológico", definicion:"Perspectiva desde la que se investigan las habilidades comunicativas no verbales, con carácter personal y una comprensión integradora (valores, motivación, afectividad), en la unidad de lo cognitivo, lo afectivo y lo ejecutivo."},
+ {termino:"Entonación", definicion:"Las inflexiones al leer o hablar y las variantes en la intensidad del tono; también, el conjunto de los tonos de las sílabas de un grupo fónico o frase. Produce agrado o repulsa al oído: sin ella no hay interpretación."},
+ {termino:"Esdrujulización", definicion:"Error de entonación: cargar los acentos inadecuadamente, hablando a saltos o con pausas bruscas (ej.: “el présidente”)."},
+ {termino:"Estilo comunicativo", definicion:"Dimensión de la CNV: forma personal, única y peculiar de comunicarse; puede manifestarse como flexibilidad-rigidez y originalidad-imitación."},
+ {termino:"Expresiones del rostro", definicion:"Tipo de kinesis: reflejan estados de ánimo y emociones (felicidad, tristeza, ira, asco, sorpresa, miedo y desprecio)."},
+ {termino:"Grupo fónico", definicion:"Parte de la cadena hablada comprendida entre dos signos de puntuación."},
+ {termino:"Hablar", definicion:"Articular sonidos por medio de los órganos de la fonación para transmitir lo que literal y emocionalmente se expresa."},
+ {termino:"Hercio (Hz)", definicion:"Unidad de frecuencia de la voz. El timbre va de 100 a 8.000 Hz en el hombre y de 200 a 9.000 Hz en la mujer; el habla normal ronda 145 Hz (hombre) y 230 Hz (mujer)."},
+ {termino:"Intensidad", definicion:"Cualidad de la voz que depende del volumen y de la cantidad de aire que se utiliza para difundirla. Se mide en decibelios."},
+ {termino:"Kinesia", definicion:"Estudia el significado de los movimientos corporales y los gestos en una situación comunicativa. Tipos: postura, gestos, expresiones del rostro, mirada, sonrisa, y tacto y olfato."},
+ {termino:"La mirada", definicion:"Tipo de kinesis: el contacto ocular regula la comunicación, indica el turno, es fuente de información, expresa emociones y define la relación interpersonal."},
+ {termino:"La postura", definicion:"Tipo de kinesis: expresa la actitud de la persona frente a su entorno. Es cerrada cuando se cruzan los brazos y/o las piernas."},
+ {termino:"La sonrisa", definicion:"Tipo de kinesis: expresa alegría, simpatía o felicidad. Hay distintos tipos según combinaciones de los quince músculos faciales implicados."},
+ {termino:"Monorritmia", definicion:"Error de entonación: llevar un mismo ritmo, sin vida; produce un efecto sedante (ej.: rezos, discursos leídos, dictados)."},
+ {termino:"Monotonía", definicion:"Error de entonación: leer en un mismo tono, sin curva melódica. También llamada lectura plana."},
+ {termino:"Paralingüística", definicion:"Conjunto de elementos no verbales de la voz: intensidad, volumen, velocidad, ritmo, entonación, risa y llanto."},
+ {termino:"Plexo solar", definicion:"Zona sobre la que actúa la respiración diafragmática liberando la ansiedad (el “nudo en el estómago”)."},
+ {termino:"Proxemia", definicion:"Uso del espacio que hacen dos o más personas en la comunicación: la distancia existente entre el emisor y el receptor."},
+ {termino:"Respiración diafragmática", definicion:"O abdominal: se basa en el movimiento del diafragma; es la más aconsejable para manejar la voz. Lleva más aire, relaja y libera la ansiedad."},
+ {termino:"Respiración pectoral", definicion:"La más fácil (la hacemos aun dormidos): el aire ingresa de golpe elevando la zona alta; es corta e insuficiente para frases largas."},
+ {termino:"Signos de puntuación", definicion:"Deben reflejarse al hablar mediante pausas, tono y énfasis; con una inflexión, una afirmación puede volverse interrogación."},
+ {termino:"Sonrisa profesional", definicion:"Sonrisa forzada que enmascara los verdaderos sentimientos; sus mayores cultores son políticos, actores y gente de negocios."},
+ {termino:"Suspensión", definicion:"Tonema horizontal de la curva melódica (la voz se mantiene, ni sube ni baja)."},
+ {termino:"Tacto y olfato", definicion:"Tipos de kinesis: la piel y la nariz constituyen canales de comunicación como receptores de mensajes."},
+ {termino:"Timbre", definicion:"Cualidad y “personalidad” de la voz que diferencia a cada persona; lo producen los armónicos accesorios. Puede medirse en hercios."},
+ {termino:"Tonema", definicion:"Cada uno de los altibajos sonoros de la curva melódica. Tres clases: cadencia (descendente), suspensión (horizontal) y anticadencia (ascendente)."},
+ {termino:"Tono", definicion:"Cualidad de la voz: la mayor o menor elevación del sonido según la rapidez de la vibración de las cuerdas vocales. Clasifica las voces en agudas, centrales y graves."},
+ {termino:"Voz", definicion:"Sonido producido por el aire de los pulmones al hacer vibrar las cuerdas vocales; herramienta natural y personal para comunicarse."},
+ {termino:"Voz cálida", definicion:"Forma de emplear la voz que expresa bondad, honestidad, fuerza afectiva, moral y espiritual; tiene un poder especial para convencer, persuadir y motivar."},
+ {termino:"Voz consistente", definicion:"Forma de emplear la voz que depende de su fuerza: ni demasiado fuerte (autoritarismo) ni débil (temor e inseguridad)."},
+ {termino:"Voz fluida", definicion:"Forma de emplear la voz en que las palabras se suceden rítmica y constantemente; la lentitud y la precipitación son negativas."},
+ {termino:"Voz vibrante", definicion:"Cualidad superior de la voz: conjunción equilibrada de claridad, consistencia y fluidez; da autoridad y atrae la atención."},
+];
+
+// ============ UTILIDADES ============
+function barajar(a){
+  for(let i=a.length-1;i>0;i--){
+    const j=Math.floor(Math.random()*(i+1));
+    [a[i],a[j]]=[a[j],a[i]];
+  }
+  return a;
+}
+
+// ============ NAVEGACIÓN POR PESTAÑAS ============
+function initTabs(){
+  document.querySelectorAll('.tab').forEach(btn=>{
+    btn.addEventListener('click',()=>{
+      document.querySelectorAll('.tab').forEach(b=>b.classList.remove('activa'));
+      document.querySelectorAll('.panel').forEach(p=>p.classList.remove('activo'));
+      btn.classList.add('activa');
+      document.getElementById(btn.dataset.panel).classList.add('activo');
+    });
+  });
+}
+initTabs();
+
+// ============ TARJETAS ============
+let mazoActual=[], idxTarjeta=0, temaActivo="Todos";
+const elTarjeta=document.getElementById('tarjeta');
+
+function renderChips(){
+  const temas=["Todos",...new Set(TARJETAS.map(t=>t.tema))];
+  const cont=document.getElementById('chips-temas');
+  cont.innerHTML="";
+  temas.forEach(t=>{
+    const b=document.createElement('button');
+    b.className="chip"+(t===temaActivo?" activa":"");
+    b.textContent=t;
+    b.addEventListener('click',()=>{temaActivo=t;renderChips();setMazo();});
+    cont.appendChild(b);
+  });
+}
+function setMazo(){
+  mazoActual = temaActivo==="Todos" ? [...TARJETAS] : TARJETAS.filter(t=>t.tema===temaActivo);
+  idxTarjeta=0;
+  renderTarjeta();
+}
+function renderTarjeta(){
+  const t=mazoActual[idxTarjeta];
+  elTarjeta.classList.remove('girada');
+  document.getElementById('tema-tarjeta').textContent=t.tema;
+  document.getElementById('tarjeta-frente').textContent=t.frente;
+  document.getElementById('tarjeta-dorso').textContent=t.dorso;
+  document.getElementById('contador-tarjetas').textContent=(idxTarjeta+1)+" / "+mazoActual.length;
+}
+function moverTarjeta(paso){
+  idxTarjeta=(idxTarjeta+paso+mazoActual.length)%mazoActual.length;
+  renderTarjeta();
+}
+elTarjeta.addEventListener('click',()=>elTarjeta.classList.toggle('girada'));
+document.getElementById('btn-anterior').addEventListener('click',()=>moverTarjeta(-1));
+document.getElementById('btn-siguiente').addEventListener('click',()=>moverTarjeta(1));
+document.getElementById('btn-mezclar').addEventListener('click',()=>{barajar(mazoActual);idxTarjeta=0;renderTarjeta();});
+document.addEventListener('keydown',e=>{
+  if(!document.getElementById('panel-tarjetas').classList.contains('activo'))return;
+  if(e.target.tagName==='INPUT')return;
+  if(e.code==='Space'){e.preventDefault();elTarjeta.classList.toggle('girada');}
+  if(e.key==='ArrowLeft')moverTarjeta(-1);
+  if(e.key==='ArrowRight')moverTarjeta(1);
+});
+renderChips();
+setMazo();
+
+// ============ QUIZ ============
+let ordenQuiz=[], idxQuiz=0, aciertos=0, falladas=[];
+const elQuiz=document.getElementById('quiz-contenido');
+
+function iniciarQuiz(){
+  ordenQuiz=barajar([...QUIZ.keys()]);
+  idxQuiz=0; aciertos=0; falladas=[];
+  renderPregunta();
+}
+function renderPregunta(){
+  const q=QUIZ[ordenQuiz[idxQuiz]];
+  const pct=Math.round(idxQuiz/QUIZ.length*100);
+  elQuiz.innerHTML=
+    '<div class="progreso"><div class="progreso-relleno" style="width:'+pct+'%"></div></div>'+
+    '<div class="pregunta"><h2>'+q.pregunta+'</h2><div id="opciones"></div>'+
+    '<div id="feedback"></div>'+
+    '<div class="quiz-pie"><span>Pregunta '+(idxQuiz+1)+' de '+QUIZ.length+
+    '</span><span>Aciertos: '+aciertos+'</span></div></div>';
+  const cont=document.getElementById('opciones');
+  q.opciones.forEach((op,i)=>{
+    const b=document.createElement('button');
+    b.className='opcion'; b.textContent=op;
+    b.addEventListener('click',()=>responder(i));
+    cont.appendChild(b);
+  });
+}
+function responder(i){
+  const q=QUIZ[ordenQuiz[idxQuiz]];
+  const botones=document.querySelectorAll('.opcion');
+  botones.forEach(b=>b.disabled=true);
+  botones[q.correcta].classList.add('correcta');
+  if(i===q.correcta){ aciertos++; }
+  else{ botones[i].classList.add('incorrecta'); falladas.push(q); }
+  const fb=document.getElementById('feedback');
+  fb.innerHTML='<div class="explicacion">'+q.explicacion+'</div>';
+  const btn=document.createElement('button');
+  btn.className='boton boton-primario'; btn.style.marginTop='12px';
+  btn.innerHTML=(idxQuiz+1<QUIZ.length)?'Siguiente <svg class="icono" aria-hidden="true"><use href="#i-der"/></svg>':'Ver resultado';
+  btn.addEventListener('click',()=>{
+    idxQuiz++;
+    if(idxQuiz<QUIZ.length)renderPregunta(); else renderResultado();
+  });
+  fb.appendChild(btn);
+  btn.focus();
+}
+function renderResultado(){
+  const pct=Math.round(aciertos/QUIZ.length*100);
+  let html='<div class="pregunta resultado"><h2>Resultado</h2>'+
+    '<div class="puntaje">'+aciertos+' / '+QUIZ.length+' — '+pct+'%</div>';
+  if(falladas.length){
+    html+='<h2 style="margin:14px 0 4px">Para repasar:</h2>';
+    falladas.forEach(q=>{
+      html+='<div class="fallada"><b>'+q.pregunta+'</b><br>'+
+        '<span class="bien">✔ '+q.opciones[q.correcta]+'</span><br>'+
+        '<small>'+q.explicacion+'</small></div>';
+    });
+  } else {
+    html+='<p>¡Impecable! Todas correctas.</p>';
+  }
+  html+='<button class="boton boton-primario" style="margin-top:14px" '+
+    'onclick="iniciarQuiz()"><svg class="icono" aria-hidden="true"><use href="#i-rotar"/></svg> Reintentar (mezclado)</button></div>';
+  elQuiz.innerHTML=html;
+}
+iniciarQuiz();
+
+// ============ GLOSARIO ============
+function escaparRegex(s){return s.replace(/[.*+?^${}()|[\]\\]/g,'\\$&');}
+function resaltar(texto,filtro){
+  if(!filtro)return texto;
+  return texto.replace(new RegExp('('+escaparRegex(filtro)+')','gi'),'<mark>$1</mark>');
+}
+function renderGlosario(filtro){
+  filtro=(filtro||'').trim();
+  const lista=document.getElementById('lista-glosario');
+  const orden=[...GLOSARIO].sort((a,b)=>a.termino.localeCompare(b.termino,'es'));
+  const visibles=orden.filter(e=>
+    (e.termino+' '+e.definicion).toLowerCase().includes(filtro.toLowerCase()));
+  if(!visibles.length){
+    lista.innerHTML='<p class="sin-resultados">No hay términos que coincidan.</p>';
+    return;
+  }
+  lista.innerHTML=visibles.map(e=>
+    '<div class="entrada-glosario"><b>'+resaltar(e.termino,filtro)+'</b>'+
+    '<p>'+resaltar(e.definicion,filtro)+'</p></div>').join('');
+}
+document.getElementById('busqueda-glosario')
+  .addEventListener('input',e=>renderGlosario(e.target.value));
+renderGlosario('');
+
+// ============ TEMA CLARO/OSCURO ============
+document.getElementById('toggle-tema').addEventListener('click',()=>{
+  const nuevo=document.documentElement.dataset.tema==='oscuro'?'claro':'oscuro';
+  document.documentElement.dataset.tema=nuevo;
+  try{localStorage.setItem('tema-oratoria',nuevo);}catch(e){}
+});
+</script>
+</body>
+</html>

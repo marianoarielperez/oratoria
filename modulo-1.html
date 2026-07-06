@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Módulo 1 — Principios de Oratoria · Material de estudio</title>
+<meta name="description" content="Material de estudio interactivo del Módulo 1 de Oratoria: tarjetas de repaso, quiz de autoevaluación y glosario. Oratoria y técnicas de expresión — Lic. en Periodismo.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='19' font-size='19'>🎤</text></svg>">
+<script>(function(){var t=null;try{t=localStorage.getItem("tema-oratoria")}catch(e){}document.documentElement.dataset.tema=t||(window.matchMedia&&matchMedia("(prefers-color-scheme: dark)").matches?"oscuro":"claro")})();</script>
+<style>
+  :root{
+    --papel:#f5efe4; --superficie:#fdfaf3; --tinta:#272119; --tinta-suave:#716553;
+    --acento:#a84b24; --acento-suave:#f1dccb; --borde:#ded1b8; --regla:#b9a888;
+    --ok:#3f7d4a; --ok-bg:#e9f2e6; --mal:#a93b2c; --mal-bg:#f7e4de; --marca:#efd9a7;
+    --sombra:0 1px 2px rgba(45,33,20,.06),0 6px 18px rgba(45,33,20,.07);
+    --serif:'Palatino Linotype',Palatino,'Book Antiqua',Georgia,serif;
+    --sans:'Segoe UI',system-ui,-apple-system,sans-serif;
+  }
+  html[data-tema="oscuro"]{
+    --papel:#171310; --superficie:#211b15; --tinta:#ece2cf; --tinta-suave:#a4957e;
+    --acento:#d9784a; --acento-suave:#3b2519; --borde:#3b3327; --regla:#57493a;
+    --ok:#7cb787; --ok-bg:#22301f; --mal:#dd8574; --mal-bg:#38211b; --marca:#6b5320;
+    --sombra:0 1px 2px rgba(0,0,0,.4),0 8px 22px rgba(0,0,0,.35);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:var(--papel);color:var(--tinta);font-family:var(--serif);
+    line-height:1.55;min-height:100vh;transition:background .25s ease,color .25s ease}
+  .icono{width:18px;height:18px;flex:none;fill:none;stroke:currentColor;
+    stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+  :focus-visible{outline:2px solid var(--acento);outline-offset:2px}
+
+  /* ---- Masthead (cartel de conferencia) ---- */
+  header{max-width:760px;margin:0 auto;padding:30px 16px 0;text-align:center;position:relative}
+  .regla{border:none;border-top:4px double var(--regla);margin:14px 0 0}
+  .eyebrow{font-family:var(--sans);font-size:.7rem;letter-spacing:.22em;
+    text-transform:uppercase;color:var(--acento);margin-top:16px}
+  header h1{font-family:var(--serif);font-weight:normal;color:var(--tinta);
+    font-size:clamp(1.9rem,5.5vw,2.6rem);line-height:1.15;margin:6px 0 2px}
+  .lema{font-style:italic;color:var(--tinta-suave);font-size:1.02rem}
+  .toggle-tema{position:absolute;top:24px;right:16px;width:40px;height:40px;
+    display:inline-flex;align-items:center;justify-content:center;border-radius:50%;
+    border:1px solid var(--borde);background:var(--superficie);color:var(--tinta-suave);
+    cursor:pointer;transition:border-color .15s ease,color .15s ease}
+  .toggle-tema:hover{border-color:var(--acento);color:var(--acento)}
+  .toggle-tema .icono{width:19px;height:19px}
+  .toggle-tema .i-sol{display:none}
+  html[data-tema="oscuro"] .toggle-tema .i-sol{display:block}
+  html[data-tema="oscuro"] .toggle-tema .i-luna{display:none}
+
+  /* ---- Pestañas ---- */
+  nav{display:flex;justify-content:center;gap:8px;flex-wrap:wrap;
+    max-width:760px;margin:18px auto 0;padding:0 16px}
+  .tab{display:inline-flex;align-items:center;gap:8px;font-family:var(--sans);
+    font-size:.92rem;background:var(--superficie);color:var(--tinta-suave);
+    border:1px solid var(--borde);border-radius:999px;padding:9px 18px;cursor:pointer;
+    transition:border-color .15s ease,color .15s ease,background .15s ease}
+  .tab:hover{border-color:var(--acento);color:var(--acento)}
+  .tab.activa{background:var(--acento);border-color:var(--acento);color:var(--papel)}
+  main{max-width:760px;margin:0 auto;padding:26px 16px 60px}
+  .panel{display:none}
+  .panel.activo{display:block}
+  .boton{display:inline-flex;align-items:center;gap:7px;font-family:var(--sans);
+    font-size:.92rem;background:var(--superficie);border:1px solid var(--borde);
+    border-radius:9px;padding:9px 15px;cursor:pointer;color:var(--tinta);
+    transition:border-color .15s ease,transform .15s ease}
+  .boton:hover{border-color:var(--acento);transform:translateY(-1px)}
+  .boton-primario{background:var(--acento);border-color:var(--acento);color:var(--papel)}
+  .boton-primario:hover{border-color:var(--acento)}
+
+  /* ---- Tarjetas (ficha de imprenta) ---- */
+  #chips-temas{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:20px;justify-content:center}
+  .chip{font-family:var(--sans);font-size:.8rem;background:var(--superficie);
+    border:1px solid var(--borde);border-radius:999px;padding:5px 13px;cursor:pointer;
+    color:var(--tinta-suave);transition:border-color .15s ease,color .15s ease,background .15s ease}
+  .chip:hover{border-color:var(--acento);color:var(--acento)}
+  .chip.activa{background:var(--acento-suave);border-color:var(--acento);color:var(--acento)}
+  .escena{margin-bottom:18px}
+  #tarjeta{position:relative;width:100%;min-height:300px;cursor:pointer}
+  .cara{position:absolute;inset:0;background:var(--superficie);
+    border:1px solid var(--borde);border-radius:14px;box-shadow:var(--sombra);
+    padding:36px 32px;display:flex;flex-direction:column;align-items:center;
+    justify-content:center;text-align:center;gap:12px;transition:opacity .25s ease}
+  .cara::after{content:"";position:absolute;inset:7px;border:1px solid var(--regla);
+    border-radius:9px;pointer-events:none;opacity:.55}
+  #tarjeta.girada #cara-frente{opacity:0}
+  #tarjeta:not(.girada) #cara-dorso{opacity:0}
+  .etiqueta{font-family:var(--sans);font-size:.66rem;letter-spacing:.2em;
+    text-transform:uppercase;color:var(--tinta-suave);display:inline-flex;
+    align-items:center;gap:10px}
+  .etiqueta::before,.etiqueta::after{content:"";width:22px;height:1px;
+    background:var(--regla);display:inline-block}
+  #tema-tarjeta{color:var(--acento)}
+  #tarjeta-frente{font-size:clamp(1.15rem,3vw,1.42rem);line-height:1.4}
+  #tarjeta-dorso{font-size:1.02rem;color:var(--tinta)}
+  .controles-tarjetas{display:flex;justify-content:center;align-items:center;gap:10px;flex-wrap:wrap}
+  #contador-tarjetas{font-style:italic;color:var(--tinta-suave);font-size:.95rem;
+    min-width:70px;text-align:center}
+  .ayuda{font-family:var(--sans);text-align:center;color:var(--tinta-suave);
+    font-size:.78rem;margin-top:16px}
+
+  /* ---- Quiz ---- */
+  .progreso{background:var(--borde);border-radius:999px;height:6px;margin-bottom:20px;overflow:hidden}
+  .progreso-relleno{background:var(--acento);height:100%;width:0;transition:width .3s ease}
+  .pregunta{background:var(--superficie);border:1px solid var(--borde);border-radius:14px;
+    box-shadow:var(--sombra);padding:28px}
+  .pregunta h2{font-family:var(--serif);font-size:1.18rem;font-weight:normal;
+    line-height:1.4;margin-bottom:18px}
+  .opcion{display:block;width:100%;text-align:left;font-family:var(--sans);
+    font-size:.94rem;background:var(--papel);border:1px solid var(--borde);
+    border-radius:9px;padding:12px 15px;margin-bottom:9px;cursor:pointer;
+    color:var(--tinta);transition:border-color .15s ease,transform .15s ease}
+  .opcion:hover:not(:disabled){border-color:var(--acento);transform:translateX(3px)}
+  .opcion:disabled{cursor:default;opacity:.7}
+  .opcion.correcta{background:var(--ok-bg);border-color:var(--ok);color:var(--ok);opacity:1}
+  .opcion.incorrecta{background:var(--mal-bg);border-color:var(--mal);color:var(--mal);opacity:1}
+  .explicacion{font-family:var(--sans);font-size:.89rem;background:var(--acento-suave);
+    border-radius:9px;padding:13px 15px;margin-top:6px}
+  .quiz-pie{display:flex;justify-content:space-between;align-items:center;margin-top:16px}
+  .quiz-pie span{font-family:var(--sans);color:var(--tinta-suave);font-size:.88rem}
+  .resultado{text-align:center;padding:12px 0}
+  .resultado .puntaje{font-family:var(--serif);font-size:2.7rem;color:var(--acento);margin:10px 0}
+  .fallada{background:var(--papel);border:1px solid var(--borde);border-radius:10px;
+    padding:14px;margin:10px 0;text-align:left;font-size:.95rem}
+  .fallada .bien{color:var(--ok)}
+
+  /* ---- Glosario ---- */
+  #busqueda-glosario{width:100%;font-family:var(--sans);font-size:1rem;
+    background:var(--superficie);border:1px solid var(--borde);border-radius:11px;
+    padding:13px 17px;margin-bottom:18px;color:var(--tinta)}
+  #busqueda-glosario:focus{outline:2px solid var(--acento);outline-offset:1px;border-color:var(--acento)}
+  .entrada-glosario{background:var(--superficie);border:1px solid var(--borde);
+    border-radius:11px;padding:14px 17px;margin-bottom:10px;transition:border-color .15s ease}
+  .entrada-glosario:hover{border-color:var(--regla)}
+  .entrada-glosario b{display:block;margin-bottom:3px;font-family:var(--serif);font-size:1.04rem}
+  .entrada-glosario p{font-family:var(--sans);font-size:.9rem;color:var(--tinta-suave)}
+  mark{background:var(--marca);color:inherit;border-radius:3px;padding:0 2px}
+  .sin-resultados{text-align:center;color:var(--tinta-suave);font-family:var(--sans);padding:26px 0}
+
+  @media (max-width:480px){
+    .cara{padding:22px 18px}
+    #tarjeta-frente{font-size:1.08rem}
+    #tarjeta-dorso{font-size:.92rem}
+    .toggle-tema{top:14px;right:12px}
+  }
+  @media (prefers-reduced-motion:reduce){
+    *{transition:none!important;animation:none!important}
+  }
+
+</style>
+</head>
+<body>
+<!-- Íconos: Lucide (lucide.dev), licencia ISC, incrustados para funcionar offline -->
+<svg xmlns="http://www.w3.org/2000/svg" style="display:none">
+  <symbol id="i-mic" viewBox="0 0 24 24"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" x2="12" y1="19" y2="22"/></symbol>
+  <symbol id="i-capas" viewBox="0 0 24 24"><path d="M12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.83Z"/><path d="m22 17.65-9.17 4.16a2 2 0 0 1-1.66 0L2 17.65"/><path d="m22 12.65-9.17 4.16a2 2 0 0 1-1.66 0L2 12.65"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><path d="M21.801 10A10 10 0 1 1 17 3.335"/><path d="m9 11 3 3L22 4"/></symbol>
+  <symbol id="i-lupa" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></symbol>
+  <symbol id="i-mezclar" viewBox="0 0 24 24"><path d="M2 18h1.4c1.3 0 2.5-.6 3.3-1.7l6.1-8.6c.7-1.1 2-1.7 3.3-1.7H22"/><path d="m18 2 4 4-4 4"/><path d="M2 6h1.9c1.5 0 2.9.9 3.6 2.2"/><path d="M22 18h-5.9c-1.3 0-2.6-.7-3.3-1.8l-.5-.8"/><path d="m18 14 4 4-4 4"/></symbol>
+  <symbol id="i-izq" viewBox="0 0 24 24"><path d="m12 19-7-7 7-7"/><path d="M19 12H5"/></symbol>
+  <symbol id="i-der" viewBox="0 0 24 24"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></symbol>
+  <symbol id="i-rotar" viewBox="0 0 24 24"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></symbol>
+  <symbol id="i-luna" viewBox="0 0 24 24"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></symbol>
+  <symbol id="i-sol" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></symbol>
+</svg>
+<header>
+  <button class="toggle-tema" id="toggle-tema" title="Cambiar tema" aria-label="Cambiar entre modo claro y oscuro">
+    <svg class="icono i-luna" aria-hidden="true"><use href="#i-luna"/></svg>
+    <svg class="icono i-sol" aria-hidden="true"><use href="#i-sol"/></svg>
+  </button>
+  <hr class="regla">
+  <p class="eyebrow">Oratoria y técnicas de expresión · Módulo I</p>
+  <h1>Principios de Oratoria</h1>
+  <p class="lema">Material de estudio para el parcial · 2026</p>
+  <hr class="regla">
+</header>
+<nav>
+  <button class="tab activa" data-panel="panel-tarjetas"><svg class="icono" aria-hidden="true"><use href="#i-capas"/></svg><span>Tarjetas</span></button>
+  <button class="tab" data-panel="panel-quiz"><svg class="icono" aria-hidden="true"><use href="#i-check"/></svg><span>Quiz</span></button>
+  <button class="tab" data-panel="panel-glosario"><svg class="icono" aria-hidden="true"><use href="#i-lupa"/></svg><span>Glosario</span></button>
+</nav>
+<main>
+  <section id="panel-tarjetas" class="panel activo">
+    <div id="chips-temas"></div>
+    <div class="escena">
+      <div id="tarjeta">
+        <div class="cara" id="cara-frente"><span class="etiqueta" id="tema-tarjeta"></span>
+          <div id="tarjeta-frente"></div>
+          <span class="etiqueta">tocá para ver la respuesta</span></div>
+        <div class="cara" id="cara-dorso"><span class="etiqueta">respuesta</span>
+          <div id="tarjeta-dorso"></div></div>
+      </div>
+    </div>
+    <div class="controles-tarjetas">
+      <button class="boton" id="btn-anterior"><svg class="icono" aria-hidden="true"><use href="#i-izq"/></svg>Anterior</button>
+      <span id="contador-tarjetas"></span>
+      <button class="boton" id="btn-siguiente">Siguiente<svg class="icono" aria-hidden="true"><use href="#i-der"/></svg></button>
+      <button class="boton" id="btn-mezclar"><svg class="icono" aria-hidden="true"><use href="#i-mezclar"/></svg>Mezclar</button>
+    </div>
+    <p class="ayuda">Teclado: espacio gira la tarjeta · flechas ← → navegan</p>
+  </section>
+  <section id="panel-quiz" class="panel">
+    <div id="quiz-contenido"></div>
+  </section>
+  <section id="panel-glosario" class="panel">
+    <input id="busqueda-glosario" type="search"
+      placeholder="Buscar término o autor… (ej.: retórica, Jacobson)">
+    <div id="lista-glosario"></div>
+  </section>
+</main>
+<script>
+// ============ DATOS DEL MÓDULO ============
+// Para generar el material de otro módulo, reemplazar SOLO estas constantes.
+const MODULO = { numero: 1, titulo: "Principios de Oratoria" };
+const TARJETAS = [
+ // --- Historia y definiciones ---
+ {tema:"Historia y definiciones", frente:"¿Dónde se originó la oratoria y dónde alcanzó su desarrollo fundamental?", dorso:"Empezó a considerarse como arte especializado en la isla de Sicilia; su desarrollo fundamental se centró en Grecia, donde alcanzó su valor como instrumento de prestigio."},
+ {tema:"Historia y definiciones", frente:"¿Quién creó la Escuela de Oratoria de Atenas y con qué concepto?", dorso:"Sócrates (Atenas, 470 a.C. – 399 a.C.), con un concepto más amplio y patriótico: el orador debía ser un hombre instruido y movido por altos ideales éticos."},
+ {tema:"Historia y definiciones", frente:"¿Quién es considerado el padre de la oratoria?", dorso:"Demóstenes (Atenas, 384 a.C. – Grecia, 322 a.C.), político y orador ateniense, autor de las Filípicas."},
+ {tema:"Historia y definiciones", frente:"Definición de oratoria", dorso:"El arte de hablar con elocuencia, o también el arte de hablar en público."},
+ {tema:"Historia y definiciones", frente:"¿Cuál es la finalidad de la oratoria?", dorso:"Apoyar a las personas para que puedan transmitir un mensaje de forma ordenada, con el objetivo de informar, persuadir o conmover a su auditorio."},
+ {tema:"Historia y definiciones", frente:"¿Qué es la retórica?", dorso:"En sentido general, cualquier proceso comunicativo ordenado que tenga como fin la persuasión: la capacidad de defender por medio del discurso público una opinión propia, intentando influir en la forma de pensar y de actuar de los demás, provocando una reflexión inducida en quien nos escucha."},
+ {tema:"Historia y definiciones", frente:"¿Qué relación hay entre retórica y oratoria?", dorso:"La retórica es la teoría; la oratoria es la aplicación de esa teoría en un discurso concreto. No pueden separarse: la retórica nace de la praxis oratoria y la oratoria se enriquece con los aportes de la retórica."},
+ {tema:"Historia y definiciones", frente:"¿Qué es la dialéctica?", dorso:"Palabra polisémica; se la toma como método de razonamiento. En el mundo griego era el arte de discutir y se oponía a la retórica (el arte de hablar bien ante un auditorio). La filosofía posterior la usó para las enseñanzas dirigidas al aprendizaje de la discusión, en algunos casos se la identificó con la lógica, y posteriormente tomó diferentes sentidos según los autores que la adoptaron (Marx, Hegel, etc.)."},
+ {tema:"Historia y definiciones", frente:"¿Qué es la elocuencia y de qué término deriva?", dorso:"Es el alma que alienta y da vida al cuerpo de la oratoria. Deriva del verbo latino “eloquor”: hablar clara y distintamente, manifestar nuestros pensamientos por medio del lenguaje."},
+ {tema:"Historia y definiciones", frente:"¿Qué relación plantea el módulo entre lenguaje y evolución?", dorso:"Son términos correlativos: el lenguaje es producto de la evolución y la evolución es producto del lenguaje. El cultivo de un lenguaje amplio y valioso se considera un camino eficaz para el desarrollo de la inteligencia y de la personalidad; conocer y manejar con habilidad las reglas gramaticales garantiza un mejor dominio del pensamiento y, por consiguiente, del lenguaje."},
+ {tema:"Historia y definiciones", frente:"Además del arte del bien decir, ¿qué más es la oratoria?", dorso:"El arte de la demostración: el orador domina las voluntades y abre luz al criterio valiéndose de la ciencia, la poesía, la retórica, la dialéctica y del inmenso poder de la elocuencia."},
+ // --- Tipos de oratoria ---
+ {tema:"Tipos de oratoria", frente:"Oratoria social", dorso:"La que se desarrolla en las múltiples ceremonias en las que participa el ser humano: en el hogar, en el seno de la comunidad, o a nivel institucional, académico o laboral."},
+ {tema:"Tipos de oratoria", frente:"Oratoria pedagógica", dorso:"El arte de transmitir conocimientos y cultura general a través de la palabra hablada. También llamada didáctica o académica. Su objetivo: enseñar, informar, transmitir conocimiento."},
+ {tema:"Tipos de oratoria", frente:"Oratoria forense", dorso:"También conocida como oratoria judicial; se usa en exclusiva en el ámbito de la jurisprudencia para exponer con claridad y precisión los informes orales de jueces, fiscales y abogados."},
+ {tema:"Tipos de oratoria", frente:"Oratoria política", dorso:"Exponer o debatir las cuestiones relacionadas con la actividad pública, partiendo de los principios e ideas políticas del orador. Se usa en épocas electorales para persuadir y convencer al público."},
+ {tema:"Tipos de oratoria", frente:"Oratoria artística", dorso:"Conlleva crear arte con la voz; la usan cantantes y artistas de cine, teatro y televisión."},
+ {tema:"Tipos de oratoria", frente:"Oratoria empresarial", dorso:"La usa la gente dedicada a los negocios (empresarios, vendedores). Su esencia son las relaciones humanas y la persuasión, con miras a lograr sus fines y objetivos."},
+ // --- Géneros discursivos ---
+ {tema:"Géneros discursivos", frente:"¿Qué son los géneros discursivos?", dorso:"Formas específicas de organizar el lenguaje para comunicar ideas, emociones o informaciones. Las sociedades desarrollaron gran variedad de géneros para satisfacer diferentes necesidades comunicativas."},
+ {tema:"Géneros discursivos", frente:"¿Por qué son importantes los géneros discursivos?", dorso:"Permiten adaptar el discurso a diferentes situaciones y audiencias (cada género tiene reglas y expectativas propias) y además pueden reflejar los valores y normas de una determinada cultura."},
+ {tema:"Géneros discursivos", frente:"Los 5 tipos comunes de géneros discursivos", dorso:"Literarios (cuento, novela, poesía, ensayo literario) · Académicos (artículo científico, tesis, informe, reseña) · Periodísticos (noticia, crónica, entrevista, editorial) · Publicitarios (anuncio, eslogan, spot, folleto) · Persuasivos (discurso político, debate, ensayo argumentativo, carta de opinión)."},
+ {tema:"Géneros discursivos", frente:"Los 4 elementos para analizar un género discursivo", dorso:"1) Contexto comunicativo · 2) Estructura y organización · 3) Características lingüísticas · 4) Propósito y audiencia."},
+ {tema:"Géneros discursivos", frente:"¿Qué es el contexto comunicativo?", dorso:"El entorno en el cual se produce la comunicación: lugar, tiempo, características de los participantes, propósito y recursos disponibles. Influye en cómo se construye y se interpreta el mensaje."},
+ {tema:"Géneros discursivos", frente:"Las 4 herramientas para el análisis de géneros discursivos", dorso:"Análisis textual (elementos lingüísticos y estructurales) · Análisis contextual (contexto, propósito y audiencia) · Análisis comparativo (comparar ejemplos de un género) · Análisis sociocultural (cómo los géneros reflejan normas y valores de una sociedad)."},
+ {tema:"Géneros discursivos", frente:"Las 3 estrategias de adaptación de un discurso", dorso:"1) Selección del género adecuado según propósito y audiencia · 2) Ajuste del registro y estilo a las expectativas del receptor · 3) Consideración del contexto (lugar, momento, situación, normas y protocolos)."},
+ {tema:"Géneros discursivos", frente:"Los 3 aspectos para producir géneros discursivos efectivos", dorso:"1) Organización y estructura (introducción que capte la atención, desarrollo coherente, conclusión efectiva) · 2) Claridad y concisión (evitar jerga innecesaria) · 3) Uso adecuado de recursos persuasivos (ejemplos, datos estadísticos, testimonios)."},
+ // --- Proceso de comunicación ---
+ {tema:"Proceso de comunicación", frente:"¿Cómo caracteriza el módulo a la comunicación?", dorso:"Como un proceso que evoluciona: dinámico, en movimiento y cambio. Las formas cambian sin alterar los valores que subyacen (ej.: el paso del “usted” al “vos” entre padres e hijos sin perder el respeto)."},
+ {tema:"Proceso de comunicación", frente:"¿Qué es el feed-back y qué pasa si no existe?", dorso:"La retroalimentación (mediata o inmediata) que la intención del mensaje busca provocar en el otro. Sin feed-back no hay comunicación. El silencio también opera como una forma posible de respuesta."},
+ {tema:"Proceso de comunicación", frente:"¿Cuándo queda completo el proceso comunicativo?", dorso:"Cuando el receptor entiende qué quiso decir el emisor, aunque su comprensión esté atravesada y resignificada por sus experiencias, historia, cultura, trabajo o condición social. El receptor reinterpreta y responde: así continúa el “circuito comunicativo”."},
+ {tema:"Proceso de comunicación", frente:"¿Qué son los actos de habla?", dorso:"El módulo propone focalizarse en ellos para aproximarse al concepto de comunicación: se trata de analizar lo que cada uno dice o enuncia en situaciones comunicativas o de interacción social, y con qué propósitos lo dice. La intencionalidad tiene su límite en el respeto y la consideración del “otro”."},
+ {tema:"Proceso de comunicación", frente:"¿Quién formuló el esquema del proceso de comunicación y en qué año?", dorso:"Roman Jacobson, en 1958. Lo explicó y graficó en un esquema que relaciona los distintos componentes del circuito."},
+ {tema:"Proceso de comunicación", frente:"Las 3 variables básicas para estudiar la comunicación", dorso:"La persona que habla, el discurso que pronuncia y el destinatario del discurso (persona o grupo)."},
+ {tema:"Proceso de comunicación", frente:"Los 6 componentes del proceso de comunicación (Jacobson)", dorso:"Transmisor/emisor · Mensaje · Canal · Receptor/destinatario · Contexto · Código."},
+ {tema:"Proceso de comunicación", frente:"Las 6 funciones del lenguaje (Jacobson)", dorso:"Informativa o representativa · Expresiva o emotiva · Apelativa o conativa · Literaria, poética o estética · Fática o de contacto · Metalingüística o aclaradora."},
+ {tema:"Proceso de comunicación", frente:"¿Las funciones del lenguaje aparecen en estado puro?", dorso:"Difícilmente: en la vida cotidiana aparecen involucrando alguna de las otras funciones, pero generalmente se observa el predominio de una función sobre otra."},
+ // --- Competencias y no verbal ---
+ {tema:"Competencias y no verbal", frente:"¿Quién criticó y completó el esquema de Jacobson?", dorso:"Catherine Kerbrat-Orecchioni (1985), en “La enunciación. De la subjetividad en el lenguaje”. Lo criticó por parcial, porque no hace intervenir elementos personales y contextuales, y agregó los factores que condicionan la comunicación: las competencias comunicativas."},
+ {tema:"Competencias y no verbal", frente:"¿Qué son las competencias comunicativas?", dorso:"Las formas mediante las cuales las personas pueden establecer interacciones con otras personas y con su entorno, partiendo de un previo reconocimiento de su ser. Se adquieren en los ámbitos familiares, escolares, sociales e institucionales."},
+ {tema:"Competencias y no verbal", frente:"Los 3 componentes de la competencia comunicativa", dorso:"Conocimientos, habilidades y actitudes. Las competencias pueden mejorarse entrando en un proceso autocrítico de mejoramiento."},
+ {tema:"Competencias y no verbal", frente:"¿Qué es un buen orador (competencias de hablar y escuchar)?", dorso:"No es solo el que “habla bien”, sino el que al mismo tiempo percibe/escucha lo que la audiencia recibe de su exposición y actúa en consecuencia: agrega humor si percibe cansancio, interroga sin exigir, cambia el tono de voz, alude a temas del momento para recuperar la motivación."},
+ {tema:"Competencias y no verbal", frente:"Los 3 cuidados del expositor/orador", dorso:"1) Cuidar los mensajes corporales que transmite · 2) Tener presentes los mensajes enviados por la audiencia (difícil con mediación tecnológica, posible con feed-back en tiempo real) · 3) Elegir las formas de comunicar acordes con los objetivos y contenidos."},
+ {tema:"Competencias y no verbal", frente:"La regla 55 / 38 / 7 (Godefroy y Robert, 1995)", dorso:"Proporción de atracción de lo que se dice y cómo se dice: 55% gestos, labios, miradas, movimientos de las manos y el cuerpo · 38% voz y sus inflexiones · 7% palabra."},
+ // --- Storytelling ---
+ {tema:"Storytelling", frente:"¿Qué es el storytelling?", dorso:"Literalmente, el acto de contar historias: equivale a decir narración (la acción de narrar) o relación (la acción de relatar). Ojo: no confundir con el “relato”, que en el módulo es un término técnico distinto (una de las 3 dimensiones narrativas). Por las complejidades de una correcta narración y los efectos emotivos que se le atribuyen, se lo considera también un arte. Aristóteles llamaba catarsis al efecto que una historia tenía en el oyente/espectador."},
+ {tema:"Storytelling", frente:"Primera premisa del storytelling: el principio de narratividad", dorso:"Planteado hace unos 40 años por Algirdas Julien Greimas y Joseph Courtés: todo discurso tiene algún componente narrativo. La mayoría de los enunciados usa la estructura sujeto-verbo-predicado (alguien hace algo en un contexto), por lo que estaríamos constantemente contando y escuchando historias."},
+ {tema:"Storytelling", frente:"Segunda premisa del storytelling: el narrativismo", dorso:"Estudiado en comunicación social por Walter Fisher: el discurso narrativo tiene gran capacidad configuradora de sentido porque su lógica equivale a nuestra experiencia cotidiana del mundo. Esto explicaría el carácter terapéutico (p.e. el psicoanálisis) y las capacidades pedagógicas y argumentativas de la narración."},
+ {tema:"Storytelling", frente:"Críticas a la supremacía del storytelling", dorso:"1) La narración es solo una forma textual posible: también describimos, definimos, argumentamos y conversamos · 2) Es naturalmente unidireccional, no siempre la mejor opción estratégica · 3) Narrar y comprender requieren entrenamiento · 4) Su propósito es exponer hechos, no un efecto pragmático: atribuirle efectos cognitivos parece voluntarista."},
+ {tema:"Storytelling", frente:"Las 3 dimensiones del discurso narrativo", dorso:"Historia o fábula [story]: los hechos concatenados causal y temporalmente, tal como ocurrieron · Trama [plot]: el orden en que se decide contar los hechos · Relato: el texto narrativo en sí, con sus recursos estilísticos (p.e. la polifonía). (Matus, 2019)"},
+ {tema:"Storytelling", frente:"¿Dónde está el nivel más estratégico de la narración?", dorso:"En la formulación de la historia: para crear un relato se necesita una trama, y para la trama, una fábula. Desde la historia se avanza hacia las instancias más operativas."},
+ {tema:"Storytelling", frente:"¿Cuál es el verdadero origen del storytelling y qué aspectos clave tienen las narraciones orales?", dorso:"Las narraciones orales son el verdadero origen del storytelling. En ellas se identifican aspectos textuales (p.e. la reiteración), performáticos (p.e. el histrionismo del orador) y contextuales (p.e. la situación en la cual se cuenta la historia), que cumplen funciones estilísticas clave para el relato."},
+];
+const QUIZ = [
+ {pregunta:"¿Dónde empezó a considerarse la oratoria como arte especializado?", opciones:["En Atenas","En la isla de Sicilia","En Roma","En Esparta"], correcta:1, explicacion:"Empezó a considerarse en la isla de Sicilia, aunque su desarrollo fundamental se centró en Grecia."},
+ {pregunta:"¿Quién creó la famosa Escuela de Oratoria en Atenas?", opciones:["Demóstenes","Aristóteles","Sócrates","Platón"], correcta:2, explicacion:"Sócrates (470 a.C. – 399 a.C.) la creó con un concepto amplio y patriótico: el orador debía ser instruido y movido por altos ideales éticos."},
+ {pregunta:"¿Quién es considerado el padre de la oratoria?", opciones:["Sócrates","Demóstenes","Cicerón","Jacobson"], correcta:1, explicacion:"Demóstenes, político y orador ateniense, autor de las Filípicas."},
+ {pregunta:"La finalidad de la oratoria es transmitir un mensaje ordenado con el objetivo de…", opciones:["informar, persuadir o conmover","entretener, vender o negociar","enseñar, evaluar o corregir","narrar, describir o definir"], correcta:0, explicacion:"El módulo define la finalidad como informar, persuadir o conmover al auditorio."},
+ {pregunta:"“Es la teoría; la oratoria es su aplicación en un discurso concreto.” ¿De qué hablamos?", opciones:["La dialéctica","La elocuencia","La retórica","La narratividad"], correcta:2, explicacion:"La retórica es la teoría y la oratoria la aplicación: la retórica nace de la praxis oratoria y la oratoria se enriquece con la retórica."},
+ {pregunta:"En el mundo griego, la dialéctica era…", opciones:["el arte de hablar en público","el arte de discutir, opuesta a la retórica","el arte de crear arte con la voz","la teoría de la persuasión"], correcta:1, explicacion:"La dialéctica era el arte de discutir y se oponía a la retórica (el arte de hablar bien ante un auditorio). Luego, en algunos casos, se la identificó con la lógica."},
+ {pregunta:"¿De qué verbo latino deriva “elocuencia”?", opciones:["elocutio","eloquor","loquax","oratio"], correcta:1, explicacion:"Deriva de “eloquor”: hablar clara y distintamente, manifestar los pensamientos por medio del lenguaje."},
+ {pregunta:"La oratoria usada en exclusiva por jueces, fiscales y abogados es la…", opciones:["política","social","forense","empresarial"], correcta:2, explicacion:"La oratoria forense o judicial se usa en el ámbito de la jurisprudencia para exponer informes orales con claridad y precisión."},
+ {pregunta:"¿Cómo se llama también a la oratoria pedagógica?", opciones:["didáctica o académica","social o ceremonial","artística o creativa","institucional o laboral"], correcta:0, explicacion:"La oratoria pedagógica también se llama didáctica o académica; su objetivo es enseñar, informar, transmitir conocimiento."},
+ {pregunta:"La esencia de la oratoria empresarial son…", opciones:["los informes técnicos","las relaciones humanas y la persuasión","los principios políticos del orador","las ceremonias institucionales"], correcta:1, explicacion:"La usan empresarios y vendedores; su esencia son las relaciones humanas y la persuasión para lograr sus fines."},
+ {pregunta:"¿Qué son los géneros discursivos?", opciones:["Estilos personales de cada orador","Formas específicas de organizar el lenguaje para comunicar","Tipos de textos exclusivamente escritos","Recursos persuasivos del discurso político"], correcta:1, explicacion:"Son formas específicas de organizar el lenguaje para comunicar ideas, emociones o informaciones, desarrolladas para distintas necesidades comunicativas."},
+ {pregunta:"La noticia, la crónica, la entrevista y el editorial son géneros…", opciones:["académicos","publicitarios","persuasivos","periodísticos"], correcta:3, explicacion:"Son los ejemplos que da el módulo de géneros periodísticos."},
+ {pregunta:"¿Cuál NO es uno de los elementos de análisis de los géneros discursivos que describe el módulo?", opciones:["Contexto comunicativo","Estructura y organización","Análisis comparativo","Propósito y audiencia"], correcta:2, explicacion:"El análisis comparativo es una de las 4 herramientas de análisis; los elementos son contexto comunicativo, estructura y organización, características lingüísticas, y propósito y audiencia."},
+ {pregunta:"La herramienta que compara ejemplos de un género para hallar similitudes y diferencias es el análisis…", opciones:["textual","contextual","comparativo","sociocultural"], correcta:2, explicacion:"El análisis comparativo consiste en comparar diferentes ejemplos de un género en estructura, contenido y estilo."},
+ {pregunta:"Según el módulo, sin feed-back…", opciones:["la comunicación es más lenta","no hay comunicación","la comunicación es unidireccional pero válida","solo hay comunicación escrita"], correcta:1, explicacion:"Sin feed-back (retroalimentación) no hay comunicación. Incluso el silencio opera como una forma posible de respuesta."},
+ {pregunta:"¿Quién formuló en 1958 el esquema del proceso de comunicación?", opciones:["Catherine Kerbrat-Orecchioni","Walter Fisher","Roman Jacobson","Algirdas Julien Greimas"], correcta:2, explicacion:"Roman Jacobson (1958) explicó y graficó el esquema que relaciona los componentes del circuito comunicativo."},
+ {pregunta:"¿Cuál NO es un componente del circuito de la comunicación según Jacobson?", opciones:["Canal","Código","Competencia","Contexto"], correcta:2, explicacion:"Los 6 componentes son: emisor, mensaje, canal, receptor, contexto y código. Las competencias las agregó después Kerbrat-Orecchioni."},
+ {pregunta:"La función del lenguaje centrada en mantener el contacto es la…", opciones:["fática","apelativa","expresiva","metalingüística"], correcta:0, explicacion:"La función fática o de contacto. La apelativa/conativa busca influir en el receptor; la expresiva/emotiva manifiesta emociones."},
+ {pregunta:"La función del lenguaje que aclara el propio código es la…", opciones:["informativa","metalingüística","poética","representativa"], correcta:1, explicacion:"La función metalingüística o aclaradora usa el lenguaje para hablar del propio lenguaje/código."},
+ {pregunta:"¿Quién criticó el esquema de Jacobson por parcial y agregó las competencias comunicativas?", opciones:["Walter Fisher","Catherine Kerbrat-Orecchioni","Joseph Courtés","Godefroy y Robert"], correcta:1, explicacion:"Kerbrat-Orecchioni (1985), en “La enunciación. De la subjetividad en el lenguaje”, lo criticó por no incluir elementos personales y contextuales."},
+ {pregunta:"Los 3 componentes de la competencia comunicativa son…", opciones:["emisor, mensaje y receptor","conocimientos, habilidades y actitudes","hablar, escuchar y escribir","historia, trama y relato"], correcta:1, explicacion:"Conocimientos, habilidades y actitudes; se mejoran con un proceso autocrítico de mejoramiento."},
+ {pregunta:"Según Godefroy y Robert (1995), ¿qué porcentaje de atracción corresponde a la voz y sus inflexiones?", opciones:["55%","38%","7%","93%"], correcta:1, explicacion:"55% gestos, miradas y movimientos del cuerpo; 38% voz y sus inflexiones; 7% palabra."},
+ {pregunta:"¿Quiénes plantearon el principio de narratividad (todo discurso tiene componente narrativo)?", opciones:["Greimas y Courtés","Fisher y Matus","Jacobson y Kerbrat-Orecchioni","Godefroy y Robert"], correcta:0, explicacion:"Algirdas Julien Greimas y Joseph Courtés lo plantearon hace unos 40 años: la estructura sujeto-verbo-predicado da cuenta de acciones de alguien en un contexto."},
+ {pregunta:"¿Quién estudió el narrativismo en el ámbito de la comunicación social?", opciones:["Aristóteles","Walter Fisher","Sócrates","Joseph Courtés"], correcta:1, explicacion:"Walter Fisher: el discurso narrativo configura sentido porque su lógica equivale a nuestra experiencia cotidiana del mundo."},
+ {pregunta:"“El orden en que se decide contar los hechos de la historia” define a…", opciones:["la fábula","el relato","la trama","la catarsis"], correcta:2, explicacion:"La trama [plot]. La historia/fábula son los hechos tal como ocurrieron; el relato es el texto narrativo en sí con sus recursos estilísticos."},
+ {pregunta:"Aristóteles llamaba así al efecto que una historia tenía en el oyente/espectador:", opciones:["mímesis","catarsis","anagnórisis","peripecia"], correcta:1, explicacion:"Catarsis: por los efectos emotivos que se le atribuyen, el storytelling es considerado también un arte."},
+ {pregunta:"Según el módulo, ¿cuál es el verdadero origen del storytelling?", opciones:["El cine contemporáneo","Las narraciones orales","El periodismo audiovisual","La propaganda electoral"], correcta:1, explicacion:"El módulo señala a las narraciones orales como el verdadero origen del storytelling; en ellas se identifican aspectos textuales (reiteración), performáticos (histrionismo del orador) y contextuales (la situación en que se cuenta la historia)."},
+ {pregunta:"¿Qué se analiza al estudiar los actos de habla?", opciones:["La gramática de las oraciones","Lo que cada uno dice en situaciones comunicativas y con qué propósitos lo dice","El canal por el que viaja el mensaje","Las figuras retóricas del discurso"], correcta:1, explicacion:"Los actos de habla analizan lo que cada uno dice o enuncia en situaciones comunicativas o de interacción social y con qué propósitos lo dice."},
+];
+const GLOSARIO = [
+ {termino:"Oratoria", definicion:"Arte de hablar con elocuencia o de hablar en público. Su finalidad: transmitir un mensaje ordenado para informar, persuadir o conmover al auditorio."},
+ {termino:"Retórica", definicion:"Proceso comunicativo ordenado cuyo fin es la persuasión. Es la teoría; la oratoria es su aplicación en un discurso concreto."},
+ {termino:"Dialéctica", definicion:"Palabra polisémica tomada como método de razonamiento. En Grecia, el arte de discutir (opuesta a la retórica); en algunos casos se la identificó con la lógica."},
+ {termino:"Elocuencia", definicion:"El alma que da vida al cuerpo de la oratoria. Del latín “eloquor”: hablar clara y distintamente, manifestar los pensamientos por el lenguaje."},
+ {termino:"Sócrates", definicion:"(Atenas, 470–399 a.C.) Creó en Atenas la Escuela de Oratoria, con un concepto amplio y patriótico: orador instruido y movido por altos ideales éticos."},
+ {termino:"Demóstenes", definicion:"(384–322 a.C.) Político y orador ateniense, autor de las Filípicas. Considerado el padre de la oratoria."},
+ {termino:"Filípicas", definicion:"Obra de Demóstenes, exponente del concepto socrático de orador."},
+ {termino:"Oratoria social", definicion:"La de las múltiples ceremonias en que participa el ser humano: hogar, comunidad, nivel institucional, académico o laboral."},
+ {termino:"Oratoria pedagógica", definicion:"Arte de transmitir conocimientos y cultura por la palabra hablada; también llamada didáctica o académica. Objetivo: enseñar, informar."},
+ {termino:"Oratoria forense", definicion:"O judicial; exclusiva de la jurisprudencia: informes orales de jueces, fiscales y abogados con claridad y precisión."},
+ {termino:"Oratoria política", definicion:"Exponer o debatir cuestiones de la actividad pública desde los principios e ideas políticas del orador. Típica de épocas electorales."},
+ {termino:"Oratoria artística", definicion:"Crear arte con la voz: cantantes y artistas de cine, teatro y televisión."},
+ {termino:"Oratoria empresarial", definicion:"La de empresarios y vendedores. Su esencia: relaciones humanas y persuasión para lograr fines y objetivos."},
+ {termino:"Género discursivo", definicion:"Forma específica de organizar el lenguaje para comunicar ideas, emociones o informaciones, según necesidades comunicativas de cada sociedad."},
+ {termino:"Géneros literarios", definicion:"Cuento, novela, poesía y ensayo literario."},
+ {termino:"Géneros académicos", definicion:"Artículo científico, tesis, informe de investigación y reseña académica."},
+ {termino:"Géneros periodísticos", definicion:"Noticia, crónica, entrevista y editorial."},
+ {termino:"Géneros publicitarios", definicion:"Anuncio, eslogan, spot publicitario y folleto promocional."},
+ {termino:"Géneros persuasivos", definicion:"Discurso político, debate, ensayo argumentativo y carta de opinión."},
+ {termino:"Contexto comunicativo", definicion:"Entorno donde se produce la comunicación: lugar, tiempo, participantes, propósito y recursos. Influye en cómo se construye e interpreta el mensaje."},
+ {termino:"Análisis textual", definicion:"Estudio de los elementos lingüísticos y estructurales del texto para identificar las características del género discursivo."},
+ {termino:"Análisis contextual", definicion:"Estudio del contexto comunicativo del género: propósito y audiencia."},
+ {termino:"Análisis comparativo", definicion:"Comparar ejemplos de un género para identificar similitudes y diferencias de estructura, contenido y estilo."},
+ {termino:"Análisis sociocultural", definicion:"Estudio de cómo los géneros discursivos reflejan y perpetúan normas y valores de una sociedad o cultura."},
+ {termino:"Adaptación del discurso", definicion:"Estrategias: selección del género adecuado, ajuste del registro y estilo, y consideración del contexto: lugar, momento y situación (p.e. normas y protocolos en una ceremonia oficial)."},
+ {termino:"Producción de géneros discursivos", definicion:"Crear o modificar discursos con: organización y estructura claras, claridad y concisión, y recursos persuasivos (ejemplos, estadísticas, testimonios)."},
+ {termino:"Feed-back (retroalimentación)", definicion:"Respuesta (mediata o inmediata) que busca provocar todo mensaje. Sin feed-back no hay comunicación; el silencio también es respuesta."},
+ {termino:"Circuito comunicativo", definicion:"Proceso continuo: el receptor entiende, reinterpreta según sus experiencias y responde, y así la comunicación sigue."},
+ {termino:"Emisor / transmisor", definicion:"Componente del circuito: quien emite el mensaje con una intencionalidad."},
+ {termino:"Mensaje", definicion:"Componente del circuito: lo que se dice. Importa qué se dice, a quién y cómo (entonaciones, gestos, emoticones)."},
+ {termino:"Canal", definicion:"Componente del circuito: medio por el que viaja el mensaje."},
+ {termino:"Receptor / destinatario", definicion:"Componente del circuito: quien recibe, reinterpreta y responde (persona o grupo)."},
+ {termino:"Código", definicion:"Componente del circuito: el sistema de signos compartido en que se formula el mensaje (el módulo lo enumera sin definirlo)."},
+ {termino:"Contexto (componente)", definicion:"Componente del circuito: situación que rodea y condiciona la comunicación."},
+ {termino:"Jacobson, Roman", definicion:"(1958) Formuló y graficó el esquema del proceso de comunicación: 6 componentes y funciones del lenguaje asociadas al énfasis del emisor."},
+ {termino:"Funciones del lenguaje", definicion:"Informativa/representativa · expresiva/emotiva · apelativa/conativa · literaria/poética/estética · fática/de contacto · metalingüística/aclaradora. Rara vez aparecen puras: predomina una."},
+ {termino:"Kerbrat-Orecchioni, Catherine", definicion:"(1985) En “La enunciación. De la subjetividad en el lenguaje” critica el esquema de Jacobson por parcial y agrega las competencias comunicativas."},
+ {termino:"Competencias comunicativas", definicion:"Formas de establecer interacciones con otros y con el entorno, partiendo del reconocimiento del propio ser. Componentes: conocimientos, habilidades y actitudes."},
+ {termino:"Buen orador", definicion:"No solo “habla bien”: percibe/escucha lo que la audiencia recibe y actúa en consecuencia. Cuida sus mensajes corporales, atiende a la audiencia y elige formas acordes a objetivos."},
+ {termino:"Comunicación no verbal", definicion:"Según Godefroy y Robert (1995): 55% gestos, labios, miradas y movimientos del cuerpo; 38% voz e inflexiones; 7% palabra."},
+ {termino:"Storytelling", definicion:"Acto de contar historias: equivale a narración o relación (no confundir con el “relato”, que es una dimensión narrativa); considerado un arte por su complejidad y efectos emotivos. Competencia clave en gestión organizacional, comunicacional y política."},
+ {termino:"Catarsis", definicion:"Nombre que daba Aristóteles al efecto que una historia tenía en el oyente/espectador."},
+ {termino:"Principio de narratividad", definicion:"Greimas y Courtés: todo discurso tiene componente narrativo; la estructura sujeto-verbo-predicado cuenta acciones de alguien en un contexto."},
+ {termino:"Narrativismo", definicion:"Walter Fisher: el discurso narrativo configura sentido porque su lógica equivale a nuestra experiencia del mundo; base de sus usos terapéuticos, pedagógicos y argumentativos."},
+ {termino:"Historia / fábula [story]", definicion:"Dimensión narrativa: los hechos concatenados causal y temporalmente, tal como ocurrieron."},
+ {termino:"Trama [plot]", definicion:"Dimensión narrativa: el orden en que se decide contar los hechos de la historia."},
+ {termino:"Relato", definicion:"Dimensión narrativa: el texto narrativo en sí, con sus recursos estilísticos (p.e. la polifonía: voces del narrador y de los personajes)."},
+ {termino:"Actos de habla", definicion:"Análisis de lo que cada uno dice o enuncia en situaciones comunicativas o de interacción social, y con qué propósitos lo dice. La intencionalidad tiene su límite en el respeto y consideración del “otro”."},
+ {termino:"Narraciones orales", definicion:"El verdadero origen del storytelling. Presentan aspectos textuales (p.e. la reiteración), performáticos (p.e. el histrionismo del orador) y contextuales (p.e. la situación en la cual se cuenta la historia)."},
+];
+
+// ============ UTILIDADES ============
+function barajar(a){
+  for(let i=a.length-1;i>0;i--){
+    const j=Math.floor(Math.random()*(i+1));
+    [a[i],a[j]]=[a[j],a[i]];
+  }
+  return a;
+}
+
+// ============ NAVEGACIÓN POR PESTAÑAS ============
+function initTabs(){
+  document.querySelectorAll('.tab').forEach(btn=>{
+    btn.addEventListener('click',()=>{
+      document.querySelectorAll('.tab').forEach(b=>b.classList.remove('activa'));
+      document.querySelectorAll('.panel').forEach(p=>p.classList.remove('activo'));
+      btn.classList.add('activa');
+      document.getElementById(btn.dataset.panel).classList.add('activo');
+    });
+  });
+}
+initTabs();
+
+// ============ TARJETAS ============
+let mazoActual=[], idxTarjeta=0, temaActivo="Todos";
+const elTarjeta=document.getElementById('tarjeta');
+
+function renderChips(){
+  const temas=["Todos",...new Set(TARJETAS.map(t=>t.tema))];
+  const cont=document.getElementById('chips-temas');
+  cont.innerHTML="";
+  temas.forEach(t=>{
+    const b=document.createElement('button');
+    b.className="chip"+(t===temaActivo?" activa":"");
+    b.textContent=t;
+    b.addEventListener('click',()=>{temaActivo=t;renderChips();setMazo();});
+    cont.appendChild(b);
+  });
+}
+function setMazo(){
+  mazoActual = temaActivo==="Todos" ? [...TARJETAS] : TARJETAS.filter(t=>t.tema===temaActivo);
+  idxTarjeta=0;
+  renderTarjeta();
+}
+function renderTarjeta(){
+  const t=mazoActual[idxTarjeta];
+  elTarjeta.classList.remove('girada');
+  document.getElementById('tema-tarjeta').textContent=t.tema;
+  document.getElementById('tarjeta-frente').textContent=t.frente;
+  document.getElementById('tarjeta-dorso').textContent=t.dorso;
+  document.getElementById('contador-tarjetas').textContent=(idxTarjeta+1)+" / "+mazoActual.length;
+}
+function moverTarjeta(paso){
+  idxTarjeta=(idxTarjeta+paso+mazoActual.length)%mazoActual.length;
+  renderTarjeta();
+}
+elTarjeta.addEventListener('click',()=>elTarjeta.classList.toggle('girada'));
+document.getElementById('btn-anterior').addEventListener('click',()=>moverTarjeta(-1));
+document.getElementById('btn-siguiente').addEventListener('click',()=>moverTarjeta(1));
+document.getElementById('btn-mezclar').addEventListener('click',()=>{barajar(mazoActual);idxTarjeta=0;renderTarjeta();});
+document.addEventListener('keydown',e=>{
+  if(!document.getElementById('panel-tarjetas').classList.contains('activo'))return;
+  if(e.target.tagName==='INPUT')return;
+  if(e.code==='Space'){e.preventDefault();elTarjeta.classList.toggle('girada');}
+  if(e.key==='ArrowLeft')moverTarjeta(-1);
+  if(e.key==='ArrowRight')moverTarjeta(1);
+});
+renderChips();
+setMazo();
+
+// ============ QUIZ ============
+let ordenQuiz=[], idxQuiz=0, aciertos=0, falladas=[];
+const elQuiz=document.getElementById('quiz-contenido');
+
+function iniciarQuiz(){
+  ordenQuiz=barajar([...QUIZ.keys()]);
+  idxQuiz=0; aciertos=0; falladas=[];
+  renderPregunta();
+}
+function renderPregunta(){
+  const q=QUIZ[ordenQuiz[idxQuiz]];
+  const pct=Math.round(idxQuiz/QUIZ.length*100);
+  elQuiz.innerHTML=
+    '<div class="progreso"><div class="progreso-relleno" style="width:'+pct+'%"></div></div>'+
+    '<div class="pregunta"><h2>'+q.pregunta+'</h2><div id="opciones"></div>'+
+    '<div id="feedback"></div>'+
+    '<div class="quiz-pie"><span>Pregunta '+(idxQuiz+1)+' de '+QUIZ.length+
+    '</span><span>Aciertos: '+aciertos+'</span></div></div>';
+  const cont=document.getElementById('opciones');
+  q.opciones.forEach((op,i)=>{
+    const b=document.createElement('button');
+    b.className='opcion'; b.textContent=op;
+    b.addEventListener('click',()=>responder(i));
+    cont.appendChild(b);
+  });
+}
+function responder(i){
+  const q=QUIZ[ordenQuiz[idxQuiz]];
+  const botones=document.querySelectorAll('.opcion');
+  botones.forEach(b=>b.disabled=true);
+  botones[q.correcta].classList.add('correcta');
+  if(i===q.correcta){ aciertos++; }
+  else{ botones[i].classList.add('incorrecta'); falladas.push(q); }
+  const fb=document.getElementById('feedback');
+  fb.innerHTML='<div class="explicacion">'+q.explicacion+'</div>';
+  const btn=document.createElement('button');
+  btn.className='boton boton-primario'; btn.style.marginTop='12px';
+  btn.innerHTML=(idxQuiz+1<QUIZ.length)?'Siguiente <svg class="icono" aria-hidden="true"><use href="#i-der"/></svg>':'Ver resultado';
+  btn.addEventListener('click',()=>{
+    idxQuiz++;
+    if(idxQuiz<QUIZ.length)renderPregunta(); else renderResultado();
+  });
+  fb.appendChild(btn);
+  btn.focus();
+}
+function renderResultado(){
+  const pct=Math.round(aciertos/QUIZ.length*100);
+  let html='<div class="pregunta resultado"><h2>Resultado</h2>'+
+    '<div class="puntaje">'+aciertos+' / '+QUIZ.length+' — '+pct+'%</div>';
+  if(falladas.length){
+    html+='<h2 style="margin:14px 0 4px">Para repasar:</h2>';
+    falladas.forEach(q=>{
+      html+='<div class="fallada"><b>'+q.pregunta+'</b><br>'+
+        '<span class="bien">✔ '+q.opciones[q.correcta]+'</span><br>'+
+        '<small>'+q.explicacion+'</small></div>';
+    });
+  } else {
+    html+='<p>¡Impecable! Todas correctas.</p>';
+  }
+  html+='<button class="boton boton-primario" style="margin-top:14px" '+
+    'onclick="iniciarQuiz()"><svg class="icono" aria-hidden="true"><use href="#i-rotar"/></svg> Reintentar (mezclado)</button></div>';
+  elQuiz.innerHTML=html;
+}
+iniciarQuiz();
+
+// ============ GLOSARIO ============
+function escaparRegex(s){return s.replace(/[.*+?^${}()|[\]\\]/g,'\\$&');}
+function resaltar(texto,filtro){
+  if(!filtro)return texto;
+  return texto.replace(new RegExp('('+escaparRegex(filtro)+')','gi'),'<mark>$1</mark>');
+}
+function renderGlosario(filtro){
+  filtro=(filtro||'').trim();
+  const lista=document.getElementById('lista-glosario');
+  const orden=[...GLOSARIO].sort((a,b)=>a.termino.localeCompare(b.termino,'es'));
+  const visibles=orden.filter(e=>
+    (e.termino+' '+e.definicion).toLowerCase().includes(filtro.toLowerCase()));
+  if(!visibles.length){
+    lista.innerHTML='<p class="sin-resultados">No hay términos que coincidan.</p>';
+    return;
+  }
+  lista.innerHTML=visibles.map(e=>
+    '<div class="entrada-glosario"><b>'+resaltar(e.termino,filtro)+'</b>'+
+    '<p>'+resaltar(e.definicion,filtro)+'</p></div>').join('');
+}
+document.getElementById('busqueda-glosario')
+  .addEventListener('input',e=>renderGlosario(e.target.value));
+renderGlosario('');
+
+// ============ TEMA CLARO/OSCURO ============
+document.getElementById('toggle-tema').addEventListener('click',()=>{
+  const nuevo=document.documentElement.dataset.tema==='oscuro'?'claro':'oscuro';
+  document.documentElement.dataset.tema=nuevo;
+  try{localStorage.setItem('tema-oratoria',nuevo);}catch(e){}
+});
+</script>
+</body>
+</html>
